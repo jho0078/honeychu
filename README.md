@@ -6,7 +6,7 @@
 2. 그 후 develop branch로 merge request를 보낼것
    1. merge request를 보낼시에 코드 리뷰를 위해서 간단한 description을 작성할 것
 3. develop에 직접 push하지 말것
-4. master는 건들지 말것
+4. master는 건들지 말것 
 
 
 
