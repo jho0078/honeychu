@@ -10,7 +10,7 @@
 3. develop에 직접 push하지 말것
 4. master는 건들지 말것 
 
-
+ 
 
 ## Commit
 
