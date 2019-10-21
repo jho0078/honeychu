@@ -195,7 +195,7 @@ export default {
   display: inline-flex;
   word-break: keep-all;
   text-align: left;
-  font-size:100%;
+  font-size: 80%;
   width: 100%;
   height: 200px;
   border-width: 2px;
