@@ -25,9 +25,5 @@ export default new Router({
       name: 'chu',
       component: Chu
     },
-
-
-
-
   ]
 })
