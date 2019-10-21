@@ -1,5 +1,5 @@
 <template>
-  <h1>안녕</h1>
+  <h1>MenuList</h1>
 </template>
 
 <script>
