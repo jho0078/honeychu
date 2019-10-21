@@ -6,22 +6,42 @@
       <h1>Menu</h1>
     </div>
 
-    <h2>콜드 브루 커피</h2>
-    <div v-for = "cold in colds" class="namki_blocks">
-      <div>
-        <img :src = "cold.coffee_image" class="namki_menuimg">
+    <div style="width:95vw; border:1px solid;">
+      <div class="namki_sidebar" style="width:5%;">
+        <div v-for = "coffee in coffees" >
+            <button style="border:none; color:white; text-align: center; text-decoration: none; font-size:10px; background-color: #4CAF50;" type="button" name="button" >{{coffee.name}}</button>
+        </div>
+      </div>
 
-        <p>{{ cold.description }}</p>
+
+    <div style="width:95%; height:100%; border:4px solid;">
+      <h2>콜드 브루 커피</h2>
+      <div v-for = "cold in colds" class="namki_blocks">
+        <div>
+          <img :src = "cold.coffee_image" class="namki_menuimg">
+          <p>{{ cold.description }}</p>
+        </div>
+      </div>
+
+      <h2>프라푸치노</h2>
+      <div v-for = "prap in praps" class="namki_blocks">
+        <div>
+          <img :src = "prap.coffee_image" class="namki_menuimg">
+          <p>{{ prap.description }}</p>
+        </div>
       </div>
     </div>
 
-    <h2>프라푸치노</h2>
-    <div v-for = "prap in praps" class="namki_blocks">
-      <div>
-        <img :src = "prap.coffee_image" class="namki_menuimg">
-        <p>{{ prap.description }}</p>
-      </div>
     </div>
+
+      <div class="test" style="height:80vh; width:95vw; border:1px solid">
+        <div style="height:80vh; width:5%; border:1px solid">
+        </div>
+        <div style="height:80vh; width:10%; border:4px solid">
+        </div>
+      </div>
+
+
 
 
   </div>
@@ -33,6 +53,26 @@ export default {
   name:'Menu',
   data() {
     return {
+      coffees: [
+        {
+          name : '콜드 브루 커피'
+        }, {
+          name : '브루드 커피'
+        }, {
+          name : '에스프레소'
+        }, {
+          name : '프라푸치노'
+        }, {
+          name : '블렌디드'
+        }, {
+          name : '스타벅스 피지오'
+        }, {
+          name : '티(티바나)'
+        }, {
+          name : '기타 제조 음료'
+        },
+
+      ],
       colds: [
         {
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2019/09/[9200000002487]_20190919181354811.jpg',
@@ -107,6 +147,13 @@ export default {
 </script>
 
 <style>
+
+  .namki_sidebar {
+    overflow-y:scroll;
+    position:fixed;
+    height:50%;
+    border:1px solid black;
+  }
 
   .namki_blocks{
     word-break: keep-all;
