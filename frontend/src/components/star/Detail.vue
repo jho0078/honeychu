@@ -1,11 +1,13 @@
 <template>
-  <h1>디테일</h1>
+  <h1 class="primary">하이</h1>
+
 </template>
 
 <script>
 
+
 export default {
-  name:'Menu',
+  name:'Detail',
   data() {
     return {
 
@@ -24,4 +26,6 @@ export default {
 </script>
 
 <style>
+
+
 </style>
