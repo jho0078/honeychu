@@ -61,10 +61,7 @@
 <script>
 import navbar from "@/components/navbar/navbar";
 export default {
-  name: "Menu",
-  components: {
-    navbar
-  },
+  name:'Chu',
   data() {
     return {
       Frappuccinos: [

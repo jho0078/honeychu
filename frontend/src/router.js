@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Menu from './components/star/Menu.vue'
-import Detail from './components/star/Detail.vue'
+import Frame from './components/star/Frame.vue'
 import Chu from './components/star/Chu.vue'
 Vue.use(Router)
 
@@ -16,18 +16,14 @@ export default new Router({
       component: Menu
     },
     {
-      path: '/detail',
-      name: 'detail',
-      component: Detail
+      path: '/Starbucks',
+      name: 'Frame',
+      component: Frame
     },
     {
       path: '/chu',
       name: 'chu',
       component: Chu
     },
-
-
-
-
   ]
 })
