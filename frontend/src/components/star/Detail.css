@@ -1,0 +1,45 @@
+.Hyeri__starDetail{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.Hyeri__back{
+  z-index: 1;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: white;
+  font-size: 2rem;
+  text-shadow: .1rem .1rem .2rem rgba(0, 0, 0, 0.6);
+}
+.Hyeri__heart{
+  z-index: 1;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: crimson;
+  font-size: 2rem;
+  text-shadow: .1rem .1rem .2rem rgba(0, 0, 0, 0.6);
+}
+.HSD__title{
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+.Hyeri__starDetail img{
+  width:100%;
+}
+.HSD__contents{
+  border-radius: 2.5rem 2.5rem 0 0;
+  padding-top: 0.3rem;
+  position: relative;
+  top: -3rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  /* box-shadow:.1rem .1rem .2rem rgba(0, 0, 0, 0.6); */
+}
+.HSD__createby{
+  margin-top: 2rem;
+  color: darkgrey;
+}
+.HSD__createby b{
+  color: darkgreen
+}
