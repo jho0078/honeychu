@@ -1,8 +1,7 @@
 <template>
   <nav class="nav_HY">
     <div class="logo_HY">
-      <a href="#" class="logo text-lg">Menu</a>
-      <span class="subheader_HY">A Vue School course></span>
+      <a href="#" class="logo text-lg">Recommand</a>
     </div>
   </nav>
 </template>
