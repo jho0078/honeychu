@@ -13,7 +13,7 @@
        Menu
     </div>
     </div>
-    <Chu v-if="isRcVisible"></Chu>
+    <Menu2 v-if="isRcVisible"></Menu2>
     <Menu v-if="!isRcVisible"></Menu>
   </div>
 </template>
@@ -22,10 +22,11 @@
 
 import Menu from '@/components/star/Menu'
 import Chu from '@/components/star/Chu'
+import Menu2 from '@/components/star/Menu2'
 export default {
   name:'Frame',
   components: {
-    Menu, Chu
+    Menu, Chu, Menu2
   },
   data() {
     return {
