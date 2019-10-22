@@ -1,6 +1,6 @@
 <template>
   <div>
-<!--     
+<!--
       <div style="width:95vw; height:100vh; background-color:black;">
         <div style="float: left; width:5%; height:100%; background-color:blue;"></div>
         <div style="float: right; width:95%; height:100%; background-color:red;"></div>
@@ -13,7 +13,7 @@
     <div style="width:95vw;">
       <div class="namki_sidebar">
         <div v-for = "coffee in coffees" >
-          <button class="namki_sidebar_button">{{ coffee.name }}</button>  
+          <button class="namki_sidebar_button">{{ coffee.name }}</button>
         </div>
       </div>
 
@@ -71,22 +71,28 @@ export default {
       ],
       colds: [
         {
+
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2019/09/[9200000002487]_20190919181354811.jpg',
           description: '나이트로 바닐라 크림'
         }, {
+
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2018/04/[9200000001275]_20180409150826087.jpg',
           description: '나이트로 쇼콜라 클라우드'
         },{
+
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2017/03/[9200000000479]_20170328134443491.jpg',
           description: '나이트로 콜드 브루'
         },{
+
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2019/04/[9200000002081]_20190409153909754.jpg',
           description: '돌체 콜드 브루'
         },{
+
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2017/04/[9200000000487]_20170405152830656.jpg',
           description: '바닐라 크림 콜드 브루'
         },
         {
+
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2016/04/[9200000000038]_20160408135802583.jpg',
           description: '콜드 브루'
         },
@@ -138,6 +144,7 @@ export default {
   methods: {
 
 
+
   }
 }
 </script>
@@ -145,14 +152,14 @@ export default {
 <style>
   .namki_sidebar_button{
     color:white;
-    padding: 20% 1%;  
+    padding: 20% 1%;
     font-size: 80%;
     background-color: #13692a;
 
   }
 
   .namki_sidebar {
-    float:left; 
+    float:left;
     width:7%;
     height:50%;
     top:35%;
