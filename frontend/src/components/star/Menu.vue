@@ -1,25 +1,18 @@
 <template>
   <div>
-<!--     
-      <div style="width:95vw; height:100vh; background-color:black;">
-        <div style="float: left; width:5%; height:100%; background-color:blue;"></div>
-        <div style="float: right; width:95%; height:100%; background-color:red;"></div>
-      </div>
-
-     -->
-
-
 
     <div style="width:95vw;">
       <div class="namki_sidebar">
-        <div v-for = "coffee in coffees" >
-          <button class="namki_sidebar_button">{{ coffee.name }}</button>  
+        <div v-for = "(coffee, index) in coffees" >
+          
+          
+          <button @click="scrollTo(index)" class="namki_sidebar_button">{{ coffee.name }}</button>
         </div>
       </div>
 
 
     <div style="float:right; width:95%; height:100%;">
-      <h2 id="#1">콜드 브루 커피</h2>
+      <h2 id="0">콜드 브루 커피</h2>
       <div v-for = "cold in colds" class="namki_blocks">
         <div>
           <img :src = "cold.coffee_image" class="namki_menuimg">
@@ -27,7 +20,31 @@
         </div>
       </div>
 
-      <h2 id="#2">프라푸치노</h2>
+      <h2 id="1">브루드커피</h2>
+      <div v-for = "prap in praps" class="namki_blocks">
+        <div>
+          <img :src = "prap.coffee_image" class="namki_menuimg">
+          <p>{{ prap.description }}</p>
+        </div>
+      </div>
+
+      <h2 id="2">에스프레소</h2>
+      <div v-for = "prap in praps" class="namki_blocks">
+        <div>
+          <img :src = "prap.coffee_image" class="namki_menuimg">
+          <p>{{ prap.description }}</p>
+        </div>
+      </div>
+
+      <h2 id="3">프라푸치노</h2>
+      <div v-for = "prap in praps" class="namki_blocks">
+        <div>
+          <img :src = "prap.coffee_image" class="namki_menuimg">
+          <p>{{ prap.description }}</p>
+        </div>
+      </div>
+
+      <h2 id="4">블렌디드</h2>
       <div v-for = "prap in praps" class="namki_blocks">
         <div>
           <img :src = "prap.coffee_image" class="namki_menuimg">
@@ -91,24 +108,7 @@ export default {
           description: '콜드 브루'
         },
       ],
-      espressos: [
-        {
-          coffee_image: '',
-          description: ''
-        }, {
-          coffee_image: '',
-          description: ''
-        },{
-          coffee_image: '',
-          description: ''
-        },{
-          coffee_image: '',
-          description: ''
-        },{
-          coffee_image: '',
-          description: ''
-        },
-      ],
+    
       praps: [
         {
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2015/08/[168004]_20150813221231839.jpg',
@@ -136,7 +136,12 @@ export default {
 
   },
   methods: {
-
+    scrollTo(locationId) {
+      const element = document.getElementById(locationId)
+      const elemRect = element.getBoundingClientRect()
+      const offset = elemRect.top + window.pageYOffset
+      window.scrollTo({top: offset, behavior: 'smooth'})
+    },
 
   }
 }
@@ -155,9 +160,9 @@ export default {
     float:left; 
     width:7%;
     height:50%;
-    top:35%;
+    position:fixed;
     overflow-y:scroll;
-    position:absolute;
+    
   }
 
   .namki_blocks{
