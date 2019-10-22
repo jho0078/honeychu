@@ -1,31 +1,33 @@
 <template>
-  <div class="starDetail">
-    <h1>나와라!디테일!{{this.combiId}}</h1>
-    <div class="">
-      <img :src="combi.Image" alt="">
-      <p>{{combi.title}} </p>
-      <p>{{combi.price}}원 ( Tall 사이즈 기준 )</p>
+  <div class="Hyeri__starDetail">
+    <i @click="moveToBack()"class="Hyeri__back fas fa-angle-left"></i>
+
+    <!-- 빈하트 함수 필요-->
+    <!-- <i class="Hyeri__heart far fa-heart"></i> -->
+    <!-- 찬하트 -->
+    <i class="Hyeri__heart fas fa-heart"></i>
+
+    <img :src="combi.Image" alt="">
+    <div class="HSD__contents">
+      <p class="HSD__title">{{combi.title}} </p>
+      <p>{{combi.price}} 원 ( Tall 사이즈 기준 )</p>
       <p>{{combi.likes}} </p>
       <p>{{combi.starMenu}}</p>
       <p>{{combi.extras}}</p>
-      <p>{{combi.Date}}</p>
-      <p>{{combi.User}}</p>
       <p>{{combi.Option}}</p>
+      <p class="HSD__createby">{{combi.Date}} &nbsp | &nbsp by. <b>{{combi.User}}</b></p>
     </div>
-
   </div>
 
 </template>
 
 <script>
-
-
+import '@/components/star/Detail.css'
 export default {
   name:'Detail',
   props:['combiId'],
   data() {
     return {
-      combiId: this.$route.query.combiId,
       combi:{
         title: '냠냠커피',
         price: 7000,
@@ -49,7 +51,10 @@ export default {
   methods: {
     getCombi(data) {
       // 가져올함수
-      console.log(data)
+      console.log('combiId:', data)
+    },
+    moveToBack(){
+      this.$router.push({path: '/Starbucks'})
     }
 
   }
