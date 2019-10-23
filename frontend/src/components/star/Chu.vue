@@ -1,54 +1,66 @@
 <template>
   <div>
     <header class="header_HY">
-      <h1>STARBUCKS</h1>
+      <h1>STARBUCKS {{Frappuccinos.length + Lattes.length + CoolLimes.length + Espressos.length}}개</h1>
     </header>
-    <div class="coffee_HY">
-      <h3>Frappuccino</h3>
+
+    <!-- 프라푸치노 for문 -->
+    <div>
+      <h3>Frappuccino {{Frappuccinos.length}}개</h3>
       <div v-for="frappuccino in Frappuccinos">
         <div class="border_HY">
+          <img class="img_HY" :src="frappuccino.coffee_image" />
           <div>
-            <img class="img_HY" :src="frappuccino.coffee_image" />
-          </div>
-          <div>
-            <p>이름 {{ frappuccino.coffee_name }}</p>
-            <p>가격 {{ frappuccino.coffee_price }}</p>
-            <!-- <p>종류 {{frappuccino.coffee_kind }}</p> -->
-            <!-- <p>설명 {{ frappuccino.desciption }}</p> -->
+            <h3>{{ frappuccino.coffee_name }}</h3>
+            <h4>{{ frappuccino.coffee_price }}</h4>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="coffee_HY">
-      <h2>Latte</h2>
+    <!-- 라떼 for문 -->
+    <div>
+      <h3>Latte {{Lattes.length}}개</h3>
       <div v-for="latte in Lattes">
         <div class="border_HY">
           <div>
             <img class="img_HY" :src="latte.coffee_image" />
           </div>
           <div>
-            <p>이름 {{ latte.coffee_name }}</p>
-            <p>가격 {{ latte.coffee_price }}</p>
-            <!-- <p>종류 {{ latte.coffee_kind }}</p>
-            <p>설명 {{ latte.desciption }}</p>-->
+            <h3>이름 {{ latte.coffee_name }}</h3>
+            <h4>가격 {{ latte.coffee_price }}</h4>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="coffee_HY">
-      <h2>Cool Lime</h2>
+    <!-- 쿨라임 for문 -->
+    <div>
+      <h3>Cool Lime {{CoolLimes.length}}개</h3>
       <div v-for="coollime in CoolLimes">
         <div class="border_HY">
           <div>
             <img class="img_HY" :src="coollime.coffee_image" />
           </div>
           <div>
-            <p>이름 {{ coollime.coffee_name }}</p>
-            <p>가격 {{ coollime.coffee_price }}</p>
-            <!-- <p>종류 {{ coollime.coffee_kind }}</p>
-            <p>설명 {{ coollime.desciption }}</p>-->
+            <h3>이름 {{ coollime.coffee_name }}</h3>
+            <h4>가격 {{ coollime.coffee_price }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 에스프레소 for문 -->
+    <div>
+      <h3>Espresso {{Espressos.length}}개</h3>
+      <div v-for="espresso in Espressos">
+        <div class="border_HY">
+          <div>
+            <img class="img_HY" :src="espresso.coffee_image" />
+          </div>
+          <div>
+            <h3>이름 {{ espresso.coffee_name }}</h3>
+            <h4>가격 {{ espresso.coffee_price }}</h4>
           </div>
         </div>
       </div>
@@ -59,10 +71,7 @@
 <script>
 export default {
   name: "Chu",
-  components: {
-    // navbar,
-    // Frame
-  },
+  components: {},
   data() {
     return {
       Frappuccinos: [
@@ -70,7 +79,7 @@ export default {
           coffee_kind: "frappuccino",
           coffee_name: "슈렉 프라푸치노",
           desciption:
-            "그린티 프라푸치노, 에스프레소 샷, 자바칩, 초코드리즐, 통 자바칩",
+            "그린 티 프라푸치노, 에스프레소 샷, 자바칩, 초코드리즐, 통 자바칩",
           coffee_image:
             "https://img1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/liveboard/dailylife/848a2acf8ffd4bc981bf235d59aca9b3.jpg",
           coffee_price: "8700원"
@@ -78,7 +87,7 @@ export default {
         {
           coffee_kind: "frappuccino",
           coffee_name: "페레로로쉐 프라푸치노",
-          desciption: "자바칩 프라푸치노, 모카 시럽, 헤이즐넛 시럽",
+          desciption: "자바 칩 프라푸치노, 모카 시럽, 헤이즐넛 시럽",
           coffee_image:
             "https://t1.daumcdn.net/cfile/tistory/9953AF335C5D726C06",
           coffee_price: "6700원"
@@ -87,7 +96,7 @@ export default {
           coffee_kind: "frappuccino",
           coffee_name: "고디바 프라푸치노",
           desciption:
-            "초코 크림 프라푸치노, 헤이즐넛 시럽, 모카 시럽, 초코드리즐, 통 자바칩",
+            "자바 칩 프라푸치노, 헤이즐넛 시럽, 모카 시럽, 초코드리즐, 통 자바칩",
           coffee_image:
             "https://img1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/liveboard/dailylife/fe606ebc60724efd974faa43abe8a512.jpg",
           coffee_price: "6300원"
@@ -150,6 +159,69 @@ export default {
           coffee_image:
             "http://mblogthumb4.phinf.naver.net/20150624_215/aod0609_1435103783716hsyeW_JPEG/NaverBlog_20150624_085623_03.jpg?type=w2",
           coffee_price: "6800원"
+        },
+        {
+          coffee_kind: "frappuccino",
+          coffee_name: "바닐라 크림 프라푸치노",
+          desciption:
+            "바닐라 크림 프라푸치노, 헤이즐넛 시럽 2, 카라멜 시럽 2, 바닐라 시럽 1, 카라멜 드리즐(많이), 일반 휘핑(많이)",
+          coffee_image:
+            "https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile24.uf.tistory.com%2Fimage%2F99E260355BDFAB4F24EAE3",
+          coffee_price: "6600원"
+        },
+        {
+          coffee_kind: "frappuccino",
+          coffee_name: "더위사냥 프라푸치노",
+          desciption:
+            "에스프레소 프라푸치노, 카라멜 드리즐(많이), 에스프레소 휘핑",
+          coffee_image:
+            "https://scontent-cdg2-1.cdninstagram.com/v/t51.2885-15/e35/69833197_551566532049555_9085711651689098154_n.jpg?_nc_ht=scontent-cdg2-1.cdninstagram.com&_nc_cat=103&se=7&oh=bb0065719925b071f92578431ddf544a&oe=5E3A3D04&ig_cache_key=MjEzNjAyNzA5Nzk0NDk2NzQ5Nw%3D%3D.2",
+          coffee_price: "6300원"
+        },
+        {
+          coffee_kind: "frappuccino",
+          coffee_name: "체리봉봉 프라푸치노",
+          desciption:
+            "딸기 크림 프라푸치노, 자바칩&토핑(반반) 5, 헤이즐넛 시럽, 카라멜 시럽, 일반 휘핑",
+          coffee_image:
+            "https://scontent-cdg2-1.cdninstagram.com/vp/d6965b0430d57ce6cffa1753b4c8c906/5E2B8130/t51.2885-15/e35/54247838_897080343967974_5742338633883192301_n.jpg?_nc_ht=scontent-cdg2-1.cdninstagram.com&_nc_cat=106&se=8&ig_cache_key=MjAxMzc4ODU5MDYwMjk2NzU4Mg%3D%3D.2",
+          coffee_price: "7300원"
+        },
+        {
+          coffee_kind: "frappuccino",
+          coffee_name: "하겐다즈 녹차 프라푸치노",
+          desciption:
+            "하겐다즈 녹차 프라푸치노, 두유, 에스프레소 휘핑(많이), 그린티파우더 9, 프라푸치노용 시럽(라이트), 바니라 시럽(없이), 돔리드",
+          coffee_image:
+            "https://postfiles.pstatic.net/MjAxOTA0MTRfMjYy/MDAxNTU1MjIwODg4ODI3.shfeh5G1FfOsg3xOSsX4En8JvWzzaNWP0JwgFJmPr6og.hZU0YaQZjdmTMVLdbZsLUCg350ZAPiO3prMcToViTRQg.JPEG.huaf/SE-912dce55-b7c9-4b1f-bd02-6045e7a45e16.jpg?type=w773",
+          coffee_price: "6300원"
+        },
+        {
+          coffee_kind: "frappuccino",
+          coffee_name: "오레오 프라푸치노",
+          desciption:
+            "바닐라 크림 프라푸치노, 에스프레소 휘핑, 모카 드리즐, 자바칩 2",
+          coffee_image:
+            "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F277E214F58CBB82A12",
+          coffee_price: "6000원"
+        },
+        {
+          coffee_kind: "frappuccino",
+          coffee_name: "초코하임 프라푸치노",
+          desciption:
+            "화이트 초콜릿 모카 프라푸치노, 에스프레소 휘핑, 자바칩&토핑(반반)",
+          coffee_image:
+            "http://postfiles14.naver.net/MjAxOTAzMjdfOTMg/MDAxNTUzNjgxNjg5OTI1.TOSDzjRwrJWUSKJiHStMDwkFFeHClSzeRq9LTgIsQsQg.OpGltN2sR_nsuG_yu4kVt4CXZiCxrw_J6niEuyAHrZMg.JPEG.whatisthebox/KakaoTalk_20190327_191410507.jpg?type=w773",
+          coffee_price: "6300원"
+        },
+        {
+          coffee_kind: "frappuccino",
+          coffee_name: "와일드바디 프라푸치노",
+          desciption:
+            "화이트 초콜릿 모카 프라푸치노, 에스프레소 휘핑(많이), 화이트 모카 시럽 5, 자바칩&토핑(반반) 7, 토핑(많이)",
+          coffee_image:
+            "https://postfiles.pstatic.net/MjAxOTA0MTRfMTQ0/MDAxNTU1MjIwOTcyODY4.hnPtxkpzg7h4AaufL0QFsZZE11nLQgaRBFKl5rYTOGQg.czal9WSnJucJbpX8ipPArIS3Z4PKWNKpMhDLW9kyLrQg.JPEG.huaf/SE-6d317124-423f-4479-a51e-97fbe83cec7f.jpg?type=w773",
+          coffee_price: "6300원"
         }
       ],
       Lattes: [
@@ -168,6 +240,24 @@ export default {
           coffee_image:
             "https://t1.daumcdn.net/liveboard/realfood/4dae92f9aabf4c6d98ade36da1eabafa.jpg",
           coffee_price: "6700원"
+        },
+        {
+          coffee_kind: "latte",
+          coffee_name: "하겐다즈 녹차 라떼",
+          desciption:
+            "그린 티 라떼, 두유, 에스프레소 샷, 그린티파우더 5, 바닐라 시럽 3",
+          coffee_image:
+            "http://postfiles8.naver.net/MjAxOTAzMjdfMjc5/MDAxNTUzNjgxNjg5OTE3.nVL7BMufqO8JCYR7jZjXqD2sGFkARPh5eSup9v6Qtlsg.OXrvl-XoWeckBiMTVgZ2LVUnnAoHAd8FusswQc7oRAUg.JPEG.whatisthebox/KakaoTalk_20190327_191409831.jpg?type=w773",
+          coffee_price: "7100원"
+        },
+        {
+          coffee_kind: "latte",
+          coffee_name: "하겐다즈 녹차 라떼",
+          desciption:
+            "그린 티 라떼, 두유, 에스프레소 샷, 그린티파우더 5, 바닐라 시럽 3",
+          coffee_image:
+            "http://postfiles8.naver.net/MjAxOTAzMjdfMjc5/MDAxNTUzNjgxNjg5OTE3.nVL7BMufqO8JCYR7jZjXqD2sGFkARPh5eSup9v6Qtlsg.OXrvl-XoWeckBiMTVgZ2LVUnnAoHAd8FusswQc7oRAUg.JPEG.whatisthebox/KakaoTalk_20190327_191409831.jpg?type=w773",
+          coffee_price: "7100원"
         }
       ],
       CoolLimes: [
@@ -179,6 +269,17 @@ export default {
             "data:image/jpeg;base64,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",
           coffee_price: "5900원"
         }
+      ],
+      Espressos: [
+        {
+          coffee_kind: "espresso",
+          coffee_name: "에스프레소",
+          desciption:
+            "에스프레소(더블샷), 크림 우유 혼합(하프앤하프), 바닐라 시럽",
+          coffee_image:
+            "http://postfiles12.naver.net/MjAxNzAzMTdfMjE1/MDAxNDg5NzM4MjIyMzU3.uSKPfzrAZNCTj3jY7pw-WNHVlifYaT9uYvJzT7-DYJ8g.FBtHU2YMaSLAyPcxnnO6KehySIyZ4O65eeCuMpvkQiIg.JPEG.com9013/20170308_201549.jpg?type=w966",
+          coffee_price: "4800원"
+        }
       ]
     };
   },
@@ -187,7 +288,14 @@ export default {
 };
 </script>
 
+
 <style>
+@import url("https://fonts.googleapis.com/css?family=Sunflower:700&display=swap");
+body,
+div,
+p {
+  font-family: "Sunflower", sans-serif;
+}
 .header_HY {
   position: fixed;
   top: 0;
@@ -207,29 +315,30 @@ export default {
   width: 100%;
 }
 
-.coffee_HY > h3 {
-}
-
 .border_HY {
   display: inline-flex;
-  word-break: keep-all;
   text-align: left;
-  font-size: 100%;
+  font-size: 80%;
+  font-family: TmonMonsori, "GodoB", "굴림";
   width: 100%;
   height: 100px;
-  border-width: 2px;
-  border-color: black;
-  border-style: solid;
+  background-color: whitesmoke;
+  margin-bottom: 5px;
+}
+
+.border_HY > div > h3,
+h4 {
+  margin: 20px;
+  font-style: italic;
 }
 
 .img_HY {
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
-  border-right: 4px;
-  border-color: black;
-  border-style: solid;
-  width: 96px;
-  height: 96px;
+  width: 90px;
+  height: 90px;
+  margin: 5px;
+  border-radius: 5%;
 }
 </style>
