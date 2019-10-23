@@ -34,7 +34,7 @@
 }
 .HSD__title{
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: .4rem;
 }
 .Hyeri__starDetail img{
@@ -42,9 +42,9 @@
 }
 .HSD__contents{
   border-radius: 2.5rem 2.5rem 0 0;
-  padding: 1.5rem;
+  padding: 1.4rem;
   position: relative;
-  top: -3rem;
+  top: -5rem;
   background-color: rgba(255, 255, 255, 0.8);
   /* box-shadow:.1rem .1rem .2rem rgba(0, 0, 0, 0.6); */
 }
@@ -54,9 +54,27 @@
 }
 .HSD__price{
   text-align: end;
+  font-size: 0.7rem;
 }
-.HSD__price span {
-  font-size: 1.3rem;
+.HSD__recipe{
+  color: darkgrey;
+}
+.HSD__price div:first-child {
+  font-size: 1.5rem;
   font-weight: 600;
   color: darkorange;
+}
+.HSD__base {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color:darkgreen;
+}
+.HSD__extras {
+  font-size: 1.3rem;
+  margin-bottom: .4rem;
+  color: black;
+}
+.HSD__option {
+  color: crimson;
+  font-weight: 600;
 }
