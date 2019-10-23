@@ -1,0 +1,80 @@
+.Hyeri__starDetail{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.HSD__Header {
+  display:inline-flex;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 1;
+  align-items: center;
+  justify-content: space-between;
+  text-shadow: .1rem .1rem .2rem rgba(0, 0, 0, 0.4);
+}
+.Hyeri__back{
+  color: white;
+  font-size: 2rem;
+}
+.HSD__like{
+  display: flex;
+  color: white;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 2rem;
+  padding: .2rem .9rem;
+
+}
+.Hyeri__heart {
+    color: crimson;
+    font-size: 2rem;
+    margin-left: .5rem;
+}
+.HSD__title{
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: .4rem;
+}
+.Hyeri__starDetail img{
+  width:100%;
+}
+.HSD__contents{
+  border-radius: 2.5rem 2.5rem 0 0;
+  padding: 1.4rem;
+  position: relative;
+  top: -5rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  /* box-shadow:.1rem .1rem .2rem rgba(0, 0, 0, 0.6); */
+}
+.HSD__createby{
+  margin-top: 2rem;
+  color: darkgrey;
+}
+.HSD__price{
+  text-align: end;
+  font-size: 0.7rem;
+}
+.HSD__recipe{
+  color: darkgrey;
+}
+.HSD__price div:first-child {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: darkorange;
+}
+.HSD__base {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color:darkgreen;
+}
+.HSD__extras {
+  font-size: 1.3rem;
+  margin-bottom: .4rem;
+  color: black;
+}
+.HSD__option {
+  color: crimson;
+  font-weight: 600;
+}

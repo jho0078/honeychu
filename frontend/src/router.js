@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Menu from './components/star/Menu.vue'
 import Frame from './components/star/Frame.vue'
 import Chu from './components/star/Chu.vue'
+import Detail from './components/star/Detail.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -25,5 +26,12 @@ export default new Router({
       name: 'chu',
       component: Chu
     },
+    {
+      path: '/Starbucks/:combiId',
+      name: 'Detail',
+      component: Detail,
+      props: true
+    },
+
   ]
 })
