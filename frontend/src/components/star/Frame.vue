@@ -49,8 +49,12 @@ export default {
 }
 </script>
 
-<style scoped>
-body{
+<style>
+#starbucks {
+
+  font-family: 'Kanit', sans-serif;
+}
+body {
   /* background: url("../assets/honey.png") no-repeat; */
   background-size: cover;
 }

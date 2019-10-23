@@ -3,34 +3,46 @@
   top: 0;
   left: 0;
 }
-.Hyeri__back{
-  z-index: 1;
+.HSD__Header {
+  display:inline-flex;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  z-index: 1;
+  align-items: center;
+  justify-content: space-between;
+  text-shadow: .1rem .1rem .2rem rgba(0, 0, 0, 0.4);
+}
+.Hyeri__back{
   color: white;
   font-size: 2rem;
-  text-shadow: .1rem .1rem .2rem rgba(0, 0, 0, 0.6);
 }
-.Hyeri__heart{
-  z-index: 1;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  color: crimson;
-  font-size: 2rem;
-  text-shadow: .1rem .1rem .2rem rgba(0, 0, 0, 0.6);
+.HSD__like{
+  display: flex;
+  color: white;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 2rem;
+  padding: .2rem .9rem;
+
+}
+.Hyeri__heart {
+    color: crimson;
+    font-size: 2rem;
+    margin-left: .5rem;
 }
 .HSD__title{
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-weight: 700;
+  letter-spacing: .4rem;
 }
 .Hyeri__starDetail img{
   width:100%;
 }
 .HSD__contents{
   border-radius: 2.5rem 2.5rem 0 0;
-  padding-top: 0.3rem;
+  padding: 1.5rem;
   position: relative;
   top: -3rem;
   background-color: rgba(255, 255, 255, 0.8);
@@ -40,6 +52,11 @@
   margin-top: 2rem;
   color: darkgrey;
 }
-.HSD__createby b{
-  color: darkgreen
+.HSD__price{
+  text-align: end;
+}
+.HSD__price span {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: darkorange;
 }
