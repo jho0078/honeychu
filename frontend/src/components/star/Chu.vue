@@ -290,12 +290,12 @@ export default {
 
 
 <style>
-@import url("https://fonts.googleapis.com/css?family=Sunflower:700&display=swap");
+/* @import url("https://fonts.googleapis.com/css?family=Sunflower:700&display=swap");
 body,
 div,
 p {
   font-family: "Sunflower", sans-serif;
-}
+} */
 .header_HY {
   position: fixed;
   top: 0;

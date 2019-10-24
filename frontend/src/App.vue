@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
@@ -17,7 +17,6 @@ export default {
 
 <style>
 #app {
-
   text-align: center;
   margin-top: 60px;
 }
