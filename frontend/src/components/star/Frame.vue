@@ -13,21 +13,20 @@
       </div>
     </div>
     
-    <Menu2 v-if="isRcVisible"></Menu2>
-    <Menu v-if="!isRcVisible"></Menu>
+    <ChuCircle v-if="isRcVisible"></ChuCircle>
+    <MenuCircle v-if="!isRcVisible"></MenuCircle>
   </div>
 
 </template>
 
 <script>
 
-import Menu from '@/components/star/Menu'
-import Chu from '@/components/star/Chu'
-import Menu2 from '@/components/star/Menu2'
+import MenuCircle from '@/components/star/MenuCircle'
+import ChuCircle from '@/components/star/ChuCircle'
 export default {
   name:'Frame',
   components: {
-    Menu, Chu, Menu2
+    MenuCircle, ChuCircle
   },
   data() {
     return {
