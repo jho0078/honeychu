@@ -49,7 +49,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/v1/users', usersRouter);
+// app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
@@ -92,5 +93,24 @@ app.post('/regist', function (req, res) {
 });
 
 // app.listen(3000, () => console.log('connected, 3000'));
+
+
+// //Database connection
+// app.use(function(req, res, next){
+// 	res.locals.connection = mysql.createConnection({
+// 		host     : 'localhost',
+// 		user     : 'root',
+// 		password : '1234',
+// 		database : 'honeychu'
+// 	});
+// 	res.locals.connect();
+// 	next();
+// });
+// app.use('/api/v1/starmenu', starmenu);
+
+
+
+
+
 
 module.exports = app;
