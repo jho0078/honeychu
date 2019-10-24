@@ -1,4 +1,5 @@
 <template>
+
   <div id="starbucks">
     <h1>STARBUCKS</h1>
     <div class="starbucks_menubar">
@@ -13,9 +14,11 @@
        Menu
     </div>
     </div>
+    
     <Menu2 v-if="isRcVisible"></Menu2>
     <Menu v-if="!isRcVisible"></Menu>
   </div>
+
 </template>
 
 <script>

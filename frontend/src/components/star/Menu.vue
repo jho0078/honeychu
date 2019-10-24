@@ -146,17 +146,21 @@ export default {
   }
 }
 </script>
-
+#13692a
 <style>
   .namki_sidebar_button{
     color:white;
     padding: 20% 1%;  
     font-size: 80%;
-    background-color: #13692a;
+    background-color: #acccb4;
 
+  }
+  .namki_sidebar_button:active{
+    background-color:#13692a;
   }
 
   .namki_sidebar {
+    top:30%;
     float:left; 
     width:7%;
     height:50%;
