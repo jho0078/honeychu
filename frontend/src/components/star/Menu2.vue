@@ -2,7 +2,7 @@
   <div>
     <h2>추천 레시피</h2>
     <div v-for = "cold in colds" class="namki_blocks">
-      <div>
+      <div  @click="goToDetail(cold.id)">
         <img :src = "cold.coffee_image" class="namki_menuimg">
         <p>{{ cold.description }}</p>
       </div>
@@ -27,22 +27,28 @@ export default {
     return {
       colds: [
         {
+          id:1,
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2019/09/[9200000002487]_20190919181354811.jpg',
           description: '나이트로 바닐라 크림'
         }, {
+          id:2,
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2018/04/[9200000001275]_20180409150826087.jpg',
           description: '나이트로 쇼콜라 클라우드'
         },{
+          id:3,
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2017/03/[9200000000479]_20170328134443491.jpg',
           description: '나이트로 콜드 브루'
         },{
+          id:4,
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2019/04/[9200000002081]_20190409153909754.jpg',
           description: '돌체 콜드 브루'
         },{
+          id:5,
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2017/04/[9200000000487]_20170405152830656.jpg',
           description: '바닐라 크림 콜드 브루'
         },
         {
+          id:6,
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2016/04/[9200000000038]_20160408135802583.jpg',
           description: '콜드 브루'
         },
@@ -90,8 +96,12 @@ export default {
 
 
 
+
   },
   methods: {
+    goToDetail(combiId) {
+      this.$router.push({path: '/Starbucks/' + combiId})
+    },
 
 
   }
@@ -118,5 +128,3 @@ export default {
   }
 
 </style>
-
-

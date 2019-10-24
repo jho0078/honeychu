@@ -3,16 +3,14 @@
   <div id="starbucks">
     <h1>STARBUCKS</h1>
     <div class="starbucks_menubar">
-
-
-    <div class="starbucks__menubutton text-white"
-          :class="{ primary : isRcVisible, gray:!isRcVisible }" @click="showRc()">
-       Recommend
-    </div>
-    <div class="starbucks__menubutton text-white"
-    :class="{ primary : !isRcVisible, gray:isRcVisible }" @click="showMenu()">
-       Menu
-    </div>
+      <div class="starbucks__menubutton text-white"
+            :class="{ primary : isRcVisible, gray:!isRcVisible }" @click="showRc()">
+         Recommend
+      </div>
+      <div class="starbucks__menubutton text-white"
+      :class="{ primary : !isRcVisible, gray:isRcVisible }" @click="showMenu()">
+         Menu
+      </div>
     </div>
     
     <Menu2 v-if="isRcVisible"></Menu2>
@@ -54,8 +52,12 @@ export default {
 }
 </script>
 
-<style scoped>
-body{
+<style>
+#starbucks {
+
+  font-family: 'Kanit', sans-serif;
+}
+body {
   /* background: url("../assets/honey.png") no-repeat; */
   background-size: cover;
 }
