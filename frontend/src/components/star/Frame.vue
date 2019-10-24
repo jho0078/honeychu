@@ -53,7 +53,9 @@ export default {
 
 <style>
 #starbucks {
-
+  position: absolute;
+  top:0;
+  left: 0;
   font-family: 'Kanit', sans-serif;
 }
 body {
