@@ -4,6 +4,7 @@ import router from './router'
 import VueRouter from 'vue-router'
 import GAuth from 'vue-google-oauth2'
 
+
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 Vue.use(GAuth, {
