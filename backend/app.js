@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var users = require('./routes/mysql');
 
 var app = express();
 
@@ -23,8 +24,8 @@ var connection = mysql.createConnection({
   host: 'localhost',
   port: 3306,
   user: 'root',   
-  password: 'gjslqjxjclq',
-  database: 'honeychu'  
+  password: '1234',
+  database: 'test_crud'  
 });  
 
 
@@ -64,6 +65,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/api/v1/users', usersRouter);
+app.use('users', users);
 // app.use('/users', usersRouter);
 
 
@@ -88,7 +90,8 @@ app.post('/regist', function (req, res) {
       console.error(err);
       throw err;
     }
-    res.status(200).send('success');
+    res.status(200).send('result');
+    // res.status(200).send('success');
   });
 });
 
