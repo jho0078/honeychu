@@ -11,8 +11,8 @@ var app = express();
 
 var mysql = require('mysql');
 
-// var bodyParser = require('body-parser');//
-// app.use(bodyParser.urlencoded({extended:false}));
+var bodyParser = require('body-parser');//
+app.use(bodyParser.urlencoded({extended:false}));
 
 app.locals.pretty = true;
 // app.use(express.static('public'))
@@ -37,6 +37,20 @@ connection.connect(function (err) {
   } 
 });
 
+// //Database connection
+// app.use(function(req, res, next){
+// 	res.locals.connection = mysql.createConnection({
+// 		host     : 'localhost',
+// 		user     : 'root',
+// 		password : '1234',
+// 		database : 'honeychu'
+// 	});
+// 	// connection.connect();
+// 	res.locals.connection.connect();
+// 	// res.locals.connection.connect();
+// 	next();
+// });
+// // app.use('/api/v1/starmenu', starmenu);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -52,21 +66,7 @@ app.use('/', indexRouter);
 app.use('/api/v1/users', usersRouter);
 // app.use('/users', usersRouter);
 
-// catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   next(createError(404));
-// });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
 
 // app.get('', function (req, res) {
 //   var user = {
@@ -94,19 +94,22 @@ app.post('/regist', function (req, res) {
 
 // app.listen(3000, () => console.log('connected, 3000'));
 
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
 
-// //Database connection
-// app.use(function(req, res, next){
-// 	res.locals.connection = mysql.createConnection({
-// 		host     : 'localhost',
-// 		user     : 'root',
-// 		password : '1234',
-// 		database : 'honeychu'
-// 	});
-// 	res.locals.connect();
-// 	next();
-// });
-// app.use('/api/v1/starmenu', starmenu);
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
 
 
 
