@@ -12,48 +12,174 @@
       <textarea class="namki_MakeCombi_textarea" v-model="Title" placeholder="제목"></textarea>
       <textarea class="namki_MakeCombi_textarea" v-model="Description" placeholder="한줄설명"></textarea>
 
-      <Accordion theme="purple" style="font-size:80%;">
+      <!-- 커피1 -->
+      <!-- <Accordion theme="purple">
         <div slot="header">커피</div>
-        <div style="margin-top:5px; width=100%;">
-          에스프레소 샷
-          <button @click="Espresso_shots -= 1"> - </button>
-            {{ Espresso_shots }}
-          <button @click="Espresso_shots += 1"> + </button>
+        <div style="width=100%;">
+            에스프레소 샷
+            <button @click="Espresso_shots -= 1"> - </button>
+              {{ Espresso_shots }}
+            <button @click="Espresso_shots += 1"> + </button>
+
         </div>
         <hr>
-        <div style="line-height:20px;">
+        <div>
           디카페인
             <button class="namki_button" v-for="Decaffein in Decaffeins" @click="inputDecaffein(Decaffein.value)" >{{Decaffein.Name}}</button>
         </div>
+      </Accordion> -->
 
-
-      </Accordion>
-
-      <Accordion theme="red">
-        <div slot="header">시럽</div>
-
-      </Accordion>
-      <Accordion theme="yellow">
-        <div slot="header">베이스</div>
-        Accordion body
-      </Accordion>
-      <Accordion theme="gray">
-        <div slot="header">얼음</div>
-        Accordion body
-      </Accordion>
+      <!-- 커피2 -->
       <Accordion theme="purple">
-        <div slot="header">휘핑크림</div>
-        <div>
+        <div slot="header">커피</div>
+        <div v-for="item in coffee">
+          <div v-if="typeof(item.value) === 'number'">
+            {{ item.name }}
+            <button @click="item.value--">-</button>
+              {{ item.value }}
+            <button @click="item.value++">+</button>
+            <hr>
+          </div>
 
+          <div v-if="typeof(item.value) === 'object'">
+            {{ item.name }}
+            <div style="display:inline;" v-for="i in item.value">
+              <button class="namki_button"  @click="Decaffein=i.value" >{{i.Name}}</button>
+            </div>
+          </div>
         </div>
       </Accordion>
+
+      <!-- 시럽 -->
+      <Accordion theme="red">
+        <div slot="header">시럽</div>
+        <div v-for="item in syrup">
+          <div v-if="typeof(item.value) === 'number'">
+            {{ item.name }}
+            <button @click="item.value--">-</button>
+              {{ item.value }}
+            <button @click="item.value++">+</button>
+            <hr>
+          </div>
+
+          <div v-if="typeof(item.value) === 'object'">
+            {{ item.name }}
+            <div style="display:inline;" v-for="i in item.value">
+              <button class="namki_button"  @click="Decaffein=i.value" >{{i.Name}}</button>
+            </div>
+          </div>
+        </div>
+      </Accordion>
+
+      <!-- 베이스 -->
+      <Accordion theme="yellow">
+        <div slot="header">베이스</div>
+        <div v-for="item in base">
+          <div v-if="typeof(item.value) === 'number'">
+            {{ item.name }}
+            <button @click="item.value--">-</button>
+              {{ item.value }}
+            <button @click="item.value++">+</button>
+            <hr>
+          </div>
+
+          <div v-if="typeof(item.value) === 'object'">
+            {{ item.name }}
+            <div style="display:inline;" v-for="i in item.value">
+              <button class="namki_button"  @click="Base=i.value" >{{i.Name}}</button>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </Accordion>
+
+      <!-- 얼음 -->
+      <Accordion theme="gray">
+        <div slot="header">얼음</div>
+        <div v-for="item in ice">
+          <div v-if="typeof(item.value) === 'number'">
+            {{ item.name }}
+            <button @click="item.value--">-</button>
+              {{ item.value }}
+            <button @click="item.value++">+</button>
+            <hr>
+          </div>
+
+          <div v-if="typeof(item.value) === 'object'">
+            {{ item.name }}
+            <div style="display:inline;" v-for="i in item.value">
+              <button class="namki_button"  @click="Ice=i.value" >{{i.Name}}</button>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </Accordion>
+
+      <!-- 휘핑크림 -->
+      <Accordion theme="purple">
+        <div slot="header">휘핑크림</div>
+        <div v-for="item in whippedcream">
+          <div v-if="typeof(item.value) === 'number'">
+            {{ item.name }}
+            <button @click="item.value--">-</button>
+              {{ item.value }}
+            <button @click="item.value++">+</button>
+            <hr>
+          </div>
+
+          <div v-if="typeof(item.value) === 'object'">
+            {{ item.name }}
+            <div style="display:inline;" v-for="i in item.value">
+              <button class="namki_button"  @click="Ice=i.value" >{{i.Name}}</button>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </Accordion>
+
+      <!-- 드리즐 -->
       <Accordion theme="red">
         <div slot="header">드리즐</div>
-        Accordion body
+        <div v-for="item in drizzle">
+          <div v-if="typeof(item.value) === 'number'">
+            {{ item.name }}
+            <button @click="item.value--">-</button>
+              {{ item.value }}
+            <button @click="item.value++">+</button>
+            <hr>
+          </div>
+
+          <div v-if="typeof(item.value) === 'object'">
+            {{ item.name }}
+            <div style="display:inline;" v-for="i in item.value">
+              <button class="namki_button"  @click="Ice=i.value" >{{i.Name}}</button>
+            </div>
+            <hr>
+          </div>
+        </div>
       </Accordion>
+
+
+      <!-- 컵 & 리드 옵션 -->
       <Accordion theme="yellow">
         <div slot="header">컵&리드 옵션</div>
+        <div v-for="item in domereed">
+          <div v-if="typeof(item.value) === 'number'">
+            {{ item.name }}
+            <button @click="item.value--">-</button>
+              {{ item.value }}
+            <button @click="item.value++">+</button>
+            <hr>
+          </div>
 
+          <div v-if="typeof(item.value) === 'object'">
+            {{ item.name }}
+            <div style="display:inline;" v-for="i in item.value">
+              <button class="namki_button"  @click="Ice=i.value" >{{i.Name}}</button>
+            </div>
+            <hr>
+          </div>
+        </div>
 
       </Accordion>
 
@@ -74,15 +200,89 @@ export default {
     return {
         Espresso_shots:0,
         Decaffein:'',
+        Base:'',
+        Ice:'',
 
         Description: '',
         Title: '',
         Franchise: '스타벅스',
-        Decaffeins: [
-          { Name: '기본값', value:''},
-          { Name: '디카페인', value:'디카페인'},
-          { Name: '1/2 디카페인', value:'1/2 디카페인'}
-      ],
+        coffee: [
+          { name: '에스프레소샷', value: 0 },
+          { name: '디카페인', value: [
+            { Name: '기본값', value:'default'},
+            { Name: '디카페인', value:'디카페인'},
+            { Name: '1/2 디카페인', value:'1/2 디카페인'}
+          ]},
+        ],
+
+        syrup: [
+          { name: '바닐라시럽', value: 0 },
+          { name: '헤이즐넛시럽', value: 0 },
+          { name: '카라멜시럽', value: 0 },
+          { name: '에스프레소샷', value: 0 },
+          { name: '에스프레소샷', value: 0 },
+        ],
+
+        base: [
+          { name: '물', value:[
+            { Name: '없이', value: '없이' },
+            { Name: '적게', value: '적게' },
+            { Name: '보통', value: '보통' },
+            { Name: '많이', value: '많이' },
+          ]}
+        ],
+
+        ice: [
+          { name: '얼음', value:[
+            { Name: '없이', value: '없이' },
+            { Name: '적게', value: '적게' },
+            { Name: '보통', value: '보통' },
+            { Name: '많이', value: '많이' },
+          ]}
+        ],
+
+        whippedcream: [
+          { name: '일반 휘핑', value:[
+            { Name: '적게', value: '적게' },
+            { Name: '보통', value: '보통' },
+            { Name: '많이', value: '많이' },
+          ]},
+          { name: '에스프레소 휘핑', value:[
+            { Name: '적게', value: '적게' },
+            { Name: '보통', value: '보통' },
+            { Name: '많이', value: '많이' },
+          ]}
+        ],
+
+        drizzle: [
+          { name: '카라멜 드리즐', value:[
+            { Name: '적게', value: '적게' },
+            { Name: '보통', value: '보통' },
+            { Name: '많이', value: '많이' },
+          ]},
+          { name: '초콜릿 드리즐', value:[
+            { Name: '적게', value: '적게' },
+            { Name: '보통', value: '보통' },
+            { Name: '많이', value: '많이' },
+          ]}
+        ],
+
+        domereed: [
+          { name: '컵 & 리드 옵션', value:[
+            { Name: '리드', value: '리드' },
+            { Name: '돔 리드로 변경', value: '돔 리드로 변경' },
+          ]},
+        ],
+
+
+
+
+      //   Decaffeins: [
+      //     { Name: '기본값', value:''},
+      //     { Name: '디카페인', value:'디카페인'},
+      //     { Name: '1/2 디카페인', value:'1/2 디카페인'}
+      // ],
+
         Franchises : [
           { Name: '스타벅스', value: '스타벅스'},
           { Name: '써브웨이', value: '써브웨이'}
@@ -135,7 +335,7 @@ export default {
       background: url('https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg') no-repeat 95% 50%;
     }
     .accordion {
-      max-width: 400px;
+      width:95vw;
       font-family: Lato;
       /* margin-bottom: 20px; */
 
@@ -172,9 +372,9 @@ export default {
     }
 
     .accordion .body-inner {
-      /* padding: 8px; */
+      padding: 8px;
       overflow-wrap: break-word;
-    /*   white-space: pre-wrap; */
+      /* white-space: pre-wrap; */
     }
 
     .accordion .header-icon.rotate {
