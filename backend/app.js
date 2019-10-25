@@ -23,8 +23,8 @@ var connection = mysql.createConnection({
   host: 'localhost',
   port: 3306,
   user: 'root',   
-  password: '1234',
-  database: 'test_crud'  
+  password: 'gjslqjxjclq',
+  database: 'honeychu'  
 });  
 
 
@@ -117,3 +117,30 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
+
+
+// --------------------------------------------------------------------------------------------
+  
+// connection.connect(function(err){  
+// if(!err) {  
+//     console.log("Database is connected ... \n\n");    
+// } else {  
+//     console.log("Error connecting database ... \n\n");    
+// }  
+// });  
+  
+// app.get("/",function(request,response){  
+// connection.query('SELECT * from honeychu.star_combi', function(err, rows, fields) {  
+// connection.end();  
+//   if (!err){  
+//     response.send(rows);   
+//     console.log('The solution is: ', rows);  
+//   }  
+//   else  
+//     console.log('Error while performing Query.');  
+//   });  
+// });  
+  
+// // app.listen(3000); 
+
