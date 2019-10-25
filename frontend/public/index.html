@@ -9,22 +9,41 @@
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Kanit:400,500,600,700,800,900&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/d213a4d5ba.js" crossorigin="anonymous"></script>
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <meta name="google-signin-client_id"
-    content="921792176788-9jc07d8lfmsvkvvocm1m5aaccpj84ftg.apps.googleusercontent.com">
   <script>
-    function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-      console.log('Name: ' + profile.getName());
-      console.log('Image URL: ' + profile.getImageUrl());
-      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    function checkLoginStatus() {
+      var loginBtn = document.querySelector('#loginBtn');
+      var nameTxt = document.querySelector('#name');
+      console.log('checkLoginStatus');
+      if (googleAuthObj.isSignedIn.get()) {
+        console.log('logined');
+        loginBtn.value = 'Logout';
+        var profile = googleAuthObj.currentUser.get().getBasicProfile();
+        console.log(profile.getName());
+        nameTxt.innerHTML = 'Wecome <strong>' + 'profile.getName()+</String> ';
+        // document.querySelector('#name').innerHTML = 'Hello, ' + googleAuthObj.currentUser.get().getBasicProfile()
+        //   .getName() + '  ';
+      } else {
+        console.log('logouted');
+        loginBtn.value = 'Login';
+        nameTxt.innerHTML = '';
+        // document.querySelector('#name').innerHTML = '';
+      }
     }
 
-    function signOut() {
-      var auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function () {
-        console.log('User signed out.');
+    function init() {
+      console.log('init');
+      gapi.load('auth2', function () {
+        console.log('auth2');
+        // 전역변수를 만들기 위해 window
+        window.googleAuthObj = gapi.auth2.init({
+          client_id: '921792176788-9jc07d8lfmsvkvvocm1m5aaccpj84ftg.apps.googleusercontent.com'
+        });
+        googleAuthObj.then(function () {
+          console.log('googleAuth success');
+          checkLoginStatus();
+        }, function () {
+          console.log('googleAuth fail');
+        })
       });
     }
   </script>
@@ -32,14 +51,27 @@
 </head>
 
 <body>
-  <div class="g-signin2" data-onsuccess="onSignIn"></div>
-  <a href="#" onclick="signOut();">Sign out</a>
+  <span id="name"></span><input type="button" id="loginBtn" value="checking..." onclick="
+    if(this.value === 'Login'){
+      googleAuthObj.signIn().then(function(){
+        console.log('gauth.signIn()');
+        checkLoginStatus();
+      });
+    } else {
+      googleAuthObj.signOut().then(function(){
+        console.log('gauth.signOut()');
+        checkLoginStatus();
+      });
+    }
+  ">
   <noscript>
     <strong>We're sorry but frontend doesn't work properly without JavaScript enabled. Please enable it to
       continue.</strong>
   </noscript>
   <div id="app"></div>
   <!-- built files will be auto injected -->
+  <!-- auth 초기화(init) -->
+  <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 </body>
 
 </html>
