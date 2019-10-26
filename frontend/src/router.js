@@ -4,7 +4,6 @@ import Menu from './components/star/Menu.vue'
 import Frame from './components/star/Frame.vue'
 import Chu from './components/star/Chu.vue'
 import Detail from './components/star/Detail.vue'
-import Login from './components/login/Login.vue'
 
 Vue.use(Router)
 
@@ -32,11 +31,6 @@ export default new Router({
       name: 'Detail',
       component: Detail,
       props: true
-    },
-    {
-      path: 'Login',
-      name: 'Login',
-      component: Login,
     },
   ]
 })
