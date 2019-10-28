@@ -3,11 +3,8 @@ import Router from 'vue-router'
 import Frame from './components/star/Frame.vue'
 import Chu from './components/star/Chu.vue'
 import Detail from './components/star/Detail.vue'
-<<<<<<< HEAD
-
-=======
 import MakeCombi from './components/star/MakeCombi.vue'
->>>>>>> 1c8aeeb0314fa341d07ff6e0f67bddfb590fce2a
+import Mypage from './components/test_HY/Mypage.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -30,14 +27,16 @@ export default new Router({
       component: Detail,
       props: true
     },
-<<<<<<< HEAD
-=======
     {
       path: '/MakeCombi',
       name: 'MakeCombi',
       component: MakeCombi
+    },
+    {
+      path: '/Mypage',
+      name: 'Mypage',
+      component: Mypage
     }
 
->>>>>>> 1c8aeeb0314fa341d07ff6e0f67bddfb590fce2a
   ]
 })
