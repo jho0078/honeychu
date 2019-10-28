@@ -1,26 +1,17 @@
 <template>
   <div>
-    <h2>추천 레시피</h2>
     <div v-for = "cold in colds" class="namki_blocks">
       <div  @click="goToDetail(cold.id)">
         <img :src = "cold.coffee_image" class="namki_menuimg">
         <p>{{ cold.description }}</p>
       </div>
     </div>
-
-    <div v-for = "prap in praps" class="namki_blocks">
-      <div>
-        <img :src = "prap.coffee_image" class="namki_menuimg">
-        <p>{{ prap.description }}</p>
-      </div>
-    </div>
-
   </div>
 
 </template>
 
 <script>
-
+import '@/components/star/ChuCircle.css'
 export default {
   name:'Menu',
   data() {
@@ -52,79 +43,39 @@ export default {
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2016/04/[9200000000038]_20160408135802583.jpg',
           description: '콜드 브루'
         },
-      ],
-      espressos: [
         {
-          coffee_image: '',
-          description: ''
-        }, {
-          coffee_image: '',
-          description: ''
-        },{
-          coffee_image: '',
-          description: ''
-        },{
-          coffee_image: '',
-          description: ''
-        },{
-          coffee_image: '',
-          description: ''
-        },
-      ],
-      praps: [
-        {
+          id:7,
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2015/08/[168004]_20150813221231839.jpg',
           description: '모카 프라푸치노'
         }, {
+          id:7,
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2015/08/[168007]_20150813222212580.jpg',
           description: '에스프레소 프라푸치노'
         },{
+          id:7,
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2015/08/[168013]_20150806153343152.jpg',
           description: '화이트 초콜릿 모카 프라푸치노'
         },{
+          id:7,
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2019/04/[9200000001906]_20190423150021926.jpg',
           description: '이천 햅쌀 크림 프라푸치노'
         },{
+          id:7,
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2019/02/[9200000002090]_20190221165833026.jpg',
           description: '제주 쑥떡 크림 프라푸치노'
         },
       ],
-
     }
   },
   mounted() {
-
-
-
-
   },
   methods: {
     goToDetail(combiId) {
       this.$router.push({path: '/Starbucks/' + combiId})
     },
-
-
   }
 }
 </script>
 
 <style>
-  .namki_blocks{
-    word-break: keep-all;
-    font-size:70%;
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content:center;
-    width: 30%;
-    height: 25%;
-    /* border-width: 2px;
-    border-color: black;
-    border-style: solid; */
-  }
-  .namki_menuimg {
-    margin-bottom:0;
-    width: 65%;
-    border-radius: 50%;
-  }
-
 </style>
