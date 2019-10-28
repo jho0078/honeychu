@@ -1,17 +1,13 @@
+
 .namki_blocks{
   word-break: keep-all;
-  font-size:70%;
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content:center;
   width: 30%;
-  height: 25%;
-  /* border-width: 2px;
-  border-color: black;
-  border-style: solid; */
+  margin-top: 1rem;
+  font-size: .8rem;
 }
 .namki_menuimg {
   margin-bottom:0;
   width: 65%;
   border-radius: 50%;
+  box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.4);
 }
