@@ -1,13 +1,5 @@
 {
   "development": {
-<<<<<<< HEAD
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
-=======
     "username": "semin",
     "password": "gjslqjxjclq",
     "database": "honeychu",
@@ -17,30 +9,19 @@
       "timestamps": false,
       "underscored" : true
   }
->>>>>>> d4c28f1c3da5f6e02f25eeb8d0e704e61a3e916b
   },
   "test": {
     "username": "root",
     "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
-<<<<<<< HEAD
-    "dialect": "mysql",
-    "operatorsAliases": false
-=======
     "dialect": "mysql"
->>>>>>> d4c28f1c3da5f6e02f25eeb8d0e704e61a3e916b
   },
   "production": {
     "username": "root",
     "password": null,
     "database": "database_production",
     "host": "127.0.0.1",
-<<<<<<< HEAD
-    "dialect": "mysql",
-    "operatorsAliases": false
-=======
     "dialect": "mysql"
->>>>>>> d4c28f1c3da5f6e02f25eeb8d0e704e61a3e916b
   }
 }
