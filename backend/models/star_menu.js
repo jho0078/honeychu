@@ -1,5 +1,6 @@
 /* jshint indent: 2 */
 
+
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('star_menu', {
     star_menu_id: {
