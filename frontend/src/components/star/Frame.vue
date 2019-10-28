@@ -12,7 +12,7 @@
          Menu
       </div>
     </div>
-    
+
     <ChuCircle v-if="isRcVisible"></ChuCircle>
     <MenuCircle v-if="!isRcVisible"></MenuCircle>
   </div>
