@@ -4,6 +4,7 @@ import Frame from './components/star/Frame.vue'
 import Chu from './components/star/Chu.vue'
 import Detail from './components/star/Detail.vue'
 import MakeCombi from './components/star/MakeCombi.vue'
+import NamkiPractice from './components/star/NamkiPractice.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -31,6 +32,16 @@ export default new Router({
       path: '/MakeCombi',
       name: 'MakeCombi',
       component: MakeCombi
+    },
+    {
+      path: '/MakeCombi',
+      name: 'MakeCombi',
+      component: MakeCombi
+    },
+    {
+      path: '/NamkiPractice',
+      name: 'NamkiPractice',
+      component: NamkiPractice
     }
 
   ]

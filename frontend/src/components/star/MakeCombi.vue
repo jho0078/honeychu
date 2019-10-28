@@ -1,7 +1,6 @@
 <template>
   <div class="">
 
-
     <div class="MakeCombi">
       <h1>게시글 작성</h1>
       <select class="namki_MakeCombi_select" v-model="Franchise">
@@ -12,24 +11,7 @@
       <textarea class="namki_MakeCombi_textarea" v-model="Title" placeholder="제목"></textarea>
       <textarea class="namki_MakeCombi_textarea" v-model="Description" placeholder="한줄설명"></textarea>
 
-      <!-- 커피1 -->
-      <!-- <Accordion theme="purple">
-        <div slot="header">커피</div>
-        <div style="width=100%;">
-            에스프레소 샷
-            <button @click="Espresso_shots -= 1"> - </button>
-              {{ Espresso_shots }}
-            <button @click="Espresso_shots += 1"> + </button>
-
-        </div>
-        <hr>
-        <div>
-          디카페인
-            <button class="namki_button" v-for="Decaffein in Decaffeins" @click="inputDecaffein(Decaffein.value)" >{{Decaffein.Name}}</button>
-        </div>
-      </Accordion> -->
-
-      <!-- 커피2 -->
+      <!-- 커피 -->
       <Accordion theme="purple">
         <div slot="header">커피</div>
         <div v-for="item in coffee">
@@ -198,10 +180,12 @@ export default {
     },
     data() {
     return {
-        Espresso_shots:0,
-        Decaffein:'',
-        Base:'',
-        Ice:'',
+        Extras: {
+          Espresso_shots:0,
+          Decaffein:'',
+          Base:'',
+          Ice:'',
+      },
 
         Description: '',
         Title: '',
@@ -219,7 +203,7 @@ export default {
           { name: '바닐라시럽', value: 0 },
           { name: '헤이즐넛시럽', value: 0 },
           { name: '카라멜시럽', value: 0 },
-          { name: '에스프레소샷', value: 0 },
+          { name: '클래식시럽', value: 0 },
           { name: '에스프레소샷', value: 0 },
         ],
 
