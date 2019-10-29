@@ -2,21 +2,23 @@
 
   <div id="starbucks">
     <h1>STARBUCKS</h1>
-    <div class="starbucks_menubar">
-      <div class="starbucks__menubutton text-white"
-            :class="{ primary : isRcVisible, gray:!isRcVisible }" @click="showRc()">
-         Recommend
+    <div class="starbucks_body">
+      <div class="starbucks_menubar">
+        <div class="starbucks__menubutton text-white"
+              :class="{ primary : isRcVisible, gray:!isRcVisible }" @click="showRc()">
+           Recommend
+        </div>
+        <div class="starbucks__menubutton text-white"
+        :class="{ primary : !isRcVisible, gray:isRcVisible }" @click="showMenu()">
+           Menu
+        </div>
       </div>
-      <div class="starbucks__menubutton text-white"
-      :class="{ primary : !isRcVisible, gray:isRcVisible }" @click="showMenu()">
-         Menu
+      <div class="starbucks_contents">
+        <ChuCircle v-if="isRcVisible"></ChuCircle>
+        <MenuCircle v-if="!isRcVisible"></MenuCircle>
       </div>
     </div>
-
-    <ChuCircle v-if="isRcVisible"></ChuCircle>
-    <MenuCircle v-if="!isRcVisible"></MenuCircle>
   </div>
-
 </template>
 
 <script>
@@ -80,6 +82,7 @@ body {
 .starbucks_menubar{
   display: flex;
   justify-content: space-around;
+  margin-bottom: 2rem;
 }
 .starbucks__menubutton{
   width:8rem;
