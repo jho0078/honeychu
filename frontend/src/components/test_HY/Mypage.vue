@@ -6,38 +6,47 @@
     </div>
     <div>
       <div class="Like_HY">
-        <button @click="showRc">
+        <button @click="showLike()">
           <h3>좋아요한메뉴</h3>
         </button>
       </div>
 
       <div class="Mymenu_HY">
-        <button @click="showMenu">
+        <button @click="showMyMenu()">
           <h3>내가 작성한 메뉴</h3>
         </button>
       </div>
-      <div v-if="!toggle2" v-show="toggle1">좋아요</div>
-      <div v-if="toggle1" v-show="toggle2">나의메뉴</div>
+      <div v-if="isRcVisible">
+        <Chu></Chu>
+      </div>
+      <div v-if="!isRcVisible">나의메뉴</div>
     </div>
   </div>
 </template>
 
 <script>
 import "@/components/test_HY/Mypage.css";
+import MenuCircle from "@/components/star/MenuCircle";
+import ChuCircle from "@/components/star/ChuCircle";
+import Chu from "@/components/star/Chu";
 export default {
   name: "Mypage",
+  components: {
+    MenuCircle,
+    ChuCircle,
+    Chu
+  },
   data() {
     return {
-      toggle1: false,
-      toggle2: false
+      isRcVisible: true
     };
   },
   methods: {
-    showRc() {
-      (this.toggle1 = !toggle1), (this.toggle2 = false);
+    showLike() {
+      this.isRcVisible = true;
     },
-    showMenu() {
-      (this.toggle2 = !toggle2), (this.toggle1 = false);
+    showMyMenu() {
+      this.isRcVisible = false;
     }
     // toggle1Show() {
     //   this.istoggle1 = !istoggle1;

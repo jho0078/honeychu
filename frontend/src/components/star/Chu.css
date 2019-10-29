@@ -40,13 +40,17 @@ p {
 h4,
 h5 {
     margin: 20px;
-    font-style: italic;
 }
 
-.HY_heart {
+.like_HY {
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.heart_HY {
     color: crimson;
     font-size: 2rem;
-    margin-left: .5rem;
+    display: inline-flex;
 }
 
 .img_HY {
