@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css?family=Sunflower:700&display=swap");
+
+body,
+div,
+p {
+    font-family: "Sunflower", sans-serif;
+}
+
+.header_HY {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 36px;
+    padding: 1rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.header_HY>h1 {
+    text-align: center;
+    width: 100%;
+}
+
+.border_HY {
+    display: inline-flex;
+    text-align: left;
+    font-size: 80%;
+    font-family: TmonMonsori, "GodoB", "굴림";
+    width: 100%;
+    height: 100px;
+    background-color: whitesmoke;
+    margin-bottom: 5px;
+}
+
+.border_HY>div>h3,
+h4,
+h5 {
+    margin: 20px;
+}
+
+.like_HY {
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.heart_HY {
+    color: crimson;
+    font-size: 2rem;
+    display: inline-flex;
+}
+
+.img_HY {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    margin: 5px;
+    border-radius: 5%;
+}
