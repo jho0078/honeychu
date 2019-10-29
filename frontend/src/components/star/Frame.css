@@ -1,0 +1,76 @@
+:root {
+  --starbucks-main-color: #006442;
+  --starbucks-font-color:#231f20;  
+  --starbucks-sub1-color:#413026;
+  --starbucks-sub2-color:#dfbf86;
+  --starbucks-sub3-color:#eee8da;
+} 
+#starbucks {
+  position: absolute;
+  top:0;
+  left: 0;
+  font-family: 'Kanit', sans-serif;
+  color: var(--starbucks-font-color);
+}
+.starbucks__header{
+  position: fixed;
+  width: 100%;
+  height: ;
+  background-color: white;
+  z-index: 1;
+}
+.starbucks__title{
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+}
+.starbucks_menubar{
+  display: flex;
+  justify-content: center;
+
+}
+.starbucks__menubutton{
+  width:40%;
+  padding: 0.5rem 0;
+  border-radius: 0 1rem 0 0;
+  text-align: center;
+  background-color: #fff;
+  color: gray;
+  border: solid 2px grey;
+  border-bottom-color:white;
+
+}
+.hyeri__smActive{
+  color: var(--starbucks-main-color);
+  border-color: var(--starbucks-main-color);
+  border-bottom-color:white;
+  background-color: white;
+  z-index:2;
+}
+.hyeri__addCombi{
+  color: white;
+  background-color: var(--starbucks-sub2-color);
+  opacity: .6;
+  font-weight: 600;
+  font-size: 1.8rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: auto;
+  line-height: 3.5rem;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  border-radius: 50%;
+  box-shadow: 2px 2px 3px gray;
+}
+.hyeri__menuendline{
+  height: 2px;
+  background-color: var(--starbucks-main-color);
+  position: relative;
+  top: -2px;
+}
+.starbucks_body{
+  position: relative;
+  top: 8rem;
+}
