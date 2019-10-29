@@ -74,6 +74,7 @@ export default {
     goToDetail(combiId) {
       this.$router.push({path: '/Starbucks/' + combiId})
     },
+    
   }
 }
 </script>

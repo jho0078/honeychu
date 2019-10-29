@@ -2,3 +2,9 @@
 
 secrets/
 secrets/T0103B12.pem
+
+##### node modules
+
+/node_modules
+npm-debug.log
+/*.env
