@@ -10,12 +10,12 @@
         </div>
         <div class="starbucks__menubutton"
         :class="{ hyeri__smActive : !isRcVisible}" @click="showMenu()">
-           Menu
+           메뉴
         </div>
       </div>
       <div class="hyeri__menuendline"></div>
     </div>
-    <div class="starbucks_body">     
+    <div class="starbucks_body">
       <div class="starbucks_contents">
         <ChuCircle v-if="isRcVisible"></ChuCircle>
         <MenuCircle v-if="!isRcVisible"></MenuCircle>
