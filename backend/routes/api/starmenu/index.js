@@ -5,14 +5,14 @@ const models = require('../../../models');
 
 // 조회
 router.get('/', function(request, response) {
-    models.star_menu.findAll().then((starmenu) => {
+    models.starmenu.findAll().then((starmenu) => {
     response.json(starmenu)
   });
 });
 
 // 생성
 router.post('/', function(req, res) {
-  models.star_menu.create({
+  models.starmenu.create({
     name: req.body.name, 
     beverage: req.body.beverage,
     price: req.body.price,
@@ -36,14 +36,14 @@ router.post('/', function(req, res) {
 // 수정
 router.put('/:id', function(req, res) {
   let menuID = req.params.id;
-  models.star_menu.update({
+  models.starmenu.update({
     name: req.body.name, 
     beverage: req.body.beverage,
     price: req.body.price,
     image: req.body.image,
     user_user_id: 1
   },
-    {where: {star_menu_id: menuID}, returning: true}).then(function(result) {
+    {where: {starmenu_id: menuID}, returning: true}).then(function(result) {
          res.json(result[1][0]);
     }).catch(function(err) {
          //TODO: error handling
@@ -54,8 +54,8 @@ router.put('/:id', function(req, res) {
 // 삭제
 router.delete('/:id', function(req, res) {
   let menuID = req.params.id;
-  models.star_menu.destroy({
-    where: {star_menu_id: menuID}
+  models.starmenu.destroy({
+    where: {starmenu_id: menuID}
   })
   .then( result => {
     res.redirect("/board")
