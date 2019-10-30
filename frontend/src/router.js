@@ -48,7 +48,7 @@ export default new Router({
       path: '/Mypage',
       name: 'Mypage',
       component: Mypage
-    }
+    },
 
   ]
 })
