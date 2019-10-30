@@ -38,7 +38,7 @@
 #### AWS 연결하기
 
 ~~~
- $ ssh -i /secrets/T0103B12.pem ubuntu@52.78.224.61
+ $ ssh -i ./secrets/T0103B12.pem ubuntu@52.78.224.61
 
 ~~~
 
