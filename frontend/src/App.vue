@@ -19,5 +19,6 @@ export default {
 #app {
   text-align: center;
   margin-top: 60px;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 </style>
