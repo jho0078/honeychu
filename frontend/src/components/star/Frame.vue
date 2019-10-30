@@ -10,7 +10,7 @@
         </div>
         <div class="starbucks__menubutton"
         :class="{ hyeri__smActive : !isRcVisible}" @click="showMenu()">
-           메뉴
+           Menu
         </div>
       </div>
       <div class="hyeri__menuendline"></div>
