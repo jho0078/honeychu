@@ -8,7 +8,7 @@
     "define": {
       "timestamps": false,
       "underscored" : true
-  }
+    }
   },
   "test": {
     "username": "root",

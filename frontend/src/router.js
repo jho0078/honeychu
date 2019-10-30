@@ -6,14 +6,14 @@ import Detail from './components/star/Detail.vue'
 import MakeCombi from './components/star/MakeCombi.vue'
 import NamkiPractice from './components/star/NamkiPractice.vue'
 import Admin from './components/admin/Admin.vue'
+import Mypage from './components/test_HY/Mypage.vue'
 Vue.use(Router)
 
 export default new Router({
 
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [
-    {
+  routes: [{
       path: '/Starbucks',
       name: 'Frame',
       component: Frame
@@ -35,11 +35,6 @@ export default new Router({
       component: MakeCombi
     },
     {
-      path: '/MakeCombi',
-      name: 'MakeCombi',
-      component: MakeCombi
-    },
-    {
       path: '/NamkiPractice',
       name: 'NamkiPractice',
       component: NamkiPractice
@@ -48,6 +43,9 @@ export default new Router({
       path: '/Admin',
       name: 'Admin',
       component: Admin
+      path: '/Mypage',
+      name: 'Mypage',
+      component: Mypage
     }
 
   ]

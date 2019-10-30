@@ -2,7 +2,7 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('like', {
-    user_user_id: {
+    like_user_id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
@@ -11,13 +11,13 @@ module.exports = function(sequelize, DataTypes) {
         key: 'user_id'
       }
     },
-    star_combi_star_combi_id: {
+    like_starmenu_id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       references: {
-        model: 'star_combi',
-        key: 'star_combi_id'
+        model: 'starmenu',
+        key: 'menu_id'
       }
     }
   }, {

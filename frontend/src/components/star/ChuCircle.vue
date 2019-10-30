@@ -1,22 +1,9 @@
 <template>
-  <div>
-    <h2>추천 레시피</h2>
-    <div style="width:95vw;">
-      <div style="width:7%; float:left;"></div>
-      <div style="width:95%; float:right;">
-        <div v-for = "cold in colds" class="namki_blocks">
-          <div  @click="goToDetail(cold.id)">
-          <img :src = "cold.coffee_image" class="namki_menuimg">
-          <p>{{ cold.description }}</p>
-          </div>
-        </div>
-
-        <div v-for = "prap in praps" class="namki_blocks">
-          <div>
-          <img :src = "prap.coffee_image" class="namki_menuimg">
-          <p>{{ prap.description }}</p>
-          </div>
-        </div>
+  <div id="ChuCircle">
+    <div v-for = "cold in colds" class="namki_blocks">
+      <div  @click="goToDetail(cold.id)">
+        <img :src = "cold.coffee_image" class="namki_menuimg">
+        <p>{{ cold.description }}</p>
       </div>
     </div>
   </div>
@@ -83,9 +70,11 @@ export default {
   mounted() {
   },
   methods: {
+
     goToDetail(combiId) {
       this.$router.push({path: '/Starbucks/' + combiId})
     },
+    
   }
 }
 </script>
