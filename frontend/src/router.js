@@ -43,10 +43,12 @@ export default new Router({
       path: '/Admin',
       name: 'Admin',
       component: Admin
+    },
+    {
       path: '/Mypage',
       name: 'Mypage',
       component: Mypage
-    }
+    },
 
   ]
 })

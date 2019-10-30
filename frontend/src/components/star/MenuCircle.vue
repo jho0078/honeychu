@@ -4,8 +4,8 @@
     <div style="width:95vw;">
       <div class="namki_sidebar">
         <div v-for = "(coffee, index) in coffees" >
-          
-          
+
+
           <button @click="scrollTo(index)" class="namki_sidebar_button">{{ coffee.name }}</button>
         </div>
       </div>
@@ -114,7 +114,7 @@ export default {
           description: '콜드 브루'
         },
       ],
-    
+
       praps: [
         {
           coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2015/08/[168004]_20150813221231839.jpg',
@@ -145,7 +145,7 @@ export default {
     scrollTo(locationId) {
       const element = document.getElementById(locationId)
       const elemRect = element.getBoundingClientRect()
-      const offset = elemRect.top + window.pageYOffset
+      const offset = elemRect.top + window.pageYOffset - 120
       window.scrollTo({top: offset, behavior: 'smooth'})
     },
 
@@ -168,12 +168,12 @@ export default {
 
   .namki_sidebar {
     top:30%;
-    float:left; 
+    float:left;
     width:7%;
     height:50%;
     position:fixed;
     overflow-y:scroll;
-    
+
   }
 
   .namki_blocks{
