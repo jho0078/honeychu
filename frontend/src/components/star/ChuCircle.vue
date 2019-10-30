@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="ChuCircle">
     <div v-for = "cold in colds" class="namki_blocks">
       <div  @click="goToDetail(cold.id)">
         <img :src = "cold.coffee_image" class="namki_menuimg">
@@ -70,9 +70,11 @@ export default {
   mounted() {
   },
   methods: {
+
     goToDetail(combiId) {
       this.$router.push({path: '/Starbucks/' + combiId})
     },
+    
   }
 }
 </script>

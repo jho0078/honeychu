@@ -1,19 +1,28 @@
 <template>
   <div>
-    <header class="header_HY">
+    <!-- <header class="header_HY">
       <h1>STARBUCKS {{Frappuccinos.length + Lattes.length + CoolLimes.length + Espressos.length}}개</h1>
-    </header>
+    </header>-->
 
     <!-- 프라푸치노 for문 -->
     <div>
       <h3>Frappuccino {{Frappuccinos.length}}개</h3>
-      <div v-for="frappuccino in Frappuccinos">
+      <div v-for="(frappuccino, index) in Frappuccinos">
         <div class="border_HY">
           <img class="img_HY" :src="frappuccino.coffee_image" />
           <div>
             <h3>{{ frappuccino.coffee_name }}</h3>
             <h4>{{ frappuccino.coffee_price }}</h4>
           </div>
+          <!-- 좋아요 -->
+          <div class="like_HY">{{ frappuccino.likes }}</div>
+          <i
+            v-if="!like"
+            :id="index"
+            @click="likeMenu($event, index)"
+            class="heart_HY far fa-heart"
+          ></i>
+          <i v-if="like" @click="likeMenu($event, index)" class="heart_HY fas fa-heart"></i>
         </div>
       </div>
     </div>
@@ -69,11 +78,13 @@
 </template>
 
 <script>
+import "@/components/star/Chu.css";
 export default {
   name: "Chu",
   components: {},
   data() {
     return {
+      like: true,
       Frappuccinos: [
         {
           coffee_kind: "frappuccino",
@@ -83,6 +94,7 @@ export default {
           coffee_image:
             "https://img1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/liveboard/dailylife/848a2acf8ffd4bc981bf235d59aca9b3.jpg",
           coffee_price: "8700원"
+          // likes: "302"
         },
         {
           coffee_kind: "frappuccino",
@@ -249,15 +261,6 @@ export default {
           coffee_image:
             "http://postfiles8.naver.net/MjAxOTAzMjdfMjc5/MDAxNTUzNjgxNjg5OTE3.nVL7BMufqO8JCYR7jZjXqD2sGFkARPh5eSup9v6Qtlsg.OXrvl-XoWeckBiMTVgZ2LVUnnAoHAd8FusswQc7oRAUg.JPEG.whatisthebox/KakaoTalk_20190327_191409831.jpg?type=w773",
           coffee_price: "7100원"
-        },
-        {
-          coffee_kind: "latte",
-          coffee_name: "하겐다즈 녹차 라떼",
-          desciption:
-            "그린 티 라떼, 두유, 에스프레소 샷, 그린티파우더 5, 바닐라 시럽 3",
-          coffee_image:
-            "http://postfiles8.naver.net/MjAxOTAzMjdfMjc5/MDAxNTUzNjgxNjg5OTE3.nVL7BMufqO8JCYR7jZjXqD2sGFkARPh5eSup9v6Qtlsg.OXrvl-XoWeckBiMTVgZ2LVUnnAoHAd8FusswQc7oRAUg.JPEG.whatisthebox/KakaoTalk_20190327_191409831.jpg?type=w773",
-          coffee_price: "7100원"
         }
       ],
       CoolLimes: [
@@ -284,61 +287,14 @@ export default {
     };
   },
   mounted() {},
-  methods: {}
+  methods: {
+    likeMenu(event, index) {
+      this.like = !this.like;
+      console.log(event);
+      console.log(index);
+    }
+  }
 };
 </script>
-
-
 <style>
-/* @import url("https://fonts.googleapis.com/css?family=Sunflower:700&display=swap");
-body,
-div,
-p {
-  font-family: "Sunflower", sans-serif;
-} */
-.header_HY {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 36px;
-  padding: 1rem;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
-
-.header_HY > h1 {
-  text-align: center;
-  width: 100%;
-}
-
-.border_HY {
-  display: inline-flex;
-  text-align: left;
-  font-size: 80%;
-  font-family: TmonMonsori, "GodoB", "굴림";
-  width: 100%;
-  height: 100px;
-  background-color: whitesmoke;
-  margin-bottom: 5px;
-}
-
-.border_HY > div > h3,
-h4 {
-  margin: 20px;
-  font-style: italic;
-}
-
-.img_HY {
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 90px;
-  height: 90px;
-  margin: 5px;
-  border-radius: 5%;
-}
 </style>
