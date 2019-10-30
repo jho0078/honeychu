@@ -2,7 +2,12 @@
 
   <div id="starbucks">
     <div class="starbucks__header">
-      <div class="starbucks__title">STARBUCKS</div>
+
+      <div class="starbucks__title">
+        <i class="fas fa-chevron-left"></i>
+          STARBUCKS
+        <div></div>
+      </div>
       <div class="starbucks_menubar">
         <div class="starbucks__menubutton"
               :class="{ hyeri__smActive : isRcVisible}" @click="showRc()">
@@ -13,7 +18,6 @@
            Menu
         </div>
       </div>
-      <div class="hyeri__menuendline"></div>
     </div>
     <div class="starbucks_body">     
       <div class="starbucks_contents">
