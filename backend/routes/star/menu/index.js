@@ -189,9 +189,39 @@ router.delete('/:id', function(req, res) {
   });
 });
 
+// 기본 메뉴 조회
+router.get('/basic', function(req, res) {
+    models.starmenu.findAll({
+      where: {
+        basic_menu: 1
+      }
+    }).then((starmenu) => {
+      res.json(starmenu)
+  });
+});
+
+// 커스텀 메뉴 조회
+router.get('/custom', function(req, res) {
+    models.starmenu.findAll({
+      where: {
+        basic_menu: 0
+      }
+    }).then((starmenu) => {
+      res.json(starmenu)
+  });
+});
+
+// 메뉴 상세정보 조회
+router.get('/:id', function(req, res) {
+  let menuID = req.params.id;
+  models.starmenu.findAll({
+      where: {
+          starmenu_id: menuID
+      }
+  }).then((starmenu) => {
+      res.json(starmenu)
+  });
+});
+
+
 module.exports = router;
-
-
-
-
-
