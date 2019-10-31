@@ -117,7 +117,7 @@ router.post('/', function(req, res) {
 router.delete('/:id', function(req, res) {
   let menuID = req.params.id;
   models.starmenu.destroy({
-    where: {menu_id: menuID}
+    where: {starmenu_id: menuID}
   })
   .then( result => {
     res.redirect("/board")
