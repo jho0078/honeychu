@@ -1,0 +1,35 @@
+  .namki_sidebar_button{
+    padding: .5rem 1rem;
+    font-size: .9rem;
+    width: max-content;
+    border: none;
+    border-bottom: solid 2px var(--starbucks-sub3-color);
+    background-color: var(--starbucks-sub3-color);
+    opacity: 0.4;
+    color: var(--starbucks-sub1-color);
+  }
+  .hyeri__button_active{
+    /*border-bottom: solid 2px var(--starbucks-sub2-color);*/
+    color: var(--starbucks-sub1-color);
+    opacity: 1;
+    font-weight: 600;
+  }
+
+  .namki_sidebar {
+    background-color: #fff;
+    display: inline-flex;
+    position: fixed;
+    left: 0;
+    margin-top: -.8rem;
+    overflow:scroll;
+    width: 100%;
+    
+
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar { 
+      display: none !important; 
+    }
+  }
+  .Hyeri__Menubody{
+    padding-top: 1rem;
+  }

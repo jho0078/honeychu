@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Frame from './components/star/Frame.vue'
+import Starbucks from './components/star/Frame.vue'
 import Chu from './components/star/Chu.vue'
 import Detail from './components/star/Detail.vue'
 import MakeCombi from './components/star/MakeCombi.vue'
 import Admin from './components/admin/Admin.vue'
 import Mypage from './components/test_HY/Mypage.vue'
+import Main from './components/main.vue'
+import MainLoading from './components/mainloading.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -13,9 +15,17 @@ export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [{
+      path: '/honeyChu',
+      name: 'Main',
+      component: Main
+    },{
+      path: '/',
+      name: 'MainLoading',
+      component: MainLoading
+    },{
       path: '/Starbucks',
-      name: 'Frame',
-      component: Frame
+      name: 'Starbucks',
+      component: Starbucks
     },
     {
       path: '/chu',
