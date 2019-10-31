@@ -1,11 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Sunflower:700&display=swap");
 
-/*body,
-div,
-p {
-    font-family: "Sunflower", sans-serif;
-}*/
-
 .header_HY {
     position: fixed;
     top: 0;
@@ -51,6 +45,7 @@ h5 {
     color: crimson;
     font-size: 2rem;
     display: inline-flex;
+    cursor: pointer;
 }
 
 .img_HY {
@@ -61,4 +56,5 @@ h5 {
     height: 90px;
     margin: 5px;
     border-radius: 5%;
+    cursor: pointer;
 }

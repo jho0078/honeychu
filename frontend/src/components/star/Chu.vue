@@ -1,21 +1,23 @@
 <template>
   <div>
-    <!-- <header class="header_HY">
-      <h1>STARBUCKS {{Frappuccinos.length + Lattes.length + CoolLimes.length + Espressos.length}}개</h1>
-    </header>-->
-
     <!-- 프라푸치노 for문 -->
     <div>
       <h3>Frappuccino {{Frappuccinos.length}}개</h3>
-      <div v-for="(frappuccino, index) in Frappuccinos">
+      <div
+        v-for="(frappuccino, index) in Frappuccinos"
+        :key="frappuccino.id"
+        :class="{ 'active': activeIndex === index }"
+        @click="setActive(index)"
+      >
         <div class="border_HY">
-          <img class="img_HY" :src="frappuccino.coffee_image" />
+          <v-dialog v-model="dialog" max-width="85vw">
+            <img @click="mycall(this)" class="img_HY" :src="frappuccino.coffee_image" />
+          </v-dialog>
           <div>
             <h3>{{ frappuccino.coffee_name }}</h3>
             <h4>{{ frappuccino.coffee_price }}</h4>
-          </div>
-          <!-- 좋아요 -->
-          <div class="like_HY">{{ frappuccino.likes }}</div>
+          </div>좋아요
+          <div class="like_HY">{{ index.likes }}</div>
           <i
             v-if="!like"
             :id="index"
@@ -30,7 +32,7 @@
     <!-- 라떼 for문 -->
     <div>
       <h3>Latte {{Lattes.length}}개</h3>
-      <div v-for="latte in Lattes">
+      <div v-for="(latte, index) in Lattes" :key="index">
         <div class="border_HY">
           <div>
             <img class="img_HY" :src="latte.coffee_image" />
@@ -46,7 +48,7 @@
     <!-- 쿨라임 for문 -->
     <div>
       <h3>Cool Lime {{CoolLimes.length}}개</h3>
-      <div v-for="coollime in CoolLimes">
+      <div v-for="(coollime, index) in CoolLimes" :key="index">
         <div class="border_HY">
           <div>
             <img class="img_HY" :src="coollime.coffee_image" />
@@ -62,7 +64,7 @@
     <!-- 에스프레소 for문 -->
     <div>
       <h3>Espresso {{Espressos.length}}개</h3>
-      <div v-for="espresso in Espressos">
+      <div v-for="(espresso, index) in Espressos" :key="index">
         <div class="border_HY">
           <div>
             <img class="img_HY" :src="espresso.coffee_image" />
@@ -87,6 +89,7 @@ export default {
       like: true,
       Frappuccinos: [
         {
+          id: 0,
           coffee_kind: "frappuccino",
           coffee_name: "슈렉 프라푸치노",
           desciption:
@@ -94,9 +97,9 @@ export default {
           coffee_image:
             "https://img1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/liveboard/dailylife/848a2acf8ffd4bc981bf235d59aca9b3.jpg",
           coffee_price: "8700원"
-          // likes: "302"
         },
         {
+          id: 1,
           coffee_kind: "frappuccino",
           coffee_name: "페레로로쉐 프라푸치노",
           desciption: "자바 칩 프라푸치노, 모카 시럽, 헤이즐넛 시럽",
@@ -105,6 +108,7 @@ export default {
           coffee_price: "6700원"
         },
         {
+          id: 2,
           coffee_kind: "frappuccino",
           coffee_name: "고디바 프라푸치노",
           desciption:
@@ -114,6 +118,7 @@ export default {
           coffee_price: "6300원"
         },
         {
+          id: 3,
           coffee_kind: "frappuccino",
           coffee_name: "돼지바 프라푸치노",
           desciption:
@@ -123,6 +128,7 @@ export default {
           coffee_price: "6800원"
         },
         {
+          id: 4,
           coffee_kind: "frappuccino",
           coffee_name: "트윅스 프라푸치노",
           desciption:
@@ -132,6 +138,7 @@ export default {
           coffee_price: "7400원"
         },
         {
+          id: 5,
           coffee_kind: "frappuccino",
           coffee_name: "쿠앤크 프라푸치노",
           desciption: "바닐라 크림 프라푸치노, 자바칩, 초코휘핑, 통자바칩",
@@ -140,6 +147,7 @@ export default {
           coffee_price: "5400원"
         },
         {
+          id: 6,
           coffee_kind: "frappuccino",
           coffee_name: "페레로로쉐 프라푸치노",
           desciption: "자바칩 프라푸치노, 모카 시럽, 헤이즐넛 시럽",
@@ -148,6 +156,7 @@ export default {
           coffee_price: "6700원"
         },
         {
+          id: 7,
           coffee_kind: "frappuccino",
           coffee_name: "그린티 프라푸치노",
           desciption: "그린티 프라푸치노, 헤이즐넛 시럽, 카라멜 시럽, 자바칩",
@@ -155,6 +164,7 @@ export default {
           coffee_price: "8100원"
         },
         {
+          id: 8,
           coffee_kind: "frappuccino",
           coffee_name: "바닐라 크림 프라푸치노",
           desciption:
@@ -164,6 +174,7 @@ export default {
           coffee_price: "6000원"
         },
         {
+          id: 9,
           coffee_kind: "frappuccino",
           coffee_name: "다크 모카 프라푸치노",
           desciption:
@@ -173,6 +184,7 @@ export default {
           coffee_price: "6800원"
         },
         {
+          id: 10,
           coffee_kind: "frappuccino",
           coffee_name: "바닐라 크림 프라푸치노",
           desciption:
@@ -182,6 +194,7 @@ export default {
           coffee_price: "6600원"
         },
         {
+          id: 11,
           coffee_kind: "frappuccino",
           coffee_name: "더위사냥 프라푸치노",
           desciption:
@@ -191,6 +204,7 @@ export default {
           coffee_price: "6300원"
         },
         {
+          id: 12,
           coffee_kind: "frappuccino",
           coffee_name: "체리봉봉 프라푸치노",
           desciption:
@@ -200,6 +214,7 @@ export default {
           coffee_price: "7300원"
         },
         {
+          id: 13,
           coffee_kind: "frappuccino",
           coffee_name: "하겐다즈 녹차 프라푸치노",
           desciption:
@@ -209,6 +224,7 @@ export default {
           coffee_price: "6300원"
         },
         {
+          id: 14,
           coffee_kind: "frappuccino",
           coffee_name: "오레오 프라푸치노",
           desciption:
@@ -218,6 +234,7 @@ export default {
           coffee_price: "6000원"
         },
         {
+          id: 15,
           coffee_kind: "frappuccino",
           coffee_name: "초코하임 프라푸치노",
           desciption:
@@ -227,6 +244,7 @@ export default {
           coffee_price: "6300원"
         },
         {
+          id: 16,
           coffee_kind: "frappuccino",
           coffee_name: "와일드바디 프라푸치노",
           desciption:
@@ -238,6 +256,7 @@ export default {
       ],
       Lattes: [
         {
+          id: 0,
           coffee_kind: "latte",
           coffee_name: "관장라떼",
           desciption: "돌체라떼 아이스, 일반우유, 에스프레소 휘핑",
@@ -245,6 +264,7 @@ export default {
           coffee_price: "5600원"
         },
         {
+          id: 1,
           coffee_kind: "latte",
           coffee_name: "슈크림라떼",
           desciption:
@@ -254,6 +274,7 @@ export default {
           coffee_price: "6700원"
         },
         {
+          id: 2,
           coffee_kind: "latte",
           coffee_name: "하겐다즈 녹차 라떼",
           desciption:
@@ -265,6 +286,7 @@ export default {
       ],
       CoolLimes: [
         {
+          id: 0,
           coffee_kind: "coollime",
           coffee_name: "쿨라임 피지오",
           desciption: "쿨라임 피지오(물 줄이기), 라임 베이스(많이), 탄산 추가",
@@ -275,6 +297,7 @@ export default {
       ],
       Espressos: [
         {
+          id: 0,
           coffee_kind: "espresso",
           coffee_name: "에스프레소",
           desciption:
@@ -283,7 +306,8 @@ export default {
             "http://postfiles12.naver.net/MjAxNzAzMTdfMjE1/MDAxNDg5NzM4MjIyMzU3.uSKPfzrAZNCTj3jY7pw-WNHVlifYaT9uYvJzT7-DYJ8g.FBtHU2YMaSLAyPcxnnO6KehySIyZ4O65eeCuMpvkQiIg.JPEG.com9013/20170308_201549.jpg?type=w966",
           coffee_price: "4800원"
         }
-      ]
+      ],
+      activeIndex: undefined
     };
   },
   mounted() {},
@@ -291,7 +315,14 @@ export default {
     likeMenu(event, index) {
       this.like = !this.like;
       console.log(event);
-      console.log(index);
+      console.log("index", index);
+    },
+    setActive(index) {
+      this.activeIndex = index;
+    },
+    zoom(url) {
+      console.log("Zoom", url);
+      this.selectedImage = url;
     }
   }
 };
