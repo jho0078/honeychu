@@ -4,7 +4,6 @@ import Starbucks from './components/star/Frame.vue'
 import Chu from './components/star/Chu.vue'
 import Detail from './components/star/Detail.vue'
 import MakeCombi from './components/star/MakeCombi.vue'
-import NamkiPractice from './components/star/NamkiPractice.vue'
 import Admin from './components/admin/Admin.vue'
 import Mypage from './components/test_HY/Mypage.vue'
 import Main from './components/main.vue'
@@ -43,11 +42,6 @@ export default new Router({
       path: '/MakeCombi',
       name: 'MakeCombi',
       component: MakeCombi
-    },
-    {
-      path: '/NamkiPractice',
-      name: 'NamkiPractice',
-      component: NamkiPractice
     },
     {
       path: '/Admin',
