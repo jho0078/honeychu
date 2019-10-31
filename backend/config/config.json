@@ -1,12 +1,11 @@
 {
   "development": {
-    "username": "semin",
+    "username": "root",
     "password": "gjslqjxjclq",
     "database": "honeychu",
-    "host": "52.78.224.61",
+    "host": "localhost",
     "dialect": "mysql",
-    "define": {
-      "timestamps": false,
+    "define": {      
       "underscored" : true
     }
   },
