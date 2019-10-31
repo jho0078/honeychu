@@ -1,7 +1,6 @@
 <template>
     <div class="MakeCombi">
       <h1>게시글 작성</h1>
-
       <!-- 사진 업로드 -->
       <ImageUpload>
       </ImageUpload>
@@ -29,10 +28,9 @@
             <div v-else>
               {{ item.name }}
               <div style="display:inline;" v-for="(value, key) in item.type">
-                <button class="namki_button"  @click="result[item.value]=value" >{{value}}</button>
+                  <button class="namki_button" :class="{namki_button_active : result[item.value] == value}" @click="result[item.value]=value">{{value}}</button>
               </div>
             </div>
-
           </div>
         </Accordion>
       </div>
@@ -81,13 +79,13 @@ export default {
             "black_sesame_syrup": null,
             "honey_grapefruit_sauce": null,
             "chai_syrup": null,
-            "water_base": '없음',
+            "water_base": '적게',
             "vanilla_cream_base": null,
             "black_tea_base": null,
             "passion_tango_tea_base": null,
             "cool_lime_bse": null,
             "lemonade_base": null,
-            "ice": '없이',
+            "ice": '적게',
             "milk": null,
             "milk_temp": null,
             "milk_bubble": null,
@@ -334,4 +332,7 @@ export default {
       border-color: #5c575c;
     }
 
+    .namki_button_active{
+      background-color: red;
+    }
 </style>
