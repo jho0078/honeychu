@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       references: {
         model: 'starmenu',
-        key: 'menu_id'
+        key: 'starmenu_id'
       }
     }
   }, {
