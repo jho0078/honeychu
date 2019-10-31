@@ -1,17 +1,13 @@
 <template>
-  <div>
-
-    <div style="width:95vw;">
-      <div class="namki_sidebar">
-        <div v-for = "(coffee, index) in coffees" >
-
-
-          <button @click="scrollTo(index)" class="namki_sidebar_button">{{ coffee.name }}</button>
-        </div>
+  <div id="MenuCircle">
+    <div class="namki_sidebar">
+      <div v-for = "(coffee, index) in coffees" >
+        <button @click="scrollTo(index)" class="namki_sidebar_button">{{ coffee.name }}</button>
       </div>
+    </div>
 
 
-    <div style="float:right; width:95%; height:100%;">
+    <div>
       <h2 id="0">콜드 브루 커피</h2>
       <div v-for = "cold in colds" class="namki_blocks">
         <div>
@@ -52,16 +48,11 @@
         </div>
       </div>
     </div>
-
-    </div>
-
-
   </div>
-
 </template>
 
 <script>
-
+import '@/components/star/MenuCircle.css'
 export default {
   name:'Menu',
   data() {
@@ -83,7 +74,9 @@ export default {
           name : '티(티바나)'
         }, {
           name : '기타 제조 음료'
-        },
+        }, {
+          name: '블론드'
+        }
 
       ],
       colds: [
@@ -153,45 +146,5 @@ export default {
   }
 }
 </script>
-#13692a
 <style>
-  .namki_sidebar_button{
-    color:white;
-    padding: 20% 1%;
-    font-size: 80%;
-    background-color: #acccb4;
-
-  }
-  .namki_sidebar_button:active{
-    background-color:#13692a;
-  }
-
-  .namki_sidebar {
-    top:30%;
-    float:left;
-    width:7%;
-    height:50%;
-    position:fixed;
-    overflow-y:scroll;
-
-  }
-
-  .namki_blocks{
-    word-break: keep-all;
-    font-size:70%;
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content:center;
-    width: 30%;
-    height: 25%;
-    /* border-width: 2px;
-    border-color: black;
-    border-style: solid; */
-  }
-  .namki_menuimg {
-    margin-bottom:0;
-    width: 65%;
-    border-radius: 50%;
-  }
-
 </style>

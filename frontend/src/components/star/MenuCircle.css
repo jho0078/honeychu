@@ -1,0 +1,16 @@
+  .namki_sidebar_button{
+    color:white;
+    background-color: #acccb4;
+
+  }
+  .namki_sidebar_button:active{
+    background-color:#13692a;
+  }
+
+  .namki_sidebar {
+    display: inline-flex;
+    width: 100%;
+    position: fixed;
+    overflow-x:scroll;
+
+  }
