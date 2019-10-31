@@ -6,7 +6,7 @@
     "host": "52.78.224.61",
     "dialect": "mysql",
     "define": {
-      "timestamps": false,
+      "timestamps": true,
       "underscored" : true
     }
   },
