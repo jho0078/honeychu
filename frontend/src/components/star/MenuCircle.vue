@@ -2,12 +2,12 @@
   <div id="MenuCircle">
     <div class="namki_sidebar">
       <div v-for = "(coffee, index) in coffees" >
-        <button @click="scrollTo(index)" class="namki_sidebar_button">{{ coffee.name }}</button>
+        <div @click="scrollTo(index)" class="namki_sidebar_button" :class="{hyeri__button_active: index==now }">{{ coffee.name }}</div>
       </div>
     </div>
 
 
-    <div>
+    <div class="Hyeri__Menubody">
       <h2 id="0">콜드 브루 커피</h2>
       <div v-for = "cold in colds" class="namki_blocks">
         <div>
@@ -57,6 +57,7 @@ export default {
   name:'Menu',
   data() {
     return {
+      now : '',
       coffees: [
         {
           name : '콜드 브루 커피'
@@ -138,8 +139,9 @@ export default {
     scrollTo(locationId) {
       const element = document.getElementById(locationId)
       const elemRect = element.getBoundingClientRect()
-      const offset = elemRect.top + window.pageYOffset - 120
+      const offset = elemRect.top + window.pageYOffset - 160
       window.scrollTo({top: offset, behavior: 'smooth'})
+      this.now = locationId
     },
 
 
