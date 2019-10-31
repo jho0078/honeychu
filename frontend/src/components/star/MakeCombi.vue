@@ -6,16 +6,16 @@
       <ImageUpload>
       </ImageUpload>
       <select class="namki_MakeCombi_select" v-model="Franchise">
-        <option v-for="Franchise in Franchises" v-bind:value="Franchise.value">
+        <option  v-for="Franchise in Franchises" v-bind:value="Franchise.value">
           {{ Franchise.Name }}
         </option>
       </select>
 
-      <!-- <select class="namki_MakeCombi_select" v-model="Result.category">
-        <option v-for="Coffee in Coffees" v-bind:value="Coffee.name">
-          {{ Coffee.name }}
+      <select class="namki_MakeCombi_select" v-model="Result.category">
+        <option @click="ChooseCoffee(BasicCoffee)" v-for="BasicCoffee in BasicCoffees" v-bind:value="BasicCoffee.name">
+          {{ BasicCoffee.name }}
         </option>
-      </select> -->
+      </select>
 
       <textarea class="namki_MakeCombi_textarea" v-model="Result.name" placeholder="제목"></textarea>
       <textarea class="namki_MakeCombi_textarea" v-model="Result.description" placeholder="한줄설명"></textarea>
@@ -162,12 +162,17 @@ export default {
 
     methods: {
       getBasicCoffees() {
-        axios.get('http://52.78.224.61:3000/star/menu/basic')
-          .then(function(response){
-            console.log(response);
-
+        axios.get('/api/star/menu/basic')
+          .then(response=>{
+            this.BasicCoffees = response.data
+            console.log(this.BasicCoffees)
           })
+      },
+      ChooseCoffee() {
+        axios.get('')
       }
+
+
     },
 }
 </script>
