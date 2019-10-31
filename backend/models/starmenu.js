@@ -2,7 +2,7 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('starmenu', {
-    menu_id: {
+    starmenu_id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
@@ -16,8 +16,12 @@ module.exports = function(sequelize, DataTypes) {
         key: 'user_id'
       }
     },
-    basic_menu: {
+    name: {
       type: DataTypes.STRING(45),
+      allowNull: true
+    },
+    basic_menu: {
+      type: DataTypes.INTEGER(4),
       allowNull: true
     },
     price: {
@@ -136,7 +140,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(45),
       allowNull: true
     },
-    cool_lime_bse: {
+    cool_lime_base: {
       type: DataTypes.STRING(45),
       allowNull: true
     },
