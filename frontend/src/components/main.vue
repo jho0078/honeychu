@@ -6,10 +6,10 @@
 			<div>myPage</div>
 		</div>
 		<div>
-			<a id="kakao-login-btn"></a>
-  			<a href="http://developers.kakao.com/logout">로그아웃</a>
-			<div>로그인</div>
-			<div>회원가입</div>
+			{{username}}
+			<a :v-if="!username" id="kakao-login-btn" @click="login()"></a>
+			<div>{{username}}</div>
+  			<div :v-if="username" class="logout" @click="logout()">로그아웃</div>
 		</div>
 	</div>
 </template>
@@ -21,6 +21,7 @@
 	  },
 	  data() {
 	    return {
+	    	username:'',
 	    }
 	  },
 	  mounted() {
@@ -41,6 +42,8 @@
 		        Kakao.API.request({
 		          url: "/v2/user/me",
 		          success: function (res) {
+		          	this.username = res.properties.nickname;
+		          	
 		            console.log(JSON.stringify(res.kaccount_email));
 		            console.log(JSON.stringify(res.id));
 		            console.log(JSON.stringify(res.properties.profile_image));
@@ -55,9 +58,14 @@
 		        alert(JSON.stringify(err));
 		      }
 		    });
+		    console.log(this.username)
 	  	},	
 	    gotoStarbucks(){
 	      this.$router.push({name:'Starbucks'})
+	    },
+	    logout(){
+	    	this.username='';
+
 	    }
 	  }
 	}
