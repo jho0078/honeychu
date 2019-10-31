@@ -5,7 +5,7 @@
     border: none;
     border-bottom: solid 2px var(--starbucks-sub3-color);
     background-color: var(--starbucks-sub3-color);
-    opacity: 0.5;
+    opacity: 0.4;
     color: var(--starbucks-sub1-color);
   }
   .hyeri__button_active{
