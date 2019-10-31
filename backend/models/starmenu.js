@@ -5,8 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     starmenu_id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
+      primaryKey: true
     },
     user_user_id: {
       type: DataTypes.INTEGER(11),
