@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/api', require('./routes/api'))
+app.use('/star', require('./routes/star'))
 
 // 추가
 // var sequelize = require('./models/index').sequelize; // mysql 시퀄라이저 모델

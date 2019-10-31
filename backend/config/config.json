@@ -1,12 +1,11 @@
 {
   "development": {
     "username": "root",
-    "password": "1234",
+    "password": "gjslqjxjclq",
     "database": "honeychu",
     "host": "localhost",
     "dialect": "mysql",
-    "define": {
-      "timestamps": false,
+    "define": {      
       "underscored" : true
     }
   },
