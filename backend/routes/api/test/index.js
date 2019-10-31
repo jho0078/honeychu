@@ -4,14 +4,29 @@ const models = require('../../../models');
 
 
 // 조회
-router.get('/', function(request, response) {
-  models.starmenu.findAll({
-    where: {
-      basic_menu: 1
-    }
-  }).then((starmenu) => {
-  response.json(starmenu)
+router.get('/:id', function(req, res) {
+    let menuID = req.params.id;
+    models.starmenu.findAll({
+        where: {
+            starmenu_id: menuID
+        }
+    }).then((starmenu) => {
+        res.json(starmenu)
+    });
 });
-});
+
+// // 삭제
+// router.delete('/:id', function(req, res) {
+//     let menuID = req.params.id;
+//     models.starmenu.destroy({
+//       where: {starmenu_id: menuID}
+//     })
+//     .then( result => {
+//       res.redirect("/board")
+//     })
+//     .catch( err => {
+//       console.log("데이터 삭제 실패");
+//     });
+//   });
 
 module.exports = router;
