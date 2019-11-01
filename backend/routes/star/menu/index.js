@@ -212,12 +212,24 @@ router.get('/custom', function(req, res) {
 });
 
 // 메뉴 상세정보 조회
-router.get('/:id', function(req, res) {
+router.get('/detail/:id', function(req, res) {
   let menuID = req.params.id;
   models.starmenu.findAll({
       where: {
           starmenu_id: menuID
       }
+  }).then((starmenu) => {
+      res.json(starmenu)
+  });
+});
+
+// 카테고리 별 메뉴 조회
+router.get('/category', function(req, res) {
+  let categoryName = req.body.category;
+  models.starmenu.findAll({
+    where: {
+      category: categoryName
+    }
   }).then((starmenu) => {
       res.json(starmenu)
   });
