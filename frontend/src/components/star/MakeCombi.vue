@@ -2,7 +2,7 @@
     <div class="MakeCombi">
       <h1>게시글 작성</h1>
 
-
+      <button @click="ChooseCoffee()">asd</button>
       <!-- 사진 업로드 -->
       <ImageUpload>
       </ImageUpload>
@@ -12,8 +12,11 @@
         </option>
       </select>
 
-      <select class="namki_MakeCombi_select" v-model="Result.category">
-        <option @click="ChooseCoffee(BasicCoffee)" v-for="BasicCoffee in BasicCoffees" v-bind:value="BasicCoffee.name">
+      <select @change="ChooseCoffee($event)" class="namki_MakeCombi_select">
+        <option>
+          음료를 골라주세요
+        </option>
+        <option  v-for="BasicCoffee in BasicCoffees" v-bind:value="BasicCoffee.starmenu_id">
           {{ BasicCoffee.name }}
         </option>
       </select>
@@ -166,11 +169,15 @@ export default {
         axios.get('/api/star/menu/basic')
           .then(response=>{
             this.BasicCoffees = response.data
-            console.log(this.BasicCoffees)
+            // console.log(this.BasicCoffees)
           })
       },
-      ChooseCoffee() {
-        axios.get('')
+      ChooseCoffee(event) {
+        axios.get("/api/star/menu/"+event.target.value)
+          .then(response=>{
+            this.Result = response.data[0]
+          })
+
       }
 
 
