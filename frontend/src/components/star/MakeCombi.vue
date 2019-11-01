@@ -225,8 +225,10 @@ export default {
 
       CreateMenu() {
         this.CreateHash()
+        this.Result['image'] = this.previewImage
         axios.post("/api/star/menu/", this.Result)
         .then(function(response){
+          console.log('제출')
           // console.log(response)
         })
         .catch(function (error) {
