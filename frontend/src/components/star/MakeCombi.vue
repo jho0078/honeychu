@@ -157,16 +157,17 @@ export default {
               { name: '시그니처 초콜릿', value:'signature_chocolate', type:['연하게', '진하게', '보통']},
             ],
 
-        },
+          },
 
           Franchises : [
             { Name: '스타벅스', value: '스타벅스'},
             { Name: '써브웨이', value: '써브웨이'}
-      ],
+          ],
 
 
-        }
-      },
+      }
+    },
+
     created: function() {
       this.getBasicCoffees()
     },
@@ -235,8 +236,6 @@ export default {
           console.log(error)
         })
       }
-
-
     },
 }
 </script>
