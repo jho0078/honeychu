@@ -4,6 +4,10 @@
   width: 30%;
   margin-top: 1rem;
   font-size: .8rem;
+  flex-wrap: wrap;
+  justify-content:center;
+  display: inline-flex;
+  height: 25%;	
 }
 .namki_menuimg {
   margin-bottom:0;

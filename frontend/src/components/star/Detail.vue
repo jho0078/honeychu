@@ -23,7 +23,7 @@
         <div>추가해주세요.</div>
         <p class="HSD__option">" {{combi.Option}} "</p>
       </div>
-      <p class="HSD__createby">{{combi.Date}} &nbsp | &nbsp by.
+      <p class="HSD__createby">{{combi.Date}} &nbsp | &nbsp; by.
         <!-- user link 달기 -->
         <b class="text-primary">{{combi.User}}</b></p>
     </div>
