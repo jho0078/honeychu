@@ -20,7 +20,8 @@
       </select>
 
       <textarea class="namki_MakeCombi_textarea" @change="Result.name=$event.target.value" placeholder="제목"></textarea>
-
+      <input type="text" v-model="Result.tag1">
+      <input type="text" v-model="Result.tag2">
 
       <!-- 엑스트라 -->
       <div v-for= "(value, key) in Extras">
@@ -45,6 +46,8 @@
         </Accordion>
       </div>
 
+      <button @click="CreateMenu" type="submit" name="button">제출</button>
+
     </div>
 </template>
 
@@ -62,6 +65,7 @@ export default {
       return {
           BasicCoffees: [],
           Result: {},
+
           Franchise:'',
 
           Extras: {
@@ -148,7 +152,7 @@ export default {
             ],
 
         },
-          
+
 
 
           Franchises : [
@@ -175,8 +179,24 @@ export default {
           .then(response=>{
             this.Result = response.data[0]
             this.Result['category'] = this.Result['name']
+            this.Result['basic_menu'] = 0
+            delete this.Result['starmenu_id']
           })
 
+      },
+
+      CreateMenu() {
+        console.log(this.Result)
+
+        axios.post("/api/star/menu/", this.Result)
+        .then(function(response){
+          // this.Result = response.data;
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+
+        })
       }
 
 
