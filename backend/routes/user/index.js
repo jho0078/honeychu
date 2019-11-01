@@ -13,7 +13,6 @@ router.get('/', function(req, res) {
 // 생성
 router.post('/', function(req, res) {
   models.user.create({
-      user_id: req.body.user_id,
       email: req.body.email
     }).then((result) => {
       res.json(result)
