@@ -1,2 +1,25 @@
-.main__starbucks{
+.hyeri_maintitle{
+	font-family: 'Righteous', cursive;
+	font-style: italic;
+	font-size: 3rem;
+	font-weight: 600;
+}
+#main{
+	min-height: 100vh;
+	background-image: linear-gradient(rgba(255, 255, 255, 0.7)), url("../assets/honeyChu.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 50%;
+	overflow: hidden;
+
+}
+.hyeri_loginout{
+	width: 100%;
+	display: inline-block;
+	position: absolute;
+	bottom: 4rem;
+	left: 0;
+}
+.hyeri_logout{
+	
 }
