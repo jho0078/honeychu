@@ -4,7 +4,7 @@
     <div class="starbucks__header">
 
       <div class="starbucks__title">
-        <i class="fas fa-chevron-left"></i>
+        <i class="fas fa-chevron-left" @click="gotoMain()"></i>
           STARBUCKS
         <div></div>
       </div>
@@ -26,7 +26,7 @@
       </div>
 
       <!-- 작성 버튼, 로그인시에만 보이게 -->
-      <div class="hyeri__addCombi">
+      <div @click="gotoMC()" class="hyeri__addCombi">
         <i class="fas fa-plus"></i>
       </div>
     </div>
@@ -34,12 +34,11 @@
 </template>
 
 <script>
-
 import MenuCircle from '@/components/star/MenuCircle'
 import ChuCircle from '@/components/star/ChuCircle'
 import '@/components/star/Frame.css'
 export default {
-  name:'Frame',
+  name:'Starbucks',
   components: {
     MenuCircle, ChuCircle
   },
@@ -59,7 +58,13 @@ export default {
     },
     showMenu() {
       this.isRcVisible = false
-    }
+    },
+    gotoMC(){
+      this.$router.push({path:'/makeCombi'})
+    },
+    gotoMain(){
+        this.$router.push({name: 'Main'})
+      }
 
 
   }
