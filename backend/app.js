@@ -9,6 +9,7 @@ var app = express();
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
 
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/', indexRouter);
