@@ -1,6 +1,6 @@
 <template>
-	<div id="mainloading">
-		<h1 @click="gotoMain()">HoneyChu</h1>
+	<div id="mainloading" @click="gotoMain()">
+		
 	</div>
 </template>
 <script>
