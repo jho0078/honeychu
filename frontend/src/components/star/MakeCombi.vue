@@ -2,27 +2,25 @@
     <div class="MakeCombi">
       <h1>게시글 작성</h1>
 
-      <button @click="ChooseCoffee()">asd</button>
       <!-- 사진 업로드 -->
       <ImageUpload>
       </ImageUpload>
       <select class="namki_MakeCombi_select" v-model="Franchise">
+        <option value="" disabled selected hidden>프랜차이즈 선택</option>
         <option  v-for="Franchise in Franchises" v-bind:value="Franchise.value">
           {{ Franchise.Name }}
         </option>
       </select>
 
       <select @change="ChooseCoffee($event)" class="namki_MakeCombi_select">
-        <option>
-          음료를 골라주세요
-        </option>
+        <option disabled selected hidden>음료를 골라주세요</option>
         <option  v-for="BasicCoffee in BasicCoffees" v-bind:value="BasicCoffee.starmenu_id">
           {{ BasicCoffee.name }}
         </option>
       </select>
 
-      <textarea class="namki_MakeCombi_textarea" v-model="Result.name" placeholder="제목"></textarea>
-      <textarea class="namki_MakeCombi_textarea" v-model="Result.description" placeholder="한줄설명"></textarea>
+      <textarea class="namki_MakeCombi_textarea" @change="Result.name=$event.target.value" placeholder="제목"></textarea>
+
 
       <!-- 엑스트라 -->
       <div v-for= "(value, key) in Extras">
@@ -62,7 +60,7 @@ export default {
     },
     data() {
       return {
-          BasicCoffees: [{name:'돌체라떼', pk:1, category:'에스프레소'}, {name:'아이스',pk:2}],
+          BasicCoffees: [],
           Result: {},
           Franchise:'',
 
@@ -150,11 +148,12 @@ export default {
             ],
 
         },
+          
 
 
-        Franchises : [
-          { Name: '스타벅스', value: '스타벅스'},
-          { Name: '써브웨이', value: '써브웨이'}
+          Franchises : [
+            { Name: '스타벅스', value: '스타벅스'},
+            { Name: '써브웨이', value: '써브웨이'}
       ],
 
 
@@ -169,13 +168,13 @@ export default {
         axios.get('/api/star/menu/basic')
           .then(response=>{
             this.BasicCoffees = response.data
-            // console.log(this.BasicCoffees)
           })
       },
       ChooseCoffee(event) {
         axios.get("/api/star/menu/"+event.target.value)
           .then(response=>{
             this.Result = response.data[0]
+            this.Result['category'] = this.Result['name']
           })
 
       }
