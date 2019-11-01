@@ -63,26 +63,23 @@ router.post("/login", async function(req,res,next){
   // let dbEmail = result.dataValues.email;
   if(result){
     console.log("회원입니다.")
-    res.redirect("http://localhost:8080/honeyChu")
+    // 세션 설정
+    req.session.email = req.body.email;
+    res.redirect("http://localhost:8080/honeyChu");
   }
   else{
     console.log("회원이 아닙니다.")
-    res.redirect("http://localhost:8080/honeyChu")
+    res.redirect("http://localhost:8080/honeyChu");
     // res.redirect("")
   }
-  // let dbPassword = result.dataValues.password;
-  // let inputPassword = body.password;
-  // let salt = result.dataValues.salt;
-  // let hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
-
-  // if(dbPassword === hashPassword){
-  //   console.log("비밀번호 일치");
-  //   res.redirect("/users");
-  // }
-  // else{
-  //   console.log("비밀번호 불일치");
-  //   res.redirect("/users/login");
-  // }
 });
+
+// 로그아웃
+router.get("/logout", function(req,res,next){
+  req.session.destroy();
+  res.clearCookie('sid');
+
+  res.redirect("http://localhost:8080/honeyChu");
+})
 
 module.exports = router;
