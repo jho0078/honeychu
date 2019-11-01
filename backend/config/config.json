@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "1234",
+    "username": "semin",
+    "password": "gjslqjxjclq",
     "database": "honeychu",
-    "host": "localhost",
+    "host": "52.78.224.61",
     "dialect": "mysql",
     "define": {
       "timestamps": true,
