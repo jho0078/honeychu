@@ -1,5 +1,8 @@
 <template>
   <div>
+    {{menu}}
+    {{combis[0].name}}
+    {{combis[0].img}}
     <!-- <header class="header_HY">
       <h1>STARBUCKS {{Frappuccinos.length + Lattes.length + CoolLimes.length + Espressos.length}}개</h1>
     </header>-->
@@ -7,19 +10,16 @@
     <!-- 프라푸치노 for문 -->
     <div>
       <h3>Frappuccino {{Frappuccinos.length}}개</h3>
-      <div v-for="(frappuccino, index) in Frappuccinos">
+      <div v-for="combi in combis" @click="goToDetail(combi.starmenu_id)">
         <div class="border_HY">
-          <img class="img_HY" :src="frappuccino.coffee_image" />
+          <img class="img_HY" :src="combi.image" />
           <div>
-            <h3>{{ frappuccino.coffee_name }}</h3>
-            <h4>{{ frappuccino.coffee_price }}</h4>
+            <h3>{{ combi.name }}</h3>
+            <h4>{{ combi.price }}</h4>
           </div>
-          <!-- 좋아요 -->
-          <div class="like_HY">{{ frappuccino.likes }}</div>
-          <i
-            v-if="!like"
-            :id="index"
-            @click="likeMenu($event, index)"
+          좋아요
+          <div class="like_HY">{{ combi.likes }}</div>
+          <i v-if="!like" :id="index" @click="likeMenu($event, index)"
             class="heart_HY far fa-heart"
           ></i>
           <i v-if="like" @click="likeMenu($event, index)" class="heart_HY fas fa-heart"></i>
@@ -28,7 +28,7 @@
     </div>
 
     <!-- 라떼 for문 -->
-    <div>
+    <!-- <div>
       <h3>Latte {{Lattes.length}}개</h3>
       <div v-for="latte in Lattes">
         <div class="border_HY">
@@ -41,10 +41,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- 쿨라임 for문 -->
-    <div>
+    <!-- <div>
       <h3>Cool Lime {{CoolLimes.length}}개</h3>
       <div v-for="coollime in CoolLimes">
         <div class="border_HY">
@@ -57,10 +57,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- 에스프레소 for문 -->
-    <div>
+    <!-- <div>
       <h3>Espresso {{Espressos.length}}개</h3>
       <div v-for="espresso in Espressos">
         <div class="border_HY">
@@ -73,7 +73,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -82,8 +82,10 @@ import "@/components/star/Chu.css";
 export default {
   name: "Chu",
   components: {},
+  props:['menu'],
   data() {
     return {
+      combis:[],
       like: true,
       Frappuccinos: [
         {
@@ -286,13 +288,27 @@ export default {
       ]
     };
   },
-  mounted() {},
+  mounted() {
+    this.getMenu()
+  },
   methods: {
     likeMenu(event, index) {
       this.like = !this.like;
       console.log(event);
       console.log(index);
-    }
+    },
+    getMenu(){
+      axios.post("/api/star/menu/category/", {'category':this.menu})
+      .then(response=> {
+        this.combis = response.data
+        console.log(response.data)
+      })
+
+    },
+    goToDetail(combiId) {
+      this.$router.push({path: '/Starbucks/' + combiId})
+    },
+
   }
 };
 </script>
