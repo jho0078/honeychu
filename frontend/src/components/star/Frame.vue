@@ -25,6 +25,11 @@
         <MenuCircle v-if="!isRcVisible"></MenuCircle>
       </div>
 
+      <div @click="check()">
+        <i class="fas fa-plus"></i>
+      </div>
+
+
       <!-- 작성 버튼, 로그인시에만 보이게 -->
       <div @click="gotoMC()" class="hyeri__addCombi">
         <i class="fas fa-plus"></i>
@@ -64,7 +69,17 @@ export default {
     },
     gotoMain(){
         this.$router.push({name: 'Main'})
-      }
+    },
+    check(){
+      // Kakao.init("3fba1edc8e21309d5e9c3003264a2b71");
+      Kakao.Auth.getStatus(function(statusObj) {
+						if (statusObj.status == "not_connected") {
+							console.log('xxxxx')
+						} else {
+							console.log('ooooo')
+						}
+					})
+    }
 
 
   }
