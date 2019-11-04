@@ -11,7 +11,9 @@
 const router = require('express').Router()
 
 const user = require('./user')
+const like = require('./like')
 
 router.use('/user', user)
+router.use('/like', like)
 
 module.exports = router;
