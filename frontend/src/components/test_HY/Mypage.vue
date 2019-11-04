@@ -6,13 +6,13 @@
     </div>
     <div>
       <div class="Like_HY">
-        <button @click="showLike()">
+        <button @click="showLike_HY()">
           <h3>좋아요한메뉴</h3>
         </button>
       </div>
 
       <div class="Mymenu_HY">
-        <button @click="showMyMenu()">
+        <button @click="showMyMenu_HY()">
           <h3>내가 작성한 메뉴</h3>
         </button>
       </div>
@@ -42,20 +42,12 @@ export default {
     };
   },
   methods: {
-    showLike() {
+    showLike_HY() {
       this.isRcVisible = true;
     },
-    showMyMenu() {
+    showMyMenu_HY() {
       this.isRcVisible = false;
     }
-    // toggle1Show() {
-    //   this.istoggle1 = !istoggle1;
-    //   this.istoogle2 = false;
-    // },
-    // toggle2Show() {
-    //   this.istoggle2 = !istoggle2;
-    //   this.istoogle1 = false;
-    // }
   }
 };
 </script>
