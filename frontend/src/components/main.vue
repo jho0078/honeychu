@@ -30,7 +30,14 @@
 	    }
 	  },
 	  mounted() {	  	
-	  	this.kakao_login()
+		  this.kakao_login()
+		  Kakao.Auth.getStatus(function(statusObj) {
+						if (statusObj.status == "not_connected") {
+							console.log('xxxxx')
+						} else {
+							console.log('ooooo')
+						}
+					})
   	},
 
 	  
@@ -52,10 +59,17 @@
 		          	console.log(this.username)
 		            // console.log('email :',res.kaccount_email);
 		            console.log('id :', res.id);
-		            console.log('nickname :', res.properties.nickname);
+		            // console.log('nickname :', res.properties.nickname);
 		          	axios.post("/api/user",{email: res.kakao_account.email})
+		          	axios.post("/api/user/login",{email: res.kakao_account.email})
 		            alert('로그인 되었습니다.')
-		            
+		            Kakao.Auth.getStatus(function(statusObj) {
+						if (statusObj.status == "not_connected") {
+							console.log('xxxxx')
+						} else {
+							console.log('ooooo')
+						}
+					})
    		          },
 		          fail: function (error) {
 		            alert(JSON.stringify(error));
@@ -71,6 +85,19 @@
 	      this.$router.push({name:'Starbucks'})
 	    },
 	    logout(){
+			Kakao.Auth.logout(function () {
+				setTimeout(function(){
+					location.href="http://localhost:8080"
+				}, 1000);
+		
+				})
+			Kakao.Auth.getStatus(function(statusObj) {
+						if (statusObj.status == "not_connected") {
+							console.log('xxxxx')
+						} else {
+							console.log('ooooo')
+						}
+					})
 	    	this.username='';
 		}
 	}
