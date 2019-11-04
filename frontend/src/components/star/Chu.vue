@@ -6,20 +6,16 @@
       <div v-for="(frappuccino, index) in Frappuccinos" :key="index">
         <div class="border_HY">
           <div>
-            <img class="img_HY" :src="frappuccino.coffee_image" />
+            <img
+              @click="goToDetail(frappuccino.id, frappuccino.coffee_kind)"
+              class="img_HY"
+              :src="frappuccino.coffee_image"
+            />
           </div>
           <div>
             <h3>{{ frappuccino.coffee_name }}</h3>
             <h4>{{ frappuccino.coffee_price }}</h4>
-          </div>좋아요
-          <div class="like_HY">{{ index.likes }}</div>
-          <i
-            v-if="!like"
-            :id="index"
-            @click="likeMenu($event, index)"
-            class="heart_HY far fa-heart"
-          ></i>
-          <i v-if="like" @click="likeMenu($event, index)" class="heart_HY fas fa-heart"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -30,7 +26,11 @@
       <div v-for="(latte, index) in Lattes" :key="index">
         <div class="border_HY">
           <div>
-            <img class="img_HY" :src="latte.coffee_image" />
+            <img
+              @click="goToDetail(latte.id, latte.coffee_kind)"
+              class="img_HY"
+              :src="latte.coffee_image"
+            />
           </div>
           <div>
             <h3>이름 {{ latte.coffee_name }}</h3>
@@ -46,7 +46,11 @@
       <div v-for="(coollime, index) in CoolLimes" :key="index">
         <div class="border_HY">
           <div>
-            <img class="img_HY" :src="coollime.coffee_image" />
+            <img
+              @click="goToDetail(coollime.id, coollime.coffee_kind)"
+              class="img_HY"
+              :src="coollime.coffee_image"
+            />
           </div>
           <div>
             <h3>이름 {{ coollime.coffee_name }}</h3>
@@ -62,7 +66,11 @@
       <div v-for="(espresso, index) in Espressos" :key="index">
         <div class="border_HY">
           <div>
-            <img class="img_HY" :src="espresso.coffee_image" />
+            <img
+              @click="goToDetail(espresso.id, espresso.coffee_kind)"
+              class="img_HY"
+              :src="espresso.coffee_image"
+            />
           </div>
           <div>
             <h3>이름 {{ espresso.coffee_name }}</h3>
@@ -307,17 +315,13 @@ export default {
   },
   mounted() {},
   methods: {
-    likeMenu(event, index) {
-      this.like = !this.like;
-      console.log(event);
-      console.log("index", index);
-    },
     setActive(index) {
       this.activeIndex = index;
     },
-    zoom(url) {
-      console.log("Zoom", url);
-      this.selectedImage = url;
+    goToDetail(combiId, kind) {
+      this.$router.push({
+        path: "/mypage/like/" + kind + "/" + combiId
+      });
     }
   }
 };

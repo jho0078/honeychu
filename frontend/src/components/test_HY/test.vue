@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>test</h1>
-    <div v-for="(url, index, id) in Frappuccinos" :key="id">
-      <img :src="url.coffee_image" width="100px" @click="zoom(url)" />
+    <div v-for="(url, id) in Frappuccinos" :key="id">
+      <img :src="url.coffee_image" width="200px" @click="zoom(url)" />
       <img :src="selectedImage" width="500px;" @click.stop="selectedImage = null" />
     </div>
   </div>
@@ -187,7 +187,7 @@ export default {
   },
   methods: {
     zoom(url) {
-      console.log("Zoom", url);
+      console.log(url.id);
       this.selectedImage = url.coffee_image;
     }
   }
