@@ -1,7 +1,6 @@
 <template>
     <div class="MakeCombi">
       <h1>게시글 작성</h1>
-
       <!-- 사진 업로드 -->
       <div>
         <img :src="previewImage" class="namki_uploadingimage">
