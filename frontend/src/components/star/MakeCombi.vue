@@ -3,8 +3,12 @@
       <h1>게시글 작성</h1>
 
       <!-- 사진 업로드 -->
-      <ImageUpload>
-      </ImageUpload>
+      <div>
+        <img :src="previewImage" class="namki_uploadingimage">
+         <input type="file" accept="image/jpeg/jpg/png" @change="uploadImage">
+      </div>
+
+      <!-- select들 -->
       <select class="namki_MakeCombi_select" v-model="Franchise">
         <option value="" disabled selected hidden>프랜차이즈 선택</option>
         <option  v-for="Franchise in Franchises" v-bind:value="Franchise.value">
@@ -20,7 +24,8 @@
       </select>
 
       <textarea class="namki_MakeCombi_textarea" @change="Result.name=$event.target.value" placeholder="제목"></textarea>
-
+      <input type="text" v-model="Result.tag1">
+      <input type="text" v-model="Result.tag2">
 
       <!-- 엑스트라 -->
       <div v-for= "(value, key) in Extras">
@@ -44,24 +49,29 @@
           </div>
         </Accordion>
       </div>
+      <button @click="CreateMenu" type="submit" name="button">제출</button>
 
     </div>
 </template>
 
 <script>
 import Accordion from '@/components/star/Accordion'
-import ImageUpload from '@/components/star/ImageUpload'
+
 
 export default {
     name:'MakeCombi',
     components:{
       Accordion,
-      ImageUpload,
+
     },
     data() {
       return {
+          previewImage:null,
           BasicCoffees: [],
           Result: {},
+          Result2: {},
+          hash: '',
+
           Franchise:'',
 
           Extras: {
@@ -148,8 +158,6 @@ export default {
             ],
 
         },
-          
-
 
           Franchises : [
             { Name: '스타벅스', value: '스타벅스'},
@@ -164,19 +172,69 @@ export default {
     },
 
     methods: {
+      uploadImage(e){
+          const image = e.target.files[0];
+          const reader = new FileReader();
+          reader.readAsDataURL(image);
+          reader.onload = e =>{
+              this.previewImage = e.target.result;
+              console.log(this.previewImage);
+
+          };
+      },
+
       getBasicCoffees() {
+
         axios.get('/api/star/menu/basic')
           .then(response=>{
+            console.log(response)
             this.BasicCoffees = response.data
           })
       },
+
       ChooseCoffee(event) {
-        axios.get("/api/star/menu/"+event.target.value)
+        axios.get("/api/star/menu/detail/"+event.target.value)
           .then(response=>{
             this.Result = response.data[0]
-            this.Result['category'] = this.Result['name']
+            this.Result['category'], this.hash = this.Result['name']
+            this.Result['basic_menu'] = 0
+
+            for (let [key, value] of Object.entries(this.Result)) {
+              this.Result2[key] = value
+            }
+            this.Result2['name'] = null
+            delete this.Result2['starmenu_id']
+            delete this.Result2['name'],
+            delete this.Result2['tag1'],
+            delete this.Result2['tag2']
+            delete this.Result2['image']
           })
 
+      },
+
+      CreateHash() {
+        for (var prop in this.Result2) {
+          // console.log(this.Result2[prop])
+          // console.log(this.Result[prop])
+          if(this.Result2[prop] != this.Result[prop]) {
+            this.hash += prop
+            this.hash += this.Result[prop]
+          }
+        }
+        this.Result['hash'] = this.hash
+      },
+
+      CreateMenu() {
+        this.CreateHash()
+        this.Result['image'] = this.previewImage
+        axios.post("/api/star/menu/", this.Result)
+        .then(function(response){
+          console.log('제출')
+          // console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
       }
 
 
@@ -185,6 +243,9 @@ export default {
 </script>
 
 <style>
+    .namki_uploadingimage{
+      display:flex;
+    }
     .namki_button {
       padding: 5px 5px;
       border: 1px solid #ddd;

@@ -196,7 +196,9 @@ router.get('/basic', function(req, res) {
         basic_menu: 1
       }
     }).then((starmenu) => {
+      starmenu["e"]
       res.json(starmenu)
+      console.log(res.json(starmenu))
   });
 });
 
@@ -224,7 +226,7 @@ router.get('/detail/:id', function(req, res) {
 });
 
 // 카테고리 별 메뉴 조회
-router.get('/category', function(req, res) {
+router.post('/category', function(req, res) {
   let categoryName = req.body.category;
   models.starmenu.findAll({
     where: {
