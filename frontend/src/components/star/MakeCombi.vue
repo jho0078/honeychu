@@ -228,13 +228,14 @@ export default {
       },
 
       CreateHash() {
+        this.hash = this.Result['category'] + '/'
         for (var prop in this.Result2) {
           // console.log(this.Result2[prop])
           // console.log(this.Result[prop])
           if(this.Result2[prop] != this.Result[prop]) {
             const extra = this.Test(prop)
-            this.hash += '/' + extra + ' '
-            this.hash += this.Result[prop]
+            this.hash += extra + ' '
+            this.hash += this.Result[prop] + '/'
           }
         }
         this.Result['hash'] = this.hash
@@ -245,12 +246,13 @@ export default {
         this.Result['image'] = this.previewImage
         axios.post("/api/star/menu/", this.Result)
         .then(function(response){
-
-          console.log('제출')
           console.log(response.data)
+          // console.log('제출')
+          // console.log(response.data)
         })
         .catch(function (error) {
           console.log(error)
+          alert('중복값이 있네용')
         })
       }
     },
