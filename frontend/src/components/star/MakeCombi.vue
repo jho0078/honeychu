@@ -184,13 +184,10 @@ export default {
       },
 
       getBasicCoffees() {
-        console.log("실행")
 
-        axios.get('/star/menu/basic')
+        axios.get('/api/star/menu/basic')
           .then(response=>{
-            console.log(response)
             this.BasicCoffees = response.data
-            console.log(response)
           })
       },
 
@@ -232,7 +229,7 @@ export default {
         axios.post("/api/star/menu/", this.Result)
         .then(function(response){
           console.log('제출')
-          // console.log(response)
+          console.log(response)
         })
         .catch(function (error) {
           console.log(error)

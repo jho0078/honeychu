@@ -43,6 +43,27 @@ router.post('/', function(req, res) {
 //   });
 // });
 
+// 로그인 POST
+router.post("/login", function(req, res, next){
+  // let body = req.body;
+
+  models.user.findOne({
+    where: {
+      email : req.body.email
+    }
+  }).then((result) => {
+    if (result) {
+      result.redirect("http://localhost:8080/honeyChu")
+    } else {
+      models.user.create({
+        email: req.body.email
+      }).then((result) => {
+        result.redirect("http://localhost:8080/honeyChu")
+      })
+    }
+  })
+});
+
 
 // 로그인 POST
 router.post("/login", async function(req,res,next){
