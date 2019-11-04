@@ -6,6 +6,7 @@ import Detail from './components/star/Detail.vue'
 import MakeCombi from './components/star/MakeCombi.vue'
 import Admin from './components/admin/Admin.vue'
 import Mypage from './components/test_HY/Mypage.vue'
+import test from './components/test_HY/test.vue'
 import Main from './components/main.vue'
 import MainLoading from './components/mainloading.vue'
 Vue.use(Router)
@@ -18,11 +19,11 @@ export default new Router({
       path: '/honeyChu',
       name: 'Main',
       component: Main
-    },{
+    }, {
       path: '/',
       name: 'MainLoading',
       component: MainLoading
-    },{
+    }, {
       path: '/Starbucks',
       name: 'Starbucks',
       component: Starbucks
@@ -53,6 +54,10 @@ export default new Router({
       name: 'Mypage',
       component: Mypage
     },
-
+    {
+      path: '/test',
+      name: 'test',
+      component: test
+    },
   ]
 })
