@@ -1,35 +1,16 @@
 <template>
-	<div id="main">
-		<div class="hyeri_maintitle">
-			<img src="../assets/honeychu_main.png">
-			 HoneyChu
-		</div>
-		<ul class="hyeri_fran_list">
-			<li>
-				<img src="../assets/user.png">
-				<div>MY PAGE</div>
-			</li>
-			<li class="hyeri_starbucks_logo" @click="gotoStarbucks()">
-				<img src="../assets/starbucks_logo.png" alt="스타벅스" width=100px>
-				 STARBUCKS
-			</li>
-			<li class="hyeri_subway_logo">
-				<img src="../assets/subway_pact.png" alt="Subway"> 
-				<div>SUBWAY</div>
-			</li>	
-		</ul>
-
+	<div id="login">
+		<h2>로그인</h2>
 		<div class="hyeri_loginout"> 
 			<div id="kakao-login-btn"></div>
   			<!-- <div class="hyeri_logout" @click="logout()">로그아웃</div> -->
 		</div>
-		<div></div>
-	</div>
+	</div>	
 </template>
 <script>
-	import '@/components/main.css'
+	import '@/components/login.css'
 	export default {
-	  name:'Main',
+	  name:'Login',
 	  components: {
 	  },
 	  data() {
@@ -39,9 +20,6 @@
 	  mounted() {	  	
 	  	this.kakao_login()
   	},
-
-	  
-
 
 	methods: {
 		
@@ -73,11 +51,9 @@
 		      }
 		    });
 	  	},	
-	    gotoStarbucks(){
-	      this.$router.push({name:'Starbucks'})
-	    },
 	    logout(){
 		}
 	}
 }
+
 </script>
