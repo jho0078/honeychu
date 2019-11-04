@@ -34,5 +34,9 @@ router.get('/menu/:id', function(req, res) {
   });
 });
 
+// DB에 좋아요 추가
+// 유저 id 어떻게 받나?
+// 
+
 
 module.exports = router;
