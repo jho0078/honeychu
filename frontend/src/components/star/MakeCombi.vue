@@ -228,8 +228,9 @@ export default {
         this.Result['image'] = this.previewImage
         axios.post("/api/star/menu/", this.Result)
         .then(function(response){
+
           console.log('제출')
-          // console.log(response)
+          console.log(response.data)
         })
         .catch(function (error) {
           console.log(error)

@@ -130,10 +130,8 @@ export default {
 
     }
   },
-  mounted() {
-
-
-
+  created: function() {
+    this.getCategory()
   },
   methods: {
     scrollTo(locationId) {
@@ -143,6 +141,17 @@ export default {
       window.scrollTo({top: offset, behavior: 'smooth'})
       this.now = locationId
     },
+    getCategory(){
+      console.log(4444444444444444)
+      axios.post("/api/star/menu/category/", {'category':'에스프레소'})
+      .then(response=> {
+        console.log(1111111111)
+        console.log(response.data)
+        console.log(response)
+        console.log(22222222222)
+      })
+    }
+
 
 
   }
