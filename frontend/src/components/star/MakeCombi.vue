@@ -187,6 +187,7 @@ export default {
 
         axios.get('/api/star/menu/basic')
           .then(response=>{
+            console.log(response)
             this.BasicCoffees = response.data
           })
       },
