@@ -8,7 +8,7 @@
 		</div>
 
 		<div class="hyeri_loginout"> 
-			<!-- <div v-show="username==''" id="kakao-login-btn"></div> -->
+			<div id="kakao-login-btn"></div>
   			<div class="hyeri_logout" @click="logout()">로그아웃</div>
 		</div>
 		{{username==''}}
@@ -45,7 +45,7 @@
 		          success: function (res) {
 		          	this.username = res.properties.nickname
 		          	console.log(this.username)
-		            console.log('email :',res.kaccount_email);
+		            // console.log('email :',res.kaccount_email);
 		            console.log('id :', res.id);
 		            console.log('profile_img :', res.properties.profile_image);
 		            console.log('nickname :', res.properties.nickname);

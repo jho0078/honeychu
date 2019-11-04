@@ -184,10 +184,12 @@ export default {
       },
 
       getBasicCoffees() {
+        console.log("실행")
 
-        axios.get('/api/star/menu/basic')
+        axios.get('/star/menu/basic')
           .then(response=>{
             this.BasicCoffees = response.data
+            console.log(response)
           })
       },
 
