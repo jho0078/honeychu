@@ -55,8 +55,9 @@
 		        Kakao.API.request({
 		          url: "/v2/user/me",
 		          success: function (res) {
-		          	console.log('res',res)
-		            console.log('email :',res.kakao_account.email);
+		          	this.username = res.properties.nickname
+		          	console.log(this.username)
+		            // console.log('email :',res.kaccount_email);
 		            console.log('id :', res.id);
 		            // console.log('nickname :', res.properties.nickname);
 		          	axios.post("/api/user",{email: res.kakao_account.email})
