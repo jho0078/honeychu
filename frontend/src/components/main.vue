@@ -50,7 +50,7 @@ export default {
       // 카카오 로그인 버튼을 생성합니다.
       Kakao.Auth.createLoginButton({
         container: "#kakao-login-btn",
-        // scope: "account_email",
+        scope: "account_email",
         persistAccessToken: false,
         success: function(authObj) {
           Kakao.API.request({

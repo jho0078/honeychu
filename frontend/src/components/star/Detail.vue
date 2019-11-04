@@ -12,13 +12,14 @@
     </div>
     <img :src="combi.Image" :alt="combi.title + '사진'">
     <div class="HSD__contents">
-      <div class="HSD__title">{{combi.title}}</div>
+      <div class="HSD__title">{{detail.name}}</div>
       <div class="HSD__price">
-        <div>{{combi.price}} 원</div>
+        <div>{{detail.price}} 원</div>
         <div>( Tall 사이즈 기준 )</div>
+        {{detail.hash}}
       </div>
       <div class="HSD__recipe">
-        <p><span class="HSD__base">{{combi.starMenu}}</span>에</p>
+        <p><span class="HSD__base">{{detail.category}}</span>에</p>
         <div class="HSD__extras" v-for="extra in combi.extras">{{extra.name}}</div>
         <div>추가해주세요.</div>
         <p class="HSD__option">" {{combi.Option}} "</p>
@@ -39,6 +40,8 @@ export default {
   data() {
     return {
       like: true,
+      detail: {},
+      extras:[],
       combi:{
         title: '냠냠커피',
         price: 7000,
@@ -70,12 +73,15 @@ export default {
   mounted() {
     this.getCombi(this.combiId)
 
-
   },
   methods: {
     getCombi(data) {
       // 가져올함수
-      console.log('combiId:', data)
+      axios.get("/api/star/menu/detail/" + this.combiId)
+      .then(response=>{
+        this.detail = response.data[0]
+        console.log(this.detail)
+      })
     },
     moveToBack(){
       this.$router.push({path: '/Starbucks'})
