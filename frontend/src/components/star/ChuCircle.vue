@@ -26,7 +26,6 @@ export default {
     getCustom() {
       axios.get('api/star/menu/custom')
       .then(response=>{
-        console.log(response.data)
         this.customs = response.data
       })
     },

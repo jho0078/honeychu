@@ -10,20 +10,23 @@
         <i v-if="like" @click="likeMenu()" class="Hyeri__heart fas fa-heart"></i>
       </div>
     </div>
-    <img :src="combi.Image" :alt="combi.title + '사진'">
+    <img :src="detail.image" :alt="detail.name + '사진'">
     <div class="HSD__contents">
       <div class="HSD__title">{{detail.name}}</div>
       <div class="HSD__price">
         <div>{{detail.price}} 원</div>
         <div>( Tall 사이즈 기준 )</div>
-        {{detail.hash}}
       </div>
       <div class="HSD__recipe">
         <p><span class="HSD__base">{{detail.category}}</span>에</p>
-        <div class="HSD__extras" v-for="extra in combi.extras">{{extra.name}}</div>
+        <div v-for="(value, index) in this.extras">
+          <div  v-if= "index !=0" class="HSD__extras">{{value}}</div>
+        </div>
         <div>추가해주세요.</div>
-        <p class="HSD__option">" {{combi.Option}} "</p>
       </div>
+
+        <p class="HSD__option">" {{combi.Option}} "</p>
+
       <p class="HSD__createby">{{combi.Date}} &nbsp | &nbsp; by.
         <!-- user link 달기 -->
         <b class="text-primary">{{combi.User}}</b></p>
@@ -45,20 +48,6 @@ export default {
       combi:{
         title: '냠냠커피',
         price: 7000,
-        extras: [
-          {
-            id: 1,
-            name: '에스프레소 샷 2'
-          },
-          {
-            id: 2,
-            name: '에스프레소 휘핑 적게'
-          },
-          {
-            id: 7,
-            name: '바닐라 시럽 2펌핑'
-          }
-        ],
         likes: '1232',
         starMenu:'에스프레소 프라푸치노',
         starTags:'TagTagTag',
@@ -80,8 +69,12 @@ export default {
       axios.get("/api/star/menu/detail/" + this.combiId)
       .then(response=>{
         this.detail = response.data[0]
-        console.log(this.detail)
+        this.sepHash(this.detail['hash'])
       })
+    },
+    sepHash(words) {
+      this.extras = words.split('/')
+      // console.log(this.extras)
     },
     moveToBack(){
       this.$router.push({path: '/Starbucks'})
