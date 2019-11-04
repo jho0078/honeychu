@@ -13,11 +13,7 @@
 
 		<div class="hyeri_loginout"> 
 			<div id="kakao-login-btn"></div>
-<<<<<<< HEAD
   			<div class="hyeri_logout" @click="logout()">로그아웃</div>
-=======
-  			<!-- <div class="hyeri_logout" @click="logout()">로그아웃</div> -->
->>>>>>> 378817d356e69ee6711124bc93db9aaca26d9858
 		</div>
 	</div>
 </template>
@@ -52,14 +48,9 @@
 		        Kakao.API.request({
 		          url: "/v2/user/me",
 		          success: function (res) {
-<<<<<<< HEAD
 		          	this.username = res.properties.nickname
 		          	console.log(this.username)
 		            // console.log('email :',res.kaccount_email);
-=======
-		          	console.log('res',res)
-		            console.log('email :',res.kakao_account.email);
->>>>>>> 378817d356e69ee6711124bc93db9aaca26d9858
 		            console.log('id :', res.id);
 		            console.log('nickname :', res.properties.nickname);
 		          	axios.post("/api/user",{email: res.kakao_account.email})
