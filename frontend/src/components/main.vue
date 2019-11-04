@@ -99,7 +99,6 @@
 						}
 					})
 	    	this.username='';
-			
 		}
 	}
 }
