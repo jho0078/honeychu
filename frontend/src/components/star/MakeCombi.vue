@@ -1,7 +1,6 @@
 <template>
     <div class="MakeCombi">
       <h1>게시글 작성</h1>
-
       <!-- 사진 업로드 -->
       <div>
         <img :src="previewImage" class="namki_uploadingimage">
@@ -123,12 +122,12 @@ export default {
               { name: '쑥 휘핑', value:'mugwort_whipping', type:['없이', '적게', '보통', '많이']},
             ],
             '드리즐': [
-              { name: '카라멘 드리즐', value:'caramel_drizzle', type:['없이', '적게', '보통', '많이']},
+              { name: '카라멜 드리즐', value:'caramel_drizzle', type:['없이', '적게', '보통', '많이']},
               { name: '초콜릿 드리즐', value:'chocolate_drizzle', type:['없이', '적게', '보통', '많이']},
             ],
             '과일&채소': [
               { name: '레몬 슬라이스', value:'lemon_slice', type:['없이', '보통']},
-              { name: '로즈마리', value:'rosemary', type:''},
+              { name: '로즈마리', value:'rosemary', type:['없이', '보통']},
               { name: '자몽 슬라이스', value:'grapefruit_slice', type:['없이', '보통']},
             ],
             '자바칩': [
@@ -157,21 +156,37 @@ export default {
               { name: '시그니처 초콜릿', value:'signature_chocolate', type:['연하게', '진하게', '보통']},
             ],
 
-        },
+          },
 
           Franchises : [
             { Name: '스타벅스', value: '스타벅스'},
             { Name: '써브웨이', value: '써브웨이'}
-      ],
+          ],
 
 
-        }
-      },
+      }
+    },
+
     created: function() {
       this.getBasicCoffees()
+
     },
 
     methods: {
+      Test(prop) {
+        for (let [key, value] of Object.entries(this.Extras)) {
+            for (let [keyy, valuee] of Object.entries(this.Extras[key])){
+              // console.log(valuee['value'])
+              if (valuee['value'] == prop) {
+                console.log(valuee['name'])
+                return valuee['name']
+              }
+            }
+          }
+
+
+      },
+
       uploadImage(e){
           const image = e.target.files[0];
           const reader = new FileReader();
@@ -185,7 +200,8 @@ export default {
 
       getBasicCoffees() {
 
-        axios.get('/api/star/menu/basic')
+
+        axios.get('/api/star/menu/basic/')
           .then(response=>{
             this.BasicCoffees = response.data
           })
@@ -195,7 +211,7 @@ export default {
         axios.get("/api/star/menu/detail/"+event.target.value)
           .then(response=>{
             this.Result = response.data[0]
-            this.Result['category'], this.hash = this.Result['name']
+            this.Result['category'] = this.Result['name']
             this.Result['basic_menu'] = 0
 
             for (let [key, value] of Object.entries(this.Result)) {
@@ -216,7 +232,8 @@ export default {
           // console.log(this.Result2[prop])
           // console.log(this.Result[prop])
           if(this.Result2[prop] != this.Result[prop]) {
-            this.hash += prop
+            const extra = this.Test(prop)
+            this.hash += '/' + extra + ' '
             this.hash += this.Result[prop]
           }
         }
@@ -228,15 +245,14 @@ export default {
         this.Result['image'] = this.previewImage
         axios.post("/api/star/menu/", this.Result)
         .then(function(response){
+
           console.log('제출')
-          console.log(response)
+          console.log(response.data)
         })
         .catch(function (error) {
           console.log(error)
         })
       }
-
-
     },
 }
 </script>

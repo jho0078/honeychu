@@ -86,11 +86,12 @@ router.post("/login", async function(req,res,next){
     console.log("회원입니다.")
     // 세션 설정
     req.session.email = req.body.email;
-    res.redirect("http://localhost:8080/honeyChu");
+    // console.log(req.session.email)
+    // res.redirect("http://localhost:8080/");
   }
   else{
     console.log("회원이 아닙니다.")
-    res.redirect("http://localhost:8080/honeyChu");
+    // res.redirect("http://localhost:8080/honeyChu");
     // res.redirect("")
   }
 });
