@@ -196,7 +196,9 @@ router.get('/basic', function(req, res) {
         basic_menu: 1
       }
     }).then((starmenu) => {
+      starmenu["e"]
       res.json(starmenu)
+      console.log(res.json(starmenu))
   });
 });
 
@@ -212,6 +214,7 @@ router.get('/custom', function(req, res) {
 });
 
 // 메뉴 상세정보 조회
+// 없는 id 조회시 빈 리스트 반환(오류 x)
 router.get('/detail/:id', function(req, res) {
   let menuID = req.params.id;
   models.starmenu.findAll({
@@ -219,12 +222,16 @@ router.get('/detail/:id', function(req, res) {
           starmenu_id: menuID
       }
   }).then((starmenu) => {
+    console.log(starmenu)
       res.json(starmenu)
+      console.log("-------------------------", res)
+      console.log(res.data)
+      console.log("에러 없다--------------")
   });
 });
 
 // 카테고리 별 메뉴 조회
-router.get('/category', function(req, res) {
+router.post('/category', function(req, res) {
   let categoryName = req.body.category;
   models.starmenu.findAll({
     where: {
