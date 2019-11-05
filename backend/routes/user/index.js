@@ -10,24 +10,24 @@ router.get('/', function(req, res) {
   });
 });
 
-// 생성
-router.post('/', function(req, res) {
-  models.user.create({
-      email: req.body.email
-    }).then((result) => {
-      res.json(result)
-  }, (validation) => {
-    res.json({
-      errores: validation.errors.map((error) => {
-        return {
-          attribute: error.path,
-          message: error.message
-        };
-      })
-    });
-    //TODO: error handling
-  });
-});
+// // 생성
+// router.post('/', function(req, res) {
+//   models.user.create({
+//       email: req.body.email
+//     }).then((result) => {
+//       res.json(result)
+//   }, (validation) => {
+//     res.json({
+//       errores: validation.errors.map((error) => {
+//         return {
+//           attribute: error.path,
+//           message: error.message
+//         };
+//       })
+//     });
+//     //TODO: error handling
+//   });
+// });
 
 // // 탈퇴
 // router.delete('/:id', function(req, res) {
@@ -103,5 +103,18 @@ router.get("/logout", function(req,res,next){
 
   res.redirect("http://localhost:8080/honeyChu");
 })
+
+router.delete('/:id', function(req, res) {
+  let id = req.params.id;
+  models.user.destroy({
+    where: {user_id: id}
+  })
+  .then( result => {
+    
+  })
+  .catch( err => {
+    console.log("데이터 삭제 실패");
+  });
+});
 
 module.exports = router;
