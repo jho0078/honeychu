@@ -248,8 +248,8 @@ router.post('/category', function(req, res) {
   let categoryName = req.body.category;
   models.starmenu.findAll({
     where: {
-      category: categoryName,
-      basic_menu: 1
+      category: categoryName
+      // basic_menu: 1
     }
   }).then((result) => {
     if (!result.length) {
