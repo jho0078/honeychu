@@ -50,11 +50,17 @@ export default {
   data() {
     return {
       isRcVisible:true,
-      userlikes:[],
+      likeList: [],
     }
   },
   mounted() {
-
+    axios.get("/api/like")
+      .then(response=>{
+        this.likeList = response.data
+        console.log('likeList check', this.likeList)
+      })
+    // this.getLikeList()
+    // console.log('좀 되라', this.likeList)
 
 
   },
@@ -83,7 +89,14 @@ export default {
 							console.log('ooooo')
 						}
 					})
-    }
+    },
+    // getLikeList() {
+    //   axios.get("/api/like")
+    //   .then(response=>{
+    //     this.likeList = response.data
+    //     console.log('likeList check', this.likeList)
+    //   })
+    // }
 
 
   }
