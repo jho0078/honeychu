@@ -19,10 +19,11 @@
       </li>
     </ul>
 
-		<button v-on:click="getEmail">getEmail</button>
+		<!-- <button v-on:click="getEmail">getEmail</button> -->
 
 
 		<div class="hyeri_loginout"> 
+			{{ isUser }}
 			<div id="kakao-login-btn"></div>
   			<div class="hyeri_logout" @click="logout()">로그아웃</div>
 		</div>
@@ -38,6 +39,7 @@
 	  },
 	  data() {
 	    return {
+			isUser: false,
 	    	username:'1212123',
 	    	al:1
 	    }
@@ -120,8 +122,8 @@
 	    logout(){
 			Kakao.Auth.logout(function () {
 				setTimeout(function(){
-          // location.href="http://localhost:8080"
-          location.href="http://52.78.224.61:8080"
+          location.href="http://localhost:8080"
+        //   location.href="http://52.78.224.61:8080"
 				}, 1000);
 		
 				})
