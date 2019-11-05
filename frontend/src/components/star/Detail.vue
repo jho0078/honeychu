@@ -19,7 +19,7 @@
       </div>
       <div class="HSD__recipe">
         <p><span class="HSD__base">{{detail.category}}</span>에</p>
-        <div v-for="(value, index) in this.extras">
+        <div v-for="(value, index) in extras">
           <div  v-if= "index !=0" class="HSD__extras">{{value}}</div>
         </div>
         <div>추가해주세요.</div>
@@ -29,7 +29,7 @@
 
       <p class="HSD__createby">{{combi.Date}} &nbsp | &nbsp; by.
         <!-- user link 달기 -->
-        <b class="text-primary">{{combi.User}}</b></p>
+        <b class="text-primary">허니츄</b></p>
     </div>
   </div>
 
@@ -65,7 +65,7 @@ export default {
   },
   mounted() {
     this.getCombi(this.combiId)
-    Kakao.init("3fba1edc8e21309d5e9c3003264a2b71");
+    
   },
   methods: {
     getCombi(data) {
@@ -78,7 +78,7 @@ export default {
     },
     sepHash(words) {
       this.extras = words.split('/')
-      // console.log(this.extras)
+      console.log(this.extras)
     },
     moveToBack(){
       this.$router.push({path: '/Starbucks'})
@@ -94,9 +94,9 @@ export default {
       // })
 
       Kakao.API.request({
-		          url: "/v2/user/me",
-		          // success: function (res) {
-		          success: res => {
+              url: "/v2/user/me",
+              // success: function (res) {
+              success: res => {
                 console.log('2email :', res.kakao_account.email);
                 this.likeEmail = res.kakao_account.email
                 console.log('?', this.likeEmail)
@@ -112,7 +112,7 @@ export default {
                 //   .catch(function (error) {
                 //     console.log(error)
                 //   })
-				  }
+          }
       }).then (() => {
         console.log('555555', this.combiId)
         console.log('666666', this.likeEmail)

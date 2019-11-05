@@ -11,8 +11,8 @@
 
       <div class="Hyeri__Menubody">
         <h2 :id=index>{{coffee.name}}</h2>
-        <div v-for = "list in coffee['lists']" class="namki_blocks" @click="goToCombs(list.name)">
-          <div>
+        <div v-for = "list in coffee['lists']" class="namki_blocks">
+          <div @click="goToCombs(list.name)">
             <img :src = "list.image" class="namki_menuimg">
             <p>{{ list.name }}</p>
           </div>
