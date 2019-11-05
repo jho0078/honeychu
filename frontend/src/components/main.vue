@@ -48,8 +48,10 @@
 		  Kakao.Auth.getStatus(statusObj => {
 						if (statusObj.status == "not_connected") {
 							console.log('xxxxx')
+							this.isUser = false
 						} else {
 							console.log('ooooo')
+							this.isUser = true
 						}
 					})
 	  },
@@ -63,7 +65,7 @@
 
 	methods: {
 	  kakao_login() {  		
-	  		Kakao.init("3fba1edc8e21309d5e9c3003264a2b71");
+	  		// Kakao.init("3fba1edc8e21309d5e9c3003264a2b71");
 		    // 카카오 로그인 버튼을 생성합니다.
 		    Kakao.Auth.createLoginButton({          
 		      container: "#kakao-login-btn",
@@ -108,13 +110,20 @@
 			this.$router.push({path:'/Mypage'})
 		},
 	    logout(){
-			Kakao.Auth.logout(function () {
-				setTimeout(function(){
-          location.href="http://localhost:8080/honeyChu"
+			this.isUser = false
+			Kakao.Auth.logout(() => {
+				console.log('아')
+				// this.$router.reload()
+				// setTimeout(function(){
+        //   location.href="http://localhost:8080/honeyChu"
         //   location.href="http://52.78.224.61:8080"
-				}, 1000);
-		
-				})
+				});
+				// }, 1000);
+			// })
+				// Kakao.init("3fba1edc8e21309d5e9c3003264a2b71")
+				
+				Kakao.cleanup()
+				Kakao.init("3fba1edc8e21309d5e9c3003264a2b71");
 			Kakao.Auth.getStatus(function(statusObj) {
 						if (statusObj.status == "not_connected") {
 							console.log('xxxxx')
