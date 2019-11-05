@@ -11,7 +11,7 @@
 
       <div class="Hyeri__Menubody">
         <h2 :id=index>{{coffee.name}}</h2>
-        <div v-for = "list in coffee['lists']" class="namki_blocks">
+        <div v-for = "list in coffee['lists']" class="namki_blocks" @click="goToCombs(list.name)">
           <div>
             <img :src = "list.image" class="namki_menuimg">
             <p>{{ list.name }}</p>
@@ -57,6 +57,9 @@ export default {
       })
     }
 
+    },
+    goToCombs(menu) {
+      this.$router.push({path: '/Starmenulist/' + menu})
     }
 
 

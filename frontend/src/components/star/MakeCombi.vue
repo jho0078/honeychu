@@ -49,7 +49,7 @@
         </Accordion>
       </div>
       <button @click="CreateMenu" type="submit" name="button">제출</button>
-
+      <button @click="CreateHash()" type="button" name="button">asd</button>
     </div>
 </template>
 
@@ -178,7 +178,6 @@ export default {
             for (let [keyy, valuee] of Object.entries(this.Extras[key])){
               // console.log(valuee['value'])
               if (valuee['value'] == prop) {
-                console.log(valuee['name'])
                 return valuee['name']
               }
             }
@@ -199,8 +198,6 @@ export default {
       },
 
       getBasicCoffees() {
-
-
         axios.get('/api/star/menu/basic/')
           .then(response=>{
             this.BasicCoffees = response.data
@@ -223,21 +220,20 @@ export default {
             delete this.Result2['tag1'],
             delete this.Result2['tag2']
             delete this.Result2['image']
+            delete this.Result2['hash']
           })
 
       },
 
       CreateHash() {
+        this.Result['hash'] = this.Result['category'] + '/'
         for (var prop in this.Result2) {
-          // console.log(this.Result2[prop])
-          // console.log(this.Result[prop])
           if(this.Result2[prop] != this.Result[prop]) {
             const extra = this.Test(prop)
-            this.hash += '/' + extra + ' '
-            this.hash += this.Result[prop]
+            this.Result['hash'] += extra + ' '
+            this.Result['hash'] += this.Result[prop] + '/'
           }
         }
-        this.Result['hash'] = this.hash
       },
 
       CreateMenu() {
@@ -245,12 +241,11 @@ export default {
         this.Result['image'] = this.previewImage
         axios.post("/api/star/menu/", this.Result)
         .then(function(response){
-
-          console.log('제출')
-          console.log(response.data)
+          if (response.data.success == false) {
+              alert('중복')
+          }
         })
         .catch(function (error) {
-          console.log(error)
         })
       }
     },
