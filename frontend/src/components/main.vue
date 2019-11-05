@@ -53,6 +53,7 @@
 						}
 					})
 	  },
+	  
 	//   watch: {
 	// 	  isUser: function(newVal, oldVal) {
 	// 		  console.log('watch isUser', this.isUser)
