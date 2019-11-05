@@ -121,6 +121,7 @@
 				// }, 1000);
 			// })
 				// Kakao.init("3fba1edc8e21309d5e9c3003264a2b71")
+				
 				Kakao.cleanup()
 				Kakao.init("3fba1edc8e21309d5e9c3003264a2b71");
 			Kakao.Auth.getStatus(function(statusObj) {
