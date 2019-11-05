@@ -11,6 +11,9 @@
 			</div>
 		</div>
 
+		<button v-on:click="getEmail">getEmail</button>
+
+
 		<div class="hyeri_loginout"> 
 			<div id="kakao-login-btn"></div>
   			<div class="hyeri_logout" @click="logout()">로그아웃</div>
@@ -18,6 +21,8 @@
 	</div>
 </template>
 <script>
+	import EventBus from '../../src/EventBus.js'
+	// import EventBus from '../EventBus.js'
 	import '@/components/main.css'
 	export default {
 	  name:'Main',
@@ -44,7 +49,21 @@
 
 
 	methods: {
-		
+		getEmail() {
+			Kakao.API.request({
+		          url: "/v2/user/me",
+		          success: function (res) {
+		          	// this.username = res.properties.nickname
+		          	console.log('1', this.username)
+		            // console.log('email :',res.kaccount_email);
+		            console.log('2id :', res.id);
+					// console.log('nickname :', res.properties.nickname);
+					
+					// EventBus
+					EventBus.$emit('getEmail', res.kakao_account.email)
+				  }
+			})
+		},
 	  	kakao_login() {  		
 	  		Kakao.init("3fba1edc8e21309d5e9c3003264a2b71");
 		    // 카카오 로그인 버튼을 생성합니다.
@@ -55,11 +74,17 @@
 		        Kakao.API.request({
 		          url: "/v2/user/me",
 		          success: function (res) {
-		          	this.username = res.properties.nickname
+		          	// this.username = res.properties.nickname
 		          	console.log(this.username)
 		            // console.log('email :',res.kaccount_email);
 		            console.log('id :', res.id);
-		            // console.log('nickname :', res.properties.nickname);
+					// console.log('nickname :', res.properties.nickname);
+					
+					// // EventBus
+					// EventBus.$emit('getEmail', res.kakao_account.email)
+
+
+
 		          	axios.post("/api/user",{email: res.kakao_account.email})
 		          	axios.post("/api/user/login",{email: res.kakao_account.email})
 		            alert('로그인 되었습니다.')
