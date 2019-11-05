@@ -75,7 +75,7 @@
 	  	kakao_login() {  		
 	  		Kakao.init("3fba1edc8e21309d5e9c3003264a2b71");
 		    // 카카오 로그인 버튼을 생성합니다.
-		    Kakao.Auth.createLoginButton({
+		    Kakao.Auth.createLoginButton({          
 		      container: "#kakao-login-btn",
 		      // scope: "account_email",
 		      success: function (authObj) {
