@@ -29,14 +29,15 @@ export default new Router({
       component: Starbucks
     },
     {
-      path: '/chu',
-      name: 'chu',
-      component: Chu
-    },
-    {
       path: '/Starbucks/:combiId',
       name: 'Detail',
       component: Detail,
+      props: true
+    },
+    {
+      path: '/Starmenulist/:menu',
+      name: 'chu',
+      component: Chu,
       props: true
     },
     {

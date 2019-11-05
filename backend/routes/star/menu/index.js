@@ -12,6 +12,12 @@ router.get('/', function(request, response) {
 
 // 생성
 router.post('/', function(req, res) {
+  // models.starmenu.findAll({
+  //   where: {
+  //     basic_menu: 1
+  //   }
+  // })
+  // if (req.body.hash)
   models.starmenu.create({
       name: req.body.name,
       user_user_id: req.body.user_user_id,
@@ -83,14 +89,19 @@ router.post('/', function(req, res) {
     }).then((result) => {
     res.json(result);
   }, (validation) => {
-    res.json({
-      errores: validation.errors.map((error) => {
-        return {
-          attribute: error.path,
-          message: error.message
-        };
-      })
-    });
+    console.log(validation)
+    if (validation.errors[0].message)
+    return res.json({success:false, message: validation.errors[0].message}) 
+
+    // res.json({
+    //   errores: validation.errors.map((error) => {
+    //     return {
+    //       attribute: error.path,
+    //       message: error.message,
+    //       success: false
+    //     };
+    //   })
+    // });
     //TODO: error handling
   });
 });
@@ -195,10 +206,8 @@ router.get('/basic', function(req, res) {
       where: {
         basic_menu: 1
       }
-    }).then((starmenu) => {
-      starmenu["e"]
-      res.json(starmenu)
-      console.log(res.json(starmenu))
+    }).then((starmenu) => {      
+      res.json(starmenu)      
   });
 });
 
@@ -215,18 +224,22 @@ router.get('/custom', function(req, res) {
 
 // 메뉴 상세정보 조회
 // 없는 id 조회시 빈 리스트 반환(오류 x)
-router.get('/detail/:id', function(req, res) {
+router.get('/detail/:id', function(req, res, next) {
   let menuID = req.params.id;
   models.starmenu.findAll({
       where: {
           starmenu_id: menuID
       }
-  }).then((starmenu) => {
-    console.log(starmenu)
-      res.json(starmenu)
-      console.log("-------------------------", res)
-      console.log(res.data)
-      console.log("에러 없다--------------")
+  }).then((result) => {
+    if (!result.length) {
+      return res.json({success:false, msg:"해당하는 id를 가지는 메뉴는 없습니다."})      
+    }
+    // if (!result.length) {
+    //   return res.status(403).json({success:false, msg:"해당하는 id를 가지는 메뉴는 없습니다."})      
+    // }
+    console.log(result)
+    res.json(result)      
+    console.log(res)
   });
 });
 
@@ -236,9 +249,13 @@ router.post('/category', function(req, res) {
   models.starmenu.findAll({
     where: {
       category: categoryName
+      // basic_menu: 1
     }
-  }).then((starmenu) => {
-      res.json(starmenu)
+  }).then((result) => {
+    if (!result.length) {
+      return res.json({success:false, msg:"그런 카테고리는 없습니다."})      
+    }
+      res.json(result)
   });
 });
 
