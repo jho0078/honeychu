@@ -1,15 +1,17 @@
 <template>
   <div>
-    {{menu}}
-    {{combis[0].name}}
-    {{combis[0].img}}
+      <i @click="goBack()" class="left fas fa-angle-left"></i>
+    <div>
+    <!-- <h3>{{menu}}</h3> -->
+    <h2>{{combis[0].name}}</h2>
+    <!-- {{combis[0].img}} -->
     <!-- <header class="header_HY">
       <h1>STARBUCKS {{Frappuccinos.length + Lattes.length + CoolLimes.length + Espressos.length}}개</h1>
     </header>-->
-
+    </div>
     <!-- 프라푸치노 for문 -->
     <div>
-      <h3>Frappuccino {{Frappuccinos.length}}개</h3>
+      <h3>Frappuccino</h3>
       <div v-for="combi in combis" @click="goToDetail(combi.starmenu_id)">
         <div class="border_HY">
           <img class="img_HY" :src="combi.image" />
@@ -342,7 +344,10 @@ export default {
     goToDetail(combiId) {
       this.$router.push({path: '/Starbucks/' + combiId, props:{combiId: combiId, before: this.menu} })
     },
-
+    // 뒤로가기
+    goBack() {
+      window.history.back()
+    },
   }
 };
 </script>
