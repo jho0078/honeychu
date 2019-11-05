@@ -52,7 +52,7 @@ router.post("/login", function(req, res, next){
       email : req.body.email
     }
   }).then((result) => {
-    if (result) {
+    if (result.length) {
       result.redirect("http://localhost:8080/honeyChu")
     } else {
       models.user.create({
@@ -65,37 +65,6 @@ router.post("/login", function(req, res, next){
 });
 
 
-// 로그인 POST
-router.post("/login", async function(req,res,next){
-  // let body = req.body;
-
-  let result = await models.user.findOne({
-    where: {
-      email : req.body.email
-    }
-  });
-
-  // let result = models.user.findOne({
-  //   where: {
-  //     email: req.body.email
-  //   }
-  // });
-
-  // let dbEmail = result.dataValues.email;
-  if(result){
-    console.log("회원입니다.")
-    // 세션 설정
-    req.session.email = req.body.email;
-    // console.log(req.session.email)
-    // res.redirect("http://localhost:8080/");
-  }
-  else{
-    console.log("회원이 아닙니다.")
-    // res.redirect("http://localhost:8080/honeyChu");
-    // res.redirect("")
-  }
-});
-
 // 로그아웃
 router.get("/logout", function(req,res,next){
   req.session.destroy();
@@ -104,17 +73,18 @@ router.get("/logout", function(req,res,next){
   res.redirect("http://localhost:8080/honeyChu");
 })
 
-router.delete('/:id', function(req, res) {
-  let id = req.params.id;
-  models.user.destroy({
-    where: {user_id: id}
-  })
-  .then( result => {
+// 유저삭제
+// router.delete('/:id', function(req, res) {
+//   let id = req.params.id;
+//   models.user.destroy({
+//     where: {user_id: id}
+//   })
+//   .then( result => {
     
-  })
-  .catch( err => {
-    console.log("데이터 삭제 실패");
-  });
-});
+//   })
+//   .catch( err => {
+//     console.log("데이터 삭제 실패");
+//   });
+// });
 
 module.exports = router;
