@@ -81,9 +81,9 @@ export default {
       this.extras = words.split('/')
       console.log(this.extras)
     },
-    moveToBack(){
-      this.$router.push({path: '/Starbucks'})
-    },
+    // moveToBack(){
+    //   this.$router.push({path: '/Starbucks'})
+    // },
     // 뒤로가기
     goBack() {
       window.history.back()
