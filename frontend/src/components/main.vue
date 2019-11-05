@@ -1,20 +1,23 @@
 <template>
   <div id="main">
-    <div class="hyeri_maintitle">HoneyChu</div>
-    <div class="hyeri_main_logos">
-      <div @click="gotoStarbucks()" class="main__starbucks">
-        <img
-          class="hyeri_starbucks_logo"
-          src="../assets/starbucks_logo.png"
-          alt="스타벅스"
-          width="100px"
-        />
-        <!-- </div>	 -->
-        <!-- <div class="hyeri_main_logos2"> -->
-        <img class="hyeri_subway_logo" src="../assets/subway_pact.png" alt="Subway" />
-        <!-- <div style="background-color: darkorange; padding: 1.5rem; border-radius: 3rem; color: white;">MyPage</div> -->
-      </div>
+    <div class="hyeri_maintitle">
+      <img src="../assets/honeychu_main.png" />
+      HoneyChu
     </div>
+    <ul class="hyeri_fran_list">
+      <li>
+        <img src="../assets/user.png" />
+        <div>MY PAGE</div>
+      </li>
+      <li class="hyeri_starbucks_logo" @click="gotoStarbucks()">
+        <img src="../assets/starbucks_logo.png" alt="스타벅스" width="100px" />
+        STARBUCKS
+      </li>
+      <li class="hyeri_subway_logo">
+        <img src="../assets/subway_pact.png" alt="Subway" />
+        <div>SUBWAY</div>
+      </li>
+    </ul>
 
 		<button v-on:click="getEmail">getEmail</button>
 
