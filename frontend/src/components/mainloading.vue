@@ -14,11 +14,20 @@
 	    }
 	  },
 	  mounted() {
+		//   setTimeout(function() {
+		// 	this.gotoMain()
+		// 	}, 1000);
+		//   setTimeout(this.gotoMain(), 5000)
+		this.gogo()
+
 	  },
 	  methods: {
-	    gotoMain(){
-        this.$router.push({name: 'Main'})
-      }
+	    gotoMain(){			
+        	this.$router.push({name: 'Main'})
+		},
+		gogo() {			
+			setTimeout(() => {this.gotoMain()}, 2000)
+		}
 	  }
 	}
 </script>
