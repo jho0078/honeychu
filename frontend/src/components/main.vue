@@ -5,8 +5,8 @@
       HoneyChu
     </div>
     <ul class="hyeri_fran_list">
-      <li>
-        <img src="../assets/user.png" />
+      <li class="MYPAGE_logo" @click="gotoMypage()">
+        <img src="../assets/user.png" alt="MY PAGE"/>
         <div>MY PAGE</div>
       </li>
       <li class="hyeri_starbucks_logo" @click="gotoStarbucks()">
@@ -116,7 +116,10 @@
 	  	},	
 	    gotoStarbucks(){
 	      this.$router.push({name:'Starbucks'})
-	    },
+		},
+		gotoMypage(){
+			this.$router.push({name:'test_HY/Mypage'})
+		},
 	    logout(){
 			Kakao.Auth.logout(function () {
 				setTimeout(function(){
