@@ -38,8 +38,17 @@ export default {
   },
   data() {
     return {
-      isRcVisible: true
+      isRcVisible: true,
+      likeMenu: [],
+      myMenu: []
     };
+  },
+  mounted() {
+    axios.get("/api/star/menu")
+      .then(response=>{
+        this.myMenu = response.data
+        console.log('myMenu check', this.myMenu)
+      })
   },
   methods: {
     showLike_HY() {
@@ -47,7 +56,7 @@ export default {
     },
     showMyMenu_HY() {
       this.isRcVisible = false;
-    }
+    },
   }
 };
 </script>

@@ -107,7 +107,16 @@
 	      this.$router.push({name:'Starbucks'})
 		},
 		gotoMypage(){
-			this.$router.push({path:'/Mypage'})
+			Kakao.Auth.getStatus(statusObj => {
+						if (statusObj.status == "not_connected") {
+              				alert('로그인 해주세요!')
+							console.log('xxxxx')
+						} else {
+							this.$router.push({path:'/Mypage'})
+							console.log('ooooo')
+						}
+					})
+			// this.$router.push({path:'/Mypage'})
 		},
 	    logout(){
 			this.isUser = false
