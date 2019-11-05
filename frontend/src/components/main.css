@@ -5,7 +5,7 @@
 	font-weight: 600;
 	margin-top: 4rem;
 	/*margin-top: 3rem;*/
-	color: darkviolet;
+	color: rgb(102, 0, 254);
 	text-shadow: 2px 2px 2px rgb(220, 200, 220);
 	/*color: rgb(40, 40, 40);*/
 }
@@ -77,7 +77,7 @@
 	display: inline-block;
 	border-radius: 1rem;
 	padding: .8rem;
-	background-color: gold;
+	background-color: rgb(118, 254, 84);
 	font-weight: 700;
 	color: var(--starbucks-sub1-color);
 }
