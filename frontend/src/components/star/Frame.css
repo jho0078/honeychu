@@ -6,6 +6,7 @@
   --starbucks-sub3-color:#eee8da;
 } 
 #starbucks {
+  width: 100%;
   position: absolute;
   top:0;
   left: 0;
@@ -75,4 +76,8 @@
 .starbucks_body{
   position: relative;
   top: 8rem;
+  width: 100%;
+}
+.starbucks_contents{
+  width: 100%;
 }

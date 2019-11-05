@@ -24,11 +24,11 @@
         <ChuCircle v-if="isRcVisible"></ChuCircle>
         <MenuCircle v-if="!isRcVisible"></MenuCircle>
       </div>
-
+<!-- 
       <div @click="check()">
         <i class="fas fa-plus"></i>
       </div>
-
+ -->
 
       <!-- 작성 버튼, 로그인시에만 보이게 -->
       <div @click="gotoMC()" class="hyeri__addCombi">
@@ -76,6 +76,9 @@ export default {
     },
     gotoMain(){
         this.$router.push({name: 'Main'})
+    },
+    getlikes(){
+
     },
     check(){
       // Kakao.init("3fba1edc8e21309d5e9c3003264a2b71");
