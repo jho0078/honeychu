@@ -65,7 +65,7 @@ export default {
   },
   mounted() {
     this.getCombi(this.combiId)
-
+    Kakao.init("3fba1edc8e21309d5e9c3003264a2b71");
   },
   methods: {
     getCombi(data) {
