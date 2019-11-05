@@ -1,6 +1,6 @@
 #mainloading{
-	/*position: absolute;
-*/	min-height: 100vh;
+	/*position: absolute;*/
+	min-height: 80vh;
 	background-image: url("../assets/honeyChu.png");
 	background-repeat: no-repeat;
 	background-position: center center;

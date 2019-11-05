@@ -1,45 +1,76 @@
 .hyeri_maintitle{
 	font-family: 'Righteous', cursive;
 	font-style: italic;
-	font-size: 3.3rem;
+	font-size: 2.8rem;
 	font-weight: 600;
-	margin-top: 6rem;
-	/*color: rgb(242, 194, 55);*/
-	/*color: dimgrey;*/
+	margin-top: 4rem;
+	/*margin-top: 3rem;*/
+	color: darkviolet;
+	text-shadow: 2px 2px 2px rgb(220, 200, 220);
+	/*color: rgb(40, 40, 40);*/
 }
-.hyeri_main_logos{
-	margin-top: 3rem;
-	/*display: none;*/
+.hyeri_maintitle img{
+	height: 4rem;
+	vertical-align: top;
+	margin-right: -.5rem;
 }
-.hyeri_main_logos img{
-	width: 6rem;
+.hyeri_fran_list{
+	display: inline-block;
+	text-align: start;
+	font-size: 1.3rem;
+	padding: 0;
 }
-/*.hyeri_main_logos2{
-	display: flex;
-	margin-top: 2rem;
-	margin-left: 2rem;
-	margin-right: 2rem;
-	justify-content: space-around;
-}*/
+.hyeri_fran_list img{
+	height: 2.5rem;
+	width: auto;
+	margin:auto;	
+	justify-content: center;
+
+}
+.hyeri_fran_list li{
+	background-color: white;
+	box-shadow: 1px 1.2px 3px rgba(220, 200, 220, .8);
+	border-radius: 2rem 0 0 0;
+	margin-top: 1rem;
+	margin-left: 10rem;
+	height: 4.5rem;	
+	width: 25rem;
+	list-style: none;
+	display: grid;
+	grid-template-columns: 20% 80%;
+	align-content: center;
+	align-items: center;
+}
+.hyeri_starbucks_logo{
+	font-family: 'Kanit', sans-serif;
+	
+}
+.hyeri_subway_logo{
+	font-family: 'Righteous', cursive;
+}
 #main{
+	font-weight: 500;
+	background-color: rgb(252, 250, 252);
+	/*background-color:rgba(245, 243, 245);*/
 	min-height: 100vh;
 	width: 100%;
 	position: absolute;
-	top: 0;
+	top:0;
 	left: 0;
-	/*background-image: linear-gradient(rgba(255, 255, 255, 0.7)), url("../assets/honeyChu.png");*/
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: 50%;
 	overflow: hidden;
+	display: grid;
+	grid-template-rows: 30% 40% 30%;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
 
 }
 .hyeri_loginout{
-	width: 100%;
+	/*width: 100%;
 	display: inline-block;
 	position: absolute;
-	bottom: 6rem;
-	left: 0;
+	bottom: 7rem;
+	left: 0;*/
 }
 .hyeri_logout{
 	width: 13rem;
@@ -49,5 +80,4 @@
 	background-color: gold;
 	font-weight: 700;
 	color: var(--starbucks-sub1-color);
-
 }

@@ -6,48 +6,21 @@
       </div>
     </div>
 
+    <div v-for="(coffee, index) in coffees">
 
-    <div class="Hyeri__Menubody">
-      <h2 id="0">콜드 브루 커피</h2>
-      <div v-for = "cold in colds" class="namki_blocks">
-        <div>
-          <img :src = "cold.coffee_image" class="namki_menuimg">
-          <p>{{ cold.description }}</p>
+
+      <div class="Hyeri__Menubody">
+        <h2 :id=index>{{coffee.name}}</h2>
+        <div v-for = "list in coffee['lists']" class="namki_blocks" @click="goToCombs(list.name)">
+          <div>
+            <img :src = "list.image" class="namki_menuimg">
+            <p>{{ list.name }}</p>
+          </div>
         </div>
       </div>
 
-      <h2 id="1">브루드커피</h2>
-      <div v-for = "prap in praps" class="namki_blocks">
-        <div>
-          <img :src = "prap.coffee_image" class="namki_menuimg">
-          <p>{{ prap.description }}</p>
-        </div>
-      </div>
-
-      <h2 id="2">에스프레소</h2>
-      <div v-for = "prap in praps" class="namki_blocks">
-        <div>
-          <img :src = "prap.coffee_image" class="namki_menuimg">
-          <p>{{ prap.description }}</p>
-        </div>
-      </div>
-
-      <h2 id="3">프라푸치노</h2>
-      <div v-for = "prap in praps" class="namki_blocks">
-        <div>
-          <img :src = "prap.coffee_image" class="namki_menuimg">
-          <p>{{ prap.description }}</p>
-        </div>
-      </div>
-
-      <h2 id="4">블렌디드</h2>
-      <div v-for = "prap in praps" class="namki_blocks">
-        <div>
-          <img :src = "prap.coffee_image" class="namki_menuimg">
-          <p>{{ prap.description }}</p>
-        </div>
-      </div>
     </div>
+
   </div>
 </template>
 
@@ -59,81 +32,14 @@ export default {
     return {
       now : '',
       coffees: [
-        {
-          name : '콜드 브루 커피'
-        }, {
-          name : '브루드 커피'
-        }, {
-          name : '에스프레소'
-        }, {
-          name : '프라푸치노'
-        }, {
-          name : '블렌디드'
-        }, {
-          name : '스타벅스 피지오'
-        }, {
-          name : '티(티바나)'
-        }, {
-          name : '기타 제조 음료'
-        }, {
-          name: '블론드'
-        }
-
-      ],
-      colds: [
-        {
-
-          coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2019/09/[9200000002487]_20190919181354811.jpg',
-          description: '나이트로 바닐라 크림'
-        }, {
-
-          coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2018/04/[9200000001275]_20180409150826087.jpg',
-          description: '나이트로 쇼콜라 클라우드'
-        },{
-
-          coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2017/03/[9200000000479]_20170328134443491.jpg',
-          description: '나이트로 콜드 브루'
-        },{
-
-          coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2019/04/[9200000002081]_20190409153909754.jpg',
-          description: '돌체 콜드 브루'
-        },{
-
-          coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2017/04/[9200000000487]_20170405152830656.jpg',
-          description: '바닐라 크림 콜드 브루'
-        },
-        {
-
-          coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2016/04/[9200000000038]_20160408135802583.jpg',
-          description: '콜드 브루'
-        },
-      ],
-
-      praps: [
-        {
-          coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2015/08/[168004]_20150813221231839.jpg',
-          description: '모카 프라푸치노'
-        }, {
-          coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2015/08/[168007]_20150813222212580.jpg',
-          description: '에스프레소 프라푸치노'
-        },{
-          coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2015/08/[168013]_20150806153343152.jpg',
-          description: '화이트 초콜릿 모카 프라푸치노'
-        },{
-          coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2019/04/[9200000001906]_20190423150021926.jpg',
-          description: '이천 햅쌀 크림 프라푸치노'
-        },{
-          coffee_image: 'https://image.istarbucks.co.kr/upload/store/skuimg/2019/02/[9200000002090]_20190221165833026.jpg',
-          description: '제주 쑥떡 크림 프라푸치노'
-        },
-      ],
+        {name:'에스프레소', lists: []},
+        {name:'프라푸치노', lists: []},
+      ]
 
     }
   },
-  mounted() {
-
-
-
+  created: function() {
+    this.getCategory()
   },
   methods: {
     scrollTo(locationId) {
@@ -143,6 +49,19 @@ export default {
       window.scrollTo({top: offset, behavior: 'smooth'})
       this.now = locationId
     },
+    getCategory() {
+      for (const [key, value] of this.coffees.entries()) {
+      axios.post("/api/star/menu/category/", {'category':value.name})
+      .then(response=> {
+        this.coffees[key]['lists'] = response.data
+      })
+    }
+
+    },
+    goToCombs(menu) {
+      this.$router.push({path: '/Starmenulist/' + menu})
+    }
+
 
 
   }
