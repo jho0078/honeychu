@@ -101,22 +101,32 @@ export default {
                 this.likeEmail = res.kakao_account.email
                 console.log('?', this.likeEmail)
                 // this.getCombi(this.data)
-                console.log('333333', this.likeId)
+                console.log('333333', this.combiId)
                 // axios.post("/api/user",{email: res.kakao_account.email})
                 // axios.get("api/like/menu/"+this.combiId)
+                // axios.post("/api/like/add", {like_user_email: this.likeEmail, like_starmenu_id: this.likeId})
+                // .then(function(response){
+                //     console.log('추가')
+                //     // console.log(response)
+                //   })
+                //   .catch(function (error) {
+                //     console.log(error)
+                //   })
 				  }
-      })
-      console.log('555555', this.likeId)
-      console.log('666666', this.likeEmail)
-      axios.post("/api/like/add", {like_user_id: this.likeEmail, like_starmenu_id: this.likeId})
-      .then(function(response){
-          console.log('추가')
-          // console.log(response)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+      }).then (() => {
+        console.log('555555', this.combiId)
+        console.log('666666', this.likeEmail)
+        axios.post("/api/like/add", {like_user_email: this.likeEmail, like_starmenu_id: this.combiId})
+        .then(function(response){
+            console.log('추가')
+            // console.log(response)
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
 
+      })
+      
 
     }
 
