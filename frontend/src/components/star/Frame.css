@@ -35,7 +35,7 @@
 .starbucks__title i{
   position: absolute;
   left: 1rem;
-  font-weight: 200;
+  /*font-weight: 200;*/
 }
 
 .starbucks_menubar{
