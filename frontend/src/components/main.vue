@@ -105,7 +105,7 @@
 	      this.$router.push({name:'Starbucks'})
 		},
 		gotoMypage(){
-			this.$router.push({name:'test_HY/Mypage'})
+			this.$router.push({path:'/Mypage'})
 		},
 	    logout(){
 			Kakao.Auth.logout(function () {
