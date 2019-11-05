@@ -36,12 +36,16 @@
 </template>
 
 <script>
+import EventBus from '../../../src/EventBus.js'
+// import EventBus from '../../EventBus.js'
 import '@/components/star/Detail.css'
 export default {
   name:'Detail',
   props:['combiId'],
   data() {
     return {
+      likeEmail: '',
+      likeId: '',
       like: true,
       detail: {},
       extras:[],
@@ -82,6 +86,38 @@ export default {
     // 좋아요함수
     likeMenu(){
       this.like = !this.like
+      console.log(this.like)
+      
+      // // EventBus
+      // EventBus.$on('getEmail', function(email){
+      //   console.log('제발', email)
+      // })
+
+      Kakao.API.request({
+		          url: "/v2/user/me",
+		          // success: function (res) {
+		          success: res => {
+                console.log('2email :', res.kakao_account.email);
+                this.likeEmail = res.kakao_account.email
+                console.log('?', this.likeEmail)
+                // this.getCombi(this.data)
+                console.log('333333', this.likeId)
+                // axios.post("/api/user",{email: res.kakao_account.email})
+                // axios.get("api/like/menu/"+this.combiId)
+				  }
+      })
+      console.log('555555', this.likeId)
+      console.log('666666', this.likeEmail)
+      axios.post("/api/like/add", {like_user_id: this.likeEmail, like_starmenu_id: this.likeId})
+      .then(function(response){
+          console.log('추가')
+          // console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+
+
     }
 
   }
