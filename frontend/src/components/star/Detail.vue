@@ -1,7 +1,8 @@
 <template>
   <div class="Hyeri__starDetail">
     <div class="HSD__Header">
-      <i @click="moveToBack()"class="Hyeri__back fas fa-angle-left"></i>
+      <!-- <i @click="moveToBack()"class="Hyeri__back fas fa-angle-left"></i> -->
+      <i @click="goBack()"class="Hyeri__back fas fa-angle-left"></i>
 
       <!-- 좋아요 -->
       <div class="HSD__like">
@@ -82,6 +83,10 @@ export default {
     },
     moveToBack(){
       this.$router.push({path: '/Starbucks'})
+    },
+    // 뒤로가기
+    goBack() {
+      window.history.back()
     },
     // 좋아요함수
     likeMenu(){
