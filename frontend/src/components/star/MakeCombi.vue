@@ -1,22 +1,33 @@
 <template>
-    <div class="MakeCombi">
-      <h1>게시글 작성</h1>
+    <div id="MakeCombi">
+      <div class="Hyeri__makecombi_header">
+
+        <!-- 뒤로가기 부분입니당 i태그 둘 다 뒤로가게해주센 -->
+        <i class="fas fa-angle-left"></i>
+        <h2>메뉴 추가</h2>
+        <i class="fas fa-times"></i>
+      </div>
+      
       <!-- 사진 업로드 -->
-      <div>
-        <img :src="previewImage" class="namki_uploadingimage">
-         <input type="file" accept="image/jpeg/jpg/png" @change="uploadImage">
+      <div class="Hyeri__uploadbox">
+        <img v-if="previewImage" :src="previewImage" class="namki_uploadingimage">
+        <div class="Hyeri__filebox">
+          <input id="Hyeri__imageupload" type="file" accept="image/jpeg/jpg/png" @change="uploadImage">
+          <label for="Hyeri__imageupload" v-if="!previewImage">사진을 추가해주세요</label>
+          <label for="Hyeri__imageupload" v-if="previewImage">사진 변경하기</label>
+        </div>
       </div>
 
       <!-- select들 -->
       <select class="namki_MakeCombi_select" v-model="Franchise">
-        <option value="" disabled selected hidden>프랜차이즈 선택</option>
-        <option  v-for="Franchise in Franchises" v-bind:value="Franchise.value">
+        <option value="" disabled selected hidden>프랜차이즈를 선택해주세요</option>
+        <option v-for="Franchise in Franchises" v-bind:value="Franchise.value">
           {{ Franchise.Name }}
         </option>
       </select>
-      
+
       <select class="namki_MakeCombi_select" v-model="selected_category">
-        <option value="" disabled selected hidden>카테고리 선택</option>
+        <option value="" disabled selected hidden>카테고리를 선택해주세요</option>
         <option  v-for="category in Object.keys(BasicCoffees)" v-bind:value="category">
           {{ category }}
         </option>
@@ -29,7 +40,7 @@
         </option>
       </select>
 
-      <textarea class="namki_MakeCombi_textarea" @change="Result.name=$event.target.value" placeholder="제목"></textarea>
+      <textarea class="namki_MakeCombi_textarea" @change="Result.name=$event.target.value" placeholder="제목을 입력해주세요"></textarea>
       <input type="text" v-model="Result.tag1">
       <input type="text" v-model="Result.tag2">
 
