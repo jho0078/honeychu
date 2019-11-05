@@ -1,12 +1,14 @@
     #MakeCombi {
       padding: 1rem;
-      margin-top: -3rem;
+      margin-top: -4rem;
+      font-family: 'Kanit', sans-serif;
+      color: rgb(70, 70, 70);
     }
     .Hyeri__makecombi_header{
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: dimgrey;
+      /*color: dimgrey;*/
       /*box-shadow: 0 1px 2px lightgrey;*/
       border-bottom: 1px solid lightgrey;
       margin-bottom: 1rem;
@@ -27,10 +29,11 @@
     .Hyeri__filebox{
       display: inline-block;
       padding: .8em .5em;
-      color: lightskyblue;
+      color: white;
       vertical-align: middle;
-      background-color: white;
-      box-shadow: 1px 1px 2px aliceblue;
+      /*background-color: lightskyblue;*/
+      background:linear-gradient(to left, lightskyblue, #8470ff);
+      box-shadow: 1px 1px 2px lightgrey;
       border-radius: .7rem;
       width: 50%;
       margin-top: 1rem;
@@ -48,7 +51,9 @@
       border: 0;
 
     }
+
     .namki_button {
+      display: flex;
       padding: 5px 5px;
       border: 1px solid #ddd;
       color: #333;
@@ -56,13 +61,24 @@
       border-radius: 4px;
       font-size: 10px;
       cursor: pointer;
+      margin-left: .4rem;
+    }
+    .namki_button_active{
+
+      /*background: radial-gradient(#b0e2ff, #87cefa);*/
+      color: white;
+      background-color: lightskyblue;
+      border: 1px solid lightskyblue;
+      box-shadow: 1px 1px 3px dodgerblue;
+      /*border: none;*/
+      /*box-shadow: inset 1px 1px 2px white;*/
     }
     .namki_MakeCombi_select {
       margin-bottom:5px;
       width: 100%; /* 원하는 너비설정 */
       padding: 1em 1em; /* 여백으로 높이 설정 */
       font-family: inherit;  /* 폰트 상속 */
-      border: 1px solid lightskyblue;
+      border: 1px solid lightgrey;
       border-radius: .5rem;
       color: dimgrey;
       font-weight: 500;
@@ -77,11 +93,44 @@
     }
     
     .namki_MakeCombi_textarea {
-      width:100%;
+      box-sizing: border-box;
+      width: 100%;
+      -webkit-appearance: none; /* 네이티브 외형 감추기 */
+      -moz-appearance: none;
+      appearance: none;
       border-radius: 6px;
       margin-top: 1rem;
-      border: 1px solid lightskyblue;
-      
+      border: 1px solid lightgrey;
+      font-size: 1rem;
+      height: 2.5rem;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+    }
+    .Hyeri__extraitems {
+      font-size: .8rem;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2rem;
+      align-items: center;
+    }
+    .Hyeri__extra2buttons{
+      display: flex;
+    }
+    .Hyeri__extrabuttons{
+      display: flex;
+      justify-content: space-between;
+    }
+    .Hyeri__extrabuttons div{
+      background: linear-gradient(to bottom, lightskyblue, #8470ff);
+      opacity: .8;
+
+      /*background-color: #8470ff;*/
+      width: 1rem;
+      height: 1rem;
+      padding: auto;
+      color: white;
+      border-radius: 50%;
+      box-shadow: 1px 1px 2px lightgrey; 
 
     }
     .accordion {
@@ -97,14 +146,16 @@
       line-height: 40px;
       padding: 0 40px 0 8px;
       position: relative;
-      color: #fff;
+      color: dimgrey;
+      font-weight: 500;
+      margin: .3rem 0;
       cursor: pointer;
     }
 
     .accordion .header-icon {
       position: absolute;
       top: 5px;
-      right: 8px;
+      right: 1rem;
       transform: rotate(0deg);
       transition-duration: 0.3s;
     }
@@ -112,16 +163,29 @@
     .accordion .body {
     /*   display: none; */
       overflow: hidden;
-      background-color: #fff;
+      background-color: white;
       border: 10px solid #ec5366;
       border-top: 0;
+      height: max-content;
+      padding: 1rem;
       border-bottom-left-radius: 6px;
       border-bottom-right-radius: 6px;
       transition: 150ms ease-out;
     }
-
+    /*Hyeri's custom*/
+    .accordion hr{
+      border: none;
+      /*border-color: #8470ff;*/
+      height: 1px;
+      width: 90%;
+      background-color: whitesmoke;
+      /*background: linear-gradient(to right, lightskyblue, #8470ff);*/
+      margin: .6rem auto;
+      box-shadow: none !important;
+      font-weight: 500;
+    }
     .accordion .body-inner {
-      padding: 8px;
+      /*padding: 1rem;*/
       overflow-wrap: break-word;
       /* white-space: pre-wrap; */
     }
@@ -130,14 +194,25 @@
       transform: rotate(180deg);
       transition-duration: 0.3s;
     }
+    .accordion.hyeri{
+      background-color:white;
+      border: 1px solid lightgrey;
+      /*box-shadow: 1px 1px 3px rgba(132,112,255, 0.6);*/
+      margin-bottom: .3rem;
+    }
+    .accordion.hyeri .body{
+      border-color:white;
+      height: max-content;
+    }
 
     .accordion.purple {
       background-color: #8c618d;
-      border: 1px solid;
+      /*border: 1px solid;*/
 
     }
     .accordion.purple .body {
       border-color: #8c618d;
+      height: max-content;
     }
     .accordion.red {
       background-color: #c03333;
@@ -161,6 +236,4 @@
       border-color: #5c575c;
     }
 
-    .namki_button_active{
-      background-color: lightgray;
-    }
+    
