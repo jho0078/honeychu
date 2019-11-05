@@ -72,7 +72,16 @@ export default {
       this.isRcVisible = false
     },
     gotoMC(){
-      this.$router.push({path:'/makeCombi'})
+      Kakao.Auth.getStatus(statusObj => {
+						if (statusObj.status == "not_connected") {
+              alert('로그인 해주세요!')
+							console.log('xxxxx')
+						} else {
+              this.$router.push({path:'/makeCombi'})
+							console.log('ooooo')
+						}
+					})
+      // this.$router.push({path:'/makeCombi'})
     },
     gotoMain(){
         this.$router.push({name: 'Main'})
