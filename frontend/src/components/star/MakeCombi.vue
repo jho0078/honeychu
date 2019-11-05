@@ -5,7 +5,7 @@
         <!-- 뒤로가기 부분입니당 i태그 둘 다 뒤로가게해주센 -->
         <i class="fas fa-angle-left"></i>
         <h2>메뉴 추가</h2>
-        <i class="fas fa-times"></i>
+        <i style="color:yellowgreen; font-size: 1.3rem"class="fas fa-check"></i>
       </div>
       
       <!-- 사진 업로드 -->
@@ -28,7 +28,7 @@
 
       <select class="namki_MakeCombi_select" v-model="selected_category">
         <option value="" disabled selected hidden>카테고리를 선택해주세요</option>
-        <option  v-for="category in Object.keys(BasicCoffees)" v-bind:value="category">
+        <option v-for="category in Object.keys(BasicCoffees)" v-bind:value="category">
           {{ category }}
         </option>
       </select>
@@ -40,34 +40,38 @@
         </option>
       </select>
 
-      <textarea class="namki_MakeCombi_textarea" @change="Result.name=$event.target.value" placeholder="제목을 입력해주세요"></textarea>
-      <input type="text" v-model="Result.tag1">
-      <input type="text" v-model="Result.tag2">
+      <!-- 타이틀 -->
+      <input class="namki_MakeCombi_textarea" @change="Result.name=$event.target.value" placeholder="메뉴 이름을 설정해주세요."></input>
+      <!-- <input type="text" v-model="Result.tag1"> -->
+      <!-- <input type="text" v-model="Result.tag2"> -->
 
       <!-- 엑스트라 -->
-      <div v-for= "(value, key) in Extras">
-        <Accordion theme="purple">
+      <h3>엑스트라 변경사항</h3>
+      <div v-for= "(v, key) in Extras">
+        <Accordion theme="hyeri">
           <div slot="header">{{ key }}</div>
-          <div v-for="item in value">
-            <div v-if="Result[item.value] < 10">
-              {{ item.name }}
-              <button @click="Result[item.value] = String(Number(Result[item.value]) - 1)">-</button>
-                {{ Result[item.value] }}
-              <button @click="Result[item.value] = String(Number(Result[item.value]) + 1)">+</button>
-              <hr>
-            </div>
-
-            <div v-else>
-              {{ item.name }}
-              <div style="display:inline;" v-for="(value, key) in item.type">
-                  <button class="namki_button" :class="{namki_button_active : Result[item.value] == value}" @click="Result[item.value]=value">{{value}}</button>
+          <div v-for="(item, index) in v">
+            <div class="Hyeri__extraitems"v-if="Result[item.value] < 10">
+              <div>{{ item.name }}</div>
+              <div class="Hyeri__extrabuttons">
+                <div @click="Result[item.value] = String(Number(Result[item.value]) - 1)">-</div>
+                  &nbsp;&nbsp;{{ Result[item.value] }}&nbsp;&nbsp;
+                <div @click="Result[item.value] = String(Number(Result[item.value]) + 1)">+</div>
               </div>
             </div>
+
+            <div class="Hyeri__extraitems" v-else>
+              <div>{{ item.name }}</div>
+              <div  class="Hyeri__extra2buttons">
+                  <div v-for="(value, key) in item.type" class="namki_button" :class="{namki_button_active : Result[item.value] == value}" @click="Result[item.value]=value">{{value}}</div>
+              </div>
+            </div>
+            <hr  v-if="index < v.length-1">
           </div>
         </Accordion>
       </div>
-      <button @click="CreateMenu" type="submit" name="button">제출</button>
-      <button @click="CreateHash()" type="button" name="button">asd</button>
+      <!-- <button @click="CreateMenu" type="submit" name="button">제출</button> -->
+      <!-- <button @click="CreateHash()" type="button" name="button">asd</button> -->
     </div>
 </template>
 
