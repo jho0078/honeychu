@@ -340,7 +340,7 @@ export default {
 
     },
     goToDetail(combiId) {
-      this.$router.push({path: '/Starbucks/' + combiId})
+      this.$router.push({path: '/Starbucks/' + combiId, props:{combiId: combiId, before: this.menu} })
     },
 
   }
