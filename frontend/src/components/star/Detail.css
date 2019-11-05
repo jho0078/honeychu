@@ -2,6 +2,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
 }
 .HSD__Header {
   display:inline-flex;

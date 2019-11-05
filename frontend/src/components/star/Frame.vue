@@ -24,11 +24,11 @@
         <ChuCircle v-if="isRcVisible"></ChuCircle>
         <MenuCircle v-if="!isRcVisible"></MenuCircle>
       </div>
-
+<!-- 
       <div @click="check()">
         <i class="fas fa-plus"></i>
       </div>
-
+ -->
 
       <!-- 작성 버튼, 로그인시에만 보이게 -->
       <div @click="gotoMC()" class="hyeri__addCombi">
@@ -49,11 +49,18 @@ export default {
   },
   data() {
     return {
-      isRcVisible:true
+      isRcVisible:true,
+      likeList: [],
     }
   },
   mounted() {
-
+    axios.get("/api/like")
+      .then(response=>{
+        this.likeList = response.data
+        console.log('likeList check', this.likeList)
+      })
+    // this.getLikeList()
+    // console.log('좀 되라', this.likeList)
 
 
   },
@@ -65,10 +72,22 @@ export default {
       this.isRcVisible = false
     },
     gotoMC(){
-      this.$router.push({path:'/makeCombi'})
+      Kakao.Auth.getStatus(statusObj => {
+						if (statusObj.status == "not_connected") {
+              alert('로그인 해주세요!')
+							console.log('xxxxx')
+						} else {
+              this.$router.push({path:'/makeCombi'})
+							console.log('ooooo')
+						}
+					})
+      // this.$router.push({path:'/makeCombi'})
     },
     gotoMain(){
         this.$router.push({name: 'Main'})
+    },
+    getlikes(){
+
     },
     check(){
       // Kakao.init("3fba1edc8e21309d5e9c3003264a2b71");
@@ -79,7 +98,14 @@ export default {
 							console.log('ooooo')
 						}
 					})
-    }
+    },
+    // getLikeList() {
+    //   axios.get("/api/like")
+    //   .then(response=>{
+    //     this.likeList = response.data
+    //     console.log('likeList check', this.likeList)
+    //   })
+    // }
 
 
   }
