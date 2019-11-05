@@ -5,7 +5,7 @@
         <!-- 뒤로가기 부분입니당 i태그 둘 다 뒤로가게해주센 -->
         <i class="fas fa-angle-left"></i>
         <h2>메뉴 추가</h2>
-        <i style="color:yellowgreen; font-size: 1.3rem"class="fas fa-check"></i>
+        <i style="color:rgb(118, 254, 84); font-size: 1.3rem"class="fas fa-check"></i>
       </div>
       
       <!-- 사진 업로드 -->
