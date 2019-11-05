@@ -11,7 +11,7 @@ router.get('/', function(request, response) {
     }
   }).then((starmenu) => {
   response.json(starmenu)
-});
+  });
 });
 
 module.exports = router;
