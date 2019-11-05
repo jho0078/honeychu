@@ -37,28 +37,53 @@ router.get('/menu/:id', function(req, res) {
 // DB에 좋아요 추가
 // 유저 id 어떻게 받나?
 router.post('/add', function(req, res) {
-  // let like_user_email = req.params.likeEmail
-  // models.starmenu.findAll({
-  //   where: {
-  //     email: like_user_email
-  //   }
-  // })
-  models.like.create({
-      like_user_id: req.body.like_user_id,
-      like_starmenu_id: req.body.like_starmenu_id,
+  var like_user_email = req.body.like_user_email
+  var like_starmenu_id = req.body.like_starmenu_id
+  models.user.findAll({
+    where: {
+      email: like_user_email,
+    }
+  }).then((result) => {
+    var user_id = result[0].user_id
+    models.like.findAll({
+      where: {
+        like_user_id: user_id,
+        like_starmenu_id: like_starmenu_id
+      }
     }).then((result) => {
-    res.json(result);
-  }, (validation) => {
-    res.json({
-      errores: validation.errors.map((error) => {
-        return {
-          attribute: error.path,
-          message: error.message
-        };
-      })
-    });
-    //TODO: error handling
-  });
+      console.log(result)
+      if (result.length) {        
+        models.like.destroy({
+          where: {
+            like_user_id: user_id,
+            like_starmenu_id: like_starmenu_id
+          }
+        })
+      } else {
+        models.like.create({
+          like_user_id: user_id,
+          like_starmenu_id: like_starmenu_id,
+        })
+      }
+    })
+
+  })
+  // models.like.create({
+  //     like_user_id: req.body.like_user_id,
+  //     like_starmenu_id: req.body.like_starmenu_id,
+  //   }).then((result) => {
+  //   res.json(result);
+  // }, (validation) => {
+  //   res.json({
+  //     errores: validation.errors.map((error) => {
+  //       return {
+  //         attribute: error.path,
+  //         message: error.message
+  //       };
+  //     })
+  //   });
+  //   //TODO: error handling
+  // });
 });
 
 
