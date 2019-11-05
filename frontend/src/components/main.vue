@@ -120,7 +120,8 @@
 	    logout(){
 			Kakao.Auth.logout(function () {
 				setTimeout(function(){
-					location.href="http://localhost:8080"
+          // location.href="http://localhost:8080"
+          location.href="http://52.78.224.61:8080"
 				}, 1000);
 		
 				})
