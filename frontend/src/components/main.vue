@@ -18,7 +18,7 @@
         <div>SUBWAY</div>
       </li>
     </ul>
-		<div class="hyeri_loginout"> 
+		<div class="hyeri_loginout">
 			<!-- {{ isUser }} -->
 			<div v-show="!isUser" id="kakao-login-btn"></div>
   			<div v-show="isUser" class="hyeri_logout" @click="logout()">로그아웃</div>
@@ -43,10 +43,10 @@
 	    }
 	  },
 	  mounted() {
-		  
+
 		  if (!this.isUser) {
 			  this.kakao_login();
-		  }	  	
+		  }
 		  Kakao.Auth.getStatus(statusObj => {
 						if (statusObj.status == "not_connected") {
 							console.log('xxxxx')
@@ -57,7 +57,7 @@
 						}
 					})
 	  },
-	  
+
 	//   watch: {
 	// 	  isUser: function(newVal, oldVal) {
 	// 		  console.log('watch isUser', this.isUser)
@@ -66,12 +66,12 @@
 	//   },
 
 	methods: {
-	  kakao_login() {  		
+	  kakao_login() {
 	  		// Kakao.init("3fba1edc8e21309d5e9c3003264a2b71");
 		    // 카카오 로그인 버튼을 생성합니다.
-		    Kakao.Auth.createLoginButton({          
+		    Kakao.Auth.createLoginButton({
 		      container: "#kakao-login-btn",
-		      // scope: "account_email",
+		      scope: "account_email",
 		      success: authObj => {
 		        Kakao.API.request({
 		          url: "/v2/user/me",
@@ -81,7 +81,7 @@
 		            // console.log('email :',res.kaccount_email);
 		            console.log('id :', res.id);
 					// console.log('nickname :', res.properties.nickname);
-										
+
 					this.isUser = true
 					this.userEmail = res.kakao_account.email
 		          	axios.post("/api/user",{email: res.kakao_account.email})
@@ -104,7 +104,7 @@
 		        alert(JSON.stringify(err));
 		      }
 		    });
-	  	},	
+	  	},
 	    gotoStarbucks(){
 	      this.$router.push({name:'Starbucks'})
 		},
@@ -132,7 +132,7 @@
 				// }, 1000);
 			// })
 				// Kakao.init("3fba1edc8e21309d5e9c3003264a2b71")
-				
+
 				Kakao.cleanup()
 				Kakao.init("3fba1edc8e21309d5e9c3003264a2b71");
 			Kakao.Auth.getStatus(function(statusObj) {

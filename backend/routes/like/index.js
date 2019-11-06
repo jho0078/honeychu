@@ -87,6 +87,20 @@ router.post('/add', function(req, res) {
   // });
 });
 
+// 좋아요 갯수 그룹
+router.get('/count/:id', function(req, res) {
+  var star_menu_id = req.params.id
+  models.like.findAll({
+    attributes: ['like_starmenu_id', [Sequelize.fn('count', Sequelize.col('like_starmenu_id')), 'like_count']], 
+    group: ['like_starmenu_id'],
+    where: {
+      like_starmenu_id: star_menu_id
+    }
+  })
+  .then((result) => {
+    res.json(result)
+  })
+})
 
 // 좋아요 갯수 그룹
 router.get('/count', function(req, res) {

@@ -5,9 +5,9 @@
         <!-- 뒤로가기 부분입니당 i태그 둘 다 뒤로가게해주센 -->
         <i class="fas fa-angle-left"></i>
         <h2>메뉴 추가</h2>
-        <i style="color:rgb(118, 254, 84); font-size: 1.3rem"class="fas fa-check"></i>
+        <i style="color:rgb(118, 254, 84); font-size: 1.3rem" class="fas fa-check" @click="CreateMenu()"></i>
       </div>
-      
+
       <!-- 사진 업로드 -->
       <div class="Hyeri__uploadbox">
         <img v-if="previewImage" :src="previewImage" class="namki_uploadingimage">
@@ -280,6 +280,11 @@ export default {
         .then(function(response){
           if (response.data.success == false) {
               alert('중복')
+          }
+          else {
+            alert('제출완료')
+            this.$router.replace('www.naver.com')
+
           }
         })
         .catch(function (error) {

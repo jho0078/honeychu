@@ -18,9 +18,10 @@
         </button>
       </div>
       <div v-if="isRcVisible">
-        <!-- <Chu></Chu> -->
       </div>
-      <div v-if="!isRcVisible">나의메뉴</div>
+      <div v-if="!isRcVisible">
+        나의메뉴
+      </div>
     </div>
   </div>
 </template>
