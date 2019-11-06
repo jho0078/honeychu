@@ -17,9 +17,11 @@
         </button>
       </div>
       <div v-if="isRcVisible">
-        <Chu></Chu>
+        ㅗㅑ
       </div>
-      <div v-if="!isRcVisible">나의메뉴</div>
+      <div v-if="!isRcVisible">
+        나의메뉴
+      </div>
     </div>
   </div>
 </template>
@@ -28,13 +30,11 @@
 import "@/components/test_HY/Mypage.css";
 import MenuCircle from "@/components/star/MenuCircle";
 import ChuCircle from "@/components/star/ChuCircle";
-import Chu from "@/components/star/Chu";
 export default {
   name: "Mypage",
   components: {
     MenuCircle,
     ChuCircle,
-    Chu
   },
   data() {
     return {
