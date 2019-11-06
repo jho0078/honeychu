@@ -42,6 +42,7 @@
 	    }
 	  },
 	  mounted() {
+		  
 		  if (!this.isUser) {
 			  this.kakao_login();
 		  }	  	
