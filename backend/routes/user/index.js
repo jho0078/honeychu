@@ -87,4 +87,15 @@ router.get("/logout", function(req,res,next){
 //   });
 // });
 
+// email로 유저 조회
+router.post('/userid', function(req, res, next){
+  models.user.findAll({
+    where: {
+      email: req.body.email
+    }
+  }).then((user) => {
+    res.json(user)
+  })
+})
+
 module.exports = router;

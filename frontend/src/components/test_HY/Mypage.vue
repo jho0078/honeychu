@@ -46,11 +46,15 @@ export default {
     };
   },
   mounted() {
-    axios.get("/api/star/menu")
-      .then(response=>{
-        this.myMenu = response.data
-        console.log('myMenu check', this.myMenu)
+    axios.post("/api/user/userid", {email: this.userEmail})
+      .then(response => {
+        console.log('??', response.data)
       })
+    // axios.get("/api/star/menu")
+    //   .then(response=>{
+    //     this.myMenu = response.data
+    //     console.log('myMenu check', this.myMenu)
+    //   })
   },
   methods: {
     showLike_HY() {
