@@ -53,7 +53,7 @@ router.post('/add', function(req, res) {
       }
     }).then((result) => {
       console.log(result)
-      if (result.length) {        
+      if (result.length) {
         models.like.destroy({
           where: {
             like_user_id: user_id,
@@ -90,7 +90,7 @@ router.post('/add', function(req, res) {
 // 좋아요 갯수 그룹
 router.get('/count', function(req, res) {
   models.like.findAll({
-    attributes: ['like_starmenu_id', [Sequelize.fn('count', Sequelize.col('like_starmenu_id')), 'like_count']], 
+    attributes: ['like_starmenu_id', [Sequelize.fn('count', Sequelize.col('like_starmenu_id')), 'like_count']],
     group: ['like_starmenu_id'],
   })
   .then((result) => {
@@ -102,7 +102,7 @@ router.get('/count', function(req, res) {
 router.get('/count/menu/:id', function(req, res) {
   var star_menu_id = req.params.id
   models.like.findAll({
-    attributes: ['like_starmenu_id', [Sequelize.fn('count', Sequelize.col('like_starmenu_id')), 'like_count']], 
+    attributes: ['like_starmenu_id', [Sequelize.fn('count', Sequelize.col('like_starmenu_id')), 'like_count']],
     group: ['like_starmenu_id'],
     where: {
       like_starmenu_id: star_menu_id

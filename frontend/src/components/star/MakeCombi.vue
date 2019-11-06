@@ -102,7 +102,7 @@ export default {
             '커피': [
               { name: '에스프레소샷', value: "espresso_shot" },
               { name: '디카페인', value: "decaf_espresso_shot"},
-              { name: '1/2디카페인', value: "half_decaf_espresso_shot"},
+              { name: '0.5디카페인', value: "half_decaf_espresso_shot"},
               { name: '프라푸치노 로스트 샷', value: "frappuccino_roast_shot"}
             ],
             '시럽': [
