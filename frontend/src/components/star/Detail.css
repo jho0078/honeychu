@@ -38,6 +38,7 @@
   font-weight: 700;
   letter-spacing: .4rem;
   margin-bottom: .4rem;
+  word-break: keep-all;
 }
 .Hyeri__starDetail img{
   width:100%;
