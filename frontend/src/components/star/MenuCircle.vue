@@ -12,7 +12,7 @@
       <div class="Hyeri__Menubody">
         <h2 :id=index>{{coffee.name}}</h2>
         <div v-for = "list in coffee['lists']" class="namki_blocks">
-          <div @click="goToCombs(list.name)">
+          <div @click="goToCombs(list.name, list.image)">
             <img :src = "list.image" class="namki_menuimg">
             <p>{{ list.name }}</p>
           </div>
@@ -26,6 +26,7 @@
 
 <script>
 import '@/components/star/MenuCircle.css'
+import EventBus from '../../EventBus.js'
 export default {
   name:'Menu',
   data() {
@@ -58,7 +59,8 @@ export default {
     }
 
     },
-    goToCombs(menu) {
+    goToCombs(menu, img) {
+      // EventBus.$emit('getimg', img)
       this.$router.push({path: '/Starmenulist/' + menu})
     }
 

@@ -26,12 +26,15 @@
         <div>추가해주세요.</div>
       </div>
 
-        <p class="HSD__option">" {{combi.Option}} "</p>
+        <!-- <p class="HSD__option">" {{combi.Option}} "</p> -->
 
-      <p class="HSD__createby">{{combi.Date}} &nbsp | &nbsp; by.
+      <!-- <p class="HSD__createby">{{combi.Date}} &nbsp | &nbsp; by. -->
         <!-- user link 달기 -->
-        <b class="text-primary">허니츄</b></p>
+        <!-- <b class="text-primary">허니츄</b></p> -->
     </div>
+    <div @click="gotoMC()" class="hyeri__addCombi">
+        <i class="fas fa-plus"></i>
+      </div>
   </div>
 
 </template>
@@ -133,7 +136,19 @@ export default {
       })
       
 
-    }
+    },
+    gotoMC(){
+      Kakao.Auth.getStatus(statusObj => {
+            if (statusObj.status == "not_connected") {
+              alert('로그인 해주세요!')
+              console.log('xxxxx')
+            } else {
+              this.$router.push({path:'/makeCombi'})
+              console.log('ooooo')
+            }
+          })
+      // this.$router.push({path:'/makeCombi'})
+    },
 
   }
 }

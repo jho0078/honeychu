@@ -1,104 +1,51 @@
 <template>
-  <div>
+  <div id="menuList">
+    <div class="Hyeri__mlHeader">
       <i @click="goBack()" class="left fas fa-angle-left"></i>
-    <div>
+      <h2 v-if="flag">{{combis[0].category}}</h2>
+      <div></div>
+    </div>
     <!-- <h3>{{menu}}</h3> -->
-    <h2>{{combis[0].name}}</h2>
     <!-- {{combis[0].img}} -->
     <!-- <header class="header_HY">
       <h1>STARBUCKS {{Frappuccinos.length + Lattes.length + CoolLimes.length + Espressos.length}}개</h1>
     </header>-->
-    </div>
     <!-- 프라푸치노 for문 -->
-    <div>
-      <h3>Frappuccino</h3>
-      <div v-for="combi in combis" @click="goToDetail(combi.starmenu_id)">
-        <div class="border_HY">
+    <img :src="cateimg" />
+      <div class="Hyeri__mlList">
+      <div class="border_HY" v-for="combi in combis" @click="goToDetail(combi.starmenu_id)">
           <img class="img_HY" :src="combi.image" />
           <div>
             <h3>{{ combi.name }}</h3>
-            <h4>{{ combi.price }}</h4>
-          </div>
-          좋아요
+            <h4> <span style="color:darkorange">{{ combi.price }}</span> 원</h4>
+          <!-- 좋아요
           <div class="like_HY">{{ combi.likes }}</div>
           <i v-if="!like" :id="index" @click="likeMenu($event, index)"
             class="heart_HY far fa-heart"
           ></i>
-          <i v-if="like" @click="likeMenu($event, index)" class="heart_HY fas fa-heart"></i>
+          <i v-if="like" @click="likeMenu($event, index)" class="heart_HY fas fa-heart"></i> -->
+        </div>
         </div>
       </div>
+    <div @click="gotoMC()" class="hyeri__addCombi">
+        <i class="fas fa-plus"></i>
     </div>
-
-    <!-- 라떼 for문 -->
-    <!-- <div>
-      <h3>Latte {{Lattes.length}}개</h3>
-      <div v-for="(latte, index) in Lattes" :key="index">
-        <div class="border_HY">
-          <div>
-            <img
-              @click="goToDetail(latte.id, latte.coffee_kind)"
-              class="img_HY"
-              :src="latte.coffee_image"
-            />
-          </div>
-          <div>
-            <h3>이름 {{ latte.coffee_name }}</h3>
-            <h4>가격 {{ latte.coffee_price }}</h4>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- 쿨라임 for문 -->
-    <!-- <div>
-      <h3>Cool Lime {{CoolLimes.length}}개</h3>
-      <div v-for="(coollime, index) in CoolLimes" :key="index">
-        <div class="border_HY">
-          <div>
-            <img
-              @click="goToDetail(coollime.id, coollime.coffee_kind)"
-              class="img_HY"
-              :src="coollime.coffee_image"
-            />
-          </div>
-          <div>
-            <h3>이름 {{ coollime.coffee_name }}</h3>
-            <h4>가격 {{ coollime.coffee_price }}</h4>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- 에스프레소 for문 -->
-    <!-- <div>
-      <h3>Espresso {{Espressos.length}}개</h3>
-      <div v-for="(espresso, index) in Espressos" :key="index">
-        <div class="border_HY">
-          <div>
-            <img
-              @click="goToDetail(espresso.id, espresso.coffee_kind)"
-              class="img_HY"
-              :src="espresso.coffee_image"
-            />
-          </div>
-          <div>
-            <h3>이름 {{ espresso.coffee_name }}</h3>
-            <h4>가격 {{ espresso.coffee_price }}</h4>
-          </div>
-        </div>
-      </div>
-    </div> -->
   </div>
 </template>
 
 <script>
 import "@/components/star/Chu.css";
+import EventBus from "../../EventBus.js";
+
 export default {
   name: "Chu",
   components: {},
   props:['menu'],
   data() {
     return {
+      imgflag:false,
+      flag:false,
+      cateimg:false,
       combis:[],
       like: true,
       Frappuccinos: [
@@ -324,6 +271,14 @@ export default {
       activeIndex: undefined
     };
   },
+  created(){
+    EventBus.$on('getimg', img =>{
+      console.log('img' , img)
+      this.cateimg=img
+      // this.getMenu()
+      console.log('--------',this.cateimg)
+    })
+  },
   mounted() {
     this.getMenu()
   },
@@ -334,10 +289,13 @@ export default {
       console.log(index);
     },
     getMenu(){
-      axios.post("/api/star/menu/category/", {'category':this.menu})
+      axios.post("/api/star/menu/category/", {'category' : this.menu})
       .then(response=> {
         this.combis = response.data
         console.log(response.data)
+
+      }).then(()=>{
+        this.flag = true  
       })
 
     },
@@ -347,6 +305,18 @@ export default {
     // 뒤로가기
     goBack() {
       window.history.back()
+    },
+    gotoMC(){
+      Kakao.Auth.getStatus(statusObj => {
+            if (statusObj.status == "not_connected") {
+              alert('로그인 해주세요!')
+              console.log('xxxxx')
+            } else {
+              this.$router.push({path:'/makeCombi'})
+              console.log('ooooo')
+            }
+          })
+      // this.$router.push({path:'/makeCombi'})
     },
   }
 };
