@@ -1,15 +1,47 @@
 /*@import url("https://fonts.googleapis.com/css?family=Sunflower:700&display=swap");*/
 #menuList{
     position: absolute;
-    top: 1rem;
+    top: 0;
     left: 0;
     width: 100%;
+
+}
+.Hyeri__mlmainImg{
+    width: 101%;
+    position: relative;
+    top: -5rem;
+    overflow:hidden;
+    /*position: absolute;
+    top: 0;
+    left: 0;*/
+    z-index: -1;
+
 }
 .Hyeri__mlHeader{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2rem;
+    width: max-content;
+    font-size: 1.8rem;
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: space-between;*/
+    /*margin-top: 1rem;
+    margin-left: 1rem;
+    box-shadow: 1px 1px 2px lightgrey;
+    color: black;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    padding: auto;
+    */
+}
+.Hyeri__mlList{
+    margin-top: -12rem;
+    padding-top: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 2rem 2rem 0 0;
+    overflow-y: scroll;
 }
 .header_HY {
     position: fixed;

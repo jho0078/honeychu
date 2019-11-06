@@ -61,7 +61,8 @@ export default {
     },
     goToCombs(menu, img) {
       EventBus.$emit('getimg', img)
-      this.$router.push({path: '/Starmenulist/' + menu})
+      let query = {img: img}
+      this.$router.push({path: '/Starmenulist/' + menu, query:query})
     }
 
 

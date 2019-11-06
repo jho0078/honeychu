@@ -2,7 +2,6 @@
   <div id="menuList">
     <div class="Hyeri__mlHeader">
       <i @click="goBack()" class="left fas fa-angle-left"></i>
-      <h2 v-if="flag">{{combis[0].category}}</h2>
       <div></div>
     </div>
     <!-- <h3>{{menu}}</h3> -->
@@ -11,9 +10,10 @@
       <h1>STARBUCKS {{Frappuccinos.length + Lattes.length + CoolLimes.length + Espressos.length}}개</h1>
     </header>-->
     <!-- 프라푸치노 for문 -->
-    <div v-if="cateimg">{{ cateimg }}</div>
-    <img :src="cateimg" />
+
+      <img class="Hyeri__mlmainImg":src="cateimg" />
       <div class="Hyeri__mlList">
+      <h2 v-if="flag">{{combis[0].category}}</h2>
       <div class="border_HY" v-for="combi in combis" @click="goToDetail(combi.starmenu_id)">
           <img class="img_HY" :src="combi.image" />
           <div>
@@ -273,16 +273,13 @@ export default {
     };
   },
   created(){
-    EventBus.$on('getimg', img =>{
-      console.log('img' , img)
-      this.cateimg=img
-
-      // this.getMenu()
-      console.log('this', this)
-      console.log('--------',this.cateimg)
-    }).then(()=> {
-        console.log(this.cateimg) 
-      })
+    // EventBus.$on('getimg', img =>{
+    //   console.log('img' , img)
+    //   this.cateimg=img
+    //   // this.getMenu()
+    //   console.log('this', this)
+    //   console.log('--------',this.cateimg)
+    // })
   },
   mounted() {
     this.getMenu()
@@ -294,6 +291,7 @@ export default {
       console.log(index);
     },
     getMenu(){
+      this.cateimg = this.$route.query.img
       axios.post("/api/star/menu/category/", {'category' : this.menu})
       .then(response=> {
         this.combis = response.data
