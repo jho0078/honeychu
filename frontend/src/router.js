@@ -51,9 +51,10 @@ export default new Router({
       component: Admin
     },
     {
-      path: '/Mypage',
+      path: '/Mypage/:userEmail',
       name: 'Mypage',
-      component: Mypage
+      component: Mypage,
+      props:true
     },
     {
       path: '/test',
