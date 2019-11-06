@@ -11,6 +11,7 @@
       <h1>STARBUCKS {{Frappuccinos.length + Lattes.length + CoolLimes.length + Espressos.length}}개</h1>
     </header>-->
     <!-- 프라푸치노 for문 -->
+    <div v-if="cateimg">{{ cateimg }}</div>
     <img :src="cateimg" />
       <div class="Hyeri__mlList">
       <div class="border_HY" v-for="combi in combis" @click="goToDetail(combi.starmenu_id)">
@@ -275,9 +276,13 @@ export default {
     EventBus.$on('getimg', img =>{
       console.log('img' , img)
       this.cateimg=img
+
       // this.getMenu()
+      console.log('this', this)
       console.log('--------',this.cateimg)
-    })
+    }).then(()=> {
+        console.log(this.cateimg) 
+      })
   },
   mounted() {
     this.getMenu()
