@@ -94,7 +94,7 @@ router.get("/logout", function(req,res,next){
 //     where: {user_id: id}
 //   })
 //   .then( result => {
-    
+
 //   })
 //   .catch( err => {
 //     console.log("데이터 삭제 실패");
