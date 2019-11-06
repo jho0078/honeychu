@@ -35,6 +35,14 @@ export default {
       coffees: [
         {name:'에스프레소', lists: []},
         {name:'프라푸치노', lists: []},
+        {name:'티(티바나)', lists: []},
+        {name:'콜드브루', lists: []},
+        {name:'디카페인 커피', lists: []},
+        {name:'블렌디드', lists: []},
+        {name:'피지오', lists: []},
+        {name:'브루드커피', lists: []},
+        {name:'기타', lists: []},
+
       ]
 
     }
