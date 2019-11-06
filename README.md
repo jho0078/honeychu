@@ -11,9 +11,6 @@
 4. master는 건들지 말것 
 
 
-
-
-
 ## Commit
 
 1. 커밋 규칙
@@ -41,6 +38,7 @@
 #### AWS 연결하기
 
 ~~~
- $ ssh -i /secrets/T0103B12.pem ubuntu@52.78.224.61
+ $ ssh -i ./secrets/T0103B12.pem ubuntu@52.78.224.61
+
 ~~~
 
