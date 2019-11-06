@@ -1,12 +1,20 @@
 <template>
   <div id="app">
     <div>
-      {{userEmail}}
+      <!-- {{userEmail}} -->
       <h1>Mypage</h1>
       <hr />
     </div>
     <div>
-      <div class="Like_HY">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <img src="https://www.limratechnosys.com/blog/wp-content/uploads/2018/09/comingsoon-1140x570.png" style="width: 360px">
+      <!-- <div class="Like_HY">
         <button @click="showLike_HY()">
           <h3>좋아요한메뉴</h3>
         </button>
@@ -21,7 +29,7 @@
       </div>
       <div v-if="!isRcVisible">
         나의메뉴
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
