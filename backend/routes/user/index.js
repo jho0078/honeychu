@@ -111,5 +111,4 @@ router.post('/userid', function(req, res, next){
     res.json(user)
   })
 })
-
 module.exports = router;
