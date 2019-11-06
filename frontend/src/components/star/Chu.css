@@ -1,5 +1,16 @@
-@import url("https://fonts.googleapis.com/css?family=Sunflower:700&display=swap");
-
+/*@import url("https://fonts.googleapis.com/css?family=Sunflower:700&display=swap");*/
+#menuList{
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    width: 100%;
+}
+.Hyeri__mlHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
 .header_HY {
     position: fixed;
     top: 0;
@@ -20,13 +31,17 @@
 }
 
 .border_HY {
+    padding: .3rem;
+    margin-bottom: .3rem;
     display: inline-flex;
     text-align: left;
     font-size: 80%;
     font-family: TmonMonsori, "GodoB", "굴림";
-    width: 100%;
+    width: 90%;
     height: 100px;
-    background-color: whitesmoke;
+    border-bottom: 1px solid var(--starbucks-sub3-color);
+    /*border-radius: .8rem;*/
+    /*box-shadow: 2px 2px 4px var(--starbucks-main-color);*/
     margin-bottom: 5px;
 }
 

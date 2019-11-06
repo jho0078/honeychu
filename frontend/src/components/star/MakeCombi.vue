@@ -303,7 +303,10 @@ export default {
         })
         .catch(function (error) {
         })
-      }
+      },
+      goBack() {
+      window.history.back()
+      },
     },
 }
 </script>
