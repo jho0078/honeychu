@@ -42,6 +42,7 @@
 	    }
 	  },
 	  mounted() {
+		  
 		  if (!this.isUser) {
 			  this.kakao_login();
 		  }	  	
@@ -110,7 +111,7 @@
 	    logout(){
 			Kakao.Auth.logout(function () {
 				setTimeout(function(){
-          location.href="http://localhost:8080/honeyChu"
+          location.href="http://localhost:8081/honeyChu"
         //   location.href="http://52.78.224.61:8080"
 				}, 1000);
 		
