@@ -1,0 +1,37 @@
+.Like_HY {
+    width: 50%;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.Mymenu_HY {
+    width: 50%;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.Like_HY>button {
+    width: 150px;
+    background-color: white;
+    color: black;
+    border: 2px solid green;
+    -webkit-transition-duration: 0.4s;
+}
+
+.Mymenu_HY>button {
+    width: 150px;
+    background-color: white;
+    color: black;
+    border: 2px solid green;
+    -webkit-transition-duration: 0.4s;
+}
+
+.Like_HY>button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.Mymenu_HY>button:hover {
+    background-color: #4CAF50;
+    color: white;
+}

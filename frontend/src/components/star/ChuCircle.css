@@ -1,0 +1,23 @@
+#ChuCircle{
+  width: 100%;
+}
+.namki_blocks{
+  word-break: normal;
+  word-break: break-word;
+  width: 30%;
+  margin-top: 1rem;
+  font-size: .8rem;
+  justify-content:center;
+  display: inline-flex;
+  height: 25%;	
+}
+.namki_menuimg {
+  margin-bottom:0;
+  border-radius: 50%;
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: cover;
+  object-position: top;
+  box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
