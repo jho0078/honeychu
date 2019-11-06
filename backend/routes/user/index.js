@@ -10,17 +10,17 @@ router.get('/', function(req, res) {
   });
 });
 
-// 이메일로 유저 찾기
-router.get('/findid/:email', function(req, res) {
-  var user_email = req.params.email
-  models.user.findAll({
-    where : {
-      email : user_email
-    }
-  }).then((user) => {
-      res.json(user)
-  });
-});
+// // 이메일로 유저 찾기
+// router.get('/findid/:email', function(req, res) {
+//   var user_email = req.params.email
+//   models.user.findAll({
+//     where : {
+//       email : user_email
+//     }
+//   }).then((user) => {
+//       res.json(user)
+//   });
+// });
 
 // // 생성
 // router.post('/', function(req, res) {
