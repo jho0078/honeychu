@@ -6,7 +6,7 @@
 
       <!-- 좋아요 -->
       <div class="HSD__like">
-        <div > {{combi.likes}} </div>
+        <div > {{Count}} </div>
         <i v-if="!like" @click="likeMenu()" class="Hyeri__heart far fa-heart"></i>
         <i v-if="like" @click="likeMenu()" class="Hyeri__heart fas fa-heart"></i>
       </div>
@@ -48,6 +48,7 @@ export default {
   props:['combiId'],
   data() {
     return {
+      Count:'',
       likeEmail: '',
       likeId: '',
       like: true,
@@ -69,9 +70,16 @@ export default {
   },
   mounted() {
     this.getCombi(this.combiId)
-    
+    this.getCount()
+
   },
   methods: {
+    getCount() {
+      axios.get("/api/like/count/menu/" + this.combiId)
+      .then(response=>{
+        this.Count = response.data[0]["like_count"]
+      })
+    },
     getCombi(data) {
       // 가져올함수
       axios.get("/api/star/menu/detail/" + this.combiId)
@@ -93,9 +101,10 @@ export default {
     },
     // 좋아요함수
     likeMenu(){
+      this.getCount()
       this.like = !this.like
       console.log(this.like)
-      
+
       // // EventBus
       // EventBus.$on('getEmail', function(email){
       //   console.log('제발', email)
@@ -134,7 +143,7 @@ export default {
           })
 
       })
-      
+
 
     },
     gotoMC(){
