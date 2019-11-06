@@ -48,7 +48,7 @@ export default {
   props:['combiId'],
   data() {
     return {
-      Count:'',
+      Count:0,
       likeEmail: '',
       likeId: '',
       like: true,
