@@ -88,7 +88,18 @@ router.post('/add', function(req, res) {
 });
 
 // 좋아요 갯수 그룹
-router.get('/count/:id', function(req, res) {
+router.get('/count', function(req, res) {
+  models.like.findAll({
+    attributes: ['like_starmenu_id', [Sequelize.fn('count', Sequelize.col('like_starmenu_id')), 'like_count']], 
+    group: ['like_starmenu_id'],
+  })
+  .then((result) => {
+    res.json(result)
+  })
+})
+
+// 특정 메뉴 좋아요 갯수
+router.get('/count/menu/:id', function(req, res) {
   var star_menu_id = req.params.id
   models.like.findAll({
     attributes: ['like_starmenu_id', [Sequelize.fn('count', Sequelize.col('like_starmenu_id')), 'like_count']], 
@@ -102,16 +113,39 @@ router.get('/count/:id', function(req, res) {
   })
 })
 
-// 좋아요 갯수 그룹
-router.get('/count', function(req, res) {
+// 유저가 좋아요 누른 메뉴
+router.get('/user/:id/menu', function(req, res) {
+  let userID = req.params.id
   models.like.findAll({
-    attributes: ['like_starmenu_id', [Sequelize.fn('count', Sequelize.col('like_starmenu_id')), 'like_count']], 
-    group: ['like_starmenu_id'],
-  })
-  .then((result) => {
-    res.json(result)
-  })
-})
+    include: [{
+      model: models.starmenu,
+      where: {
+        like_user_id: userID
+      }
+    }]
+  }).then((likeMenus) => {
+
+  res.json(likeMenus)
+  });
+});
+
+// models.Foo.find({
+//   include: [models.boo]
+// });
+
+// models.contracts.findAll({
+//   attributes: ['id', [models.sequelize.fn('sum', models.sequelize.col('payments.payment_amount')), 'total_cost']],
+//   include: [
+//   {
+//       model: models.payments,
+//       attributes: []
+//   }
+//   ],
+//   group: ['contracts.id']
+// })
+
+
+
 
 
 module.exports = router;
