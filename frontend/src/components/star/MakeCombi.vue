@@ -3,7 +3,7 @@
       <div class="Hyeri__makecombi_header">
 
         <!-- 뒤로가기 부분입니당 i태그 둘 다 뒤로가게해주센 -->
-        <i class="fas fa-angle-left"></i>
+        <i class="fas fa-angle-left" @click="goBack()"></i>
         <h2>메뉴 추가</h2>
         <i style="color:rgb(118, 254, 84); font-size: 1.3rem" class="fas fa-check" @click="CreateMenu()"></i>
       </div>
@@ -54,9 +54,11 @@
             <div class="Hyeri__extraitems"v-if="Result[item.value] < 10">
               <div>{{ item.name }}</div>
               <div class="Hyeri__extrabuttons">
-                <div @click="Result[item.value] = String(Number(Result[item.value]) - 1)">-</div>
+
+                <div @click="PlusMinus(false, item)">-</div>
                   &nbsp;&nbsp;{{ Result[item.value] }}&nbsp;&nbsp;
-                <div @click="Result[item.value] = String(Number(Result[item.value]) + 1)">+</div>
+                <div @click="PlusMinus(true, item)">+</div>
+
               </div>
             </div>
 
@@ -196,6 +198,19 @@ export default {
     },
 
     methods: {
+      PlusMinus(bool, item) {
+        if (bool==true) {
+          if (this.Result[item.value]> 8) { return }
+          this.Result[item.value] = Number(this.Result[item.value]) + 1
+        }
+        else {
+          if (this.Result[item.value] < 1) {return}
+          this.Result[item.value] = Number(this.Result[item.value]) - 1
+        }
+      },
+      goBack() {
+        this.$router.replace('Starbucks')
+      },
       Test(prop) {
         for (let [key, value] of Object.entries(this.Extras)) {
             for (let [keyy, valuee] of Object.entries(this.Extras[key])){
@@ -279,12 +294,11 @@ export default {
         axios.post("/api/star/menu/", this.Result)
         .then(function(response){
           if (response.data.success == false) {
-              alert('중복')
+              alert('이미 있는 메뉴입니다.')
           }
           else {
-            alert('제출완료')
-            this.$router.replace('www.naver.com')
-
+            confirm('등록완료')
+            window.location.href="Starbucks";
           }
         })
         .catch(function (error) {
