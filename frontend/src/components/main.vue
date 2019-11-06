@@ -36,6 +36,7 @@
 	  },
 	  data() {
 	    return {
+			userEmail: '',
 			isUser: false,
 	    	username:'1212123',
 	    	al:1,
@@ -82,7 +83,7 @@
 					// console.log('nickname :', res.properties.nickname);
 										
 					this.isUser = true
-					
+					this.userEmail = res.kakao_account.email
 		          	axios.post("/api/user",{email: res.kakao_account.email})
 		          	axios.post("/api/user/login",{email: res.kakao_account.email})
 		            alert('로그인 되었습니다.')
@@ -108,7 +109,16 @@
 	      this.$router.push({name:'Starbucks'})
 		},
 		gotoMypage(){
-			this.$router.push({path:'/Mypage'})
+			Kakao.Auth.getStatus(statusObj => {
+						if (statusObj.status == "not_connected") {
+              				alert('로그인 해주세요!')
+							console.log('xxxxx')
+						} else {
+							this.$router.push({path:'/Mypage/'+ this.userEmail})
+							console.log('ooooo')
+						}
+					})
+			// this.$router.push({path:'/Mypage'})
 		},
 	    logout(){
 			this.isUser = false
