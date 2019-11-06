@@ -2,7 +2,8 @@
   <div class="accordion" v-bind:class="theme">
     <div class="header" v-on:click="toggle">
       <slot name="header"></slot>
-      <i class="fa fa-2x fa-angle-down header-icon" v-bind:class="{ rotate: show }"></i>
+      <img class="header-icon" v-bind:class="{ rotate: show }" src='../../assets/arrow-down_bluviolet.png'>
+      <!-- <i class="fa fa-angle-down header-icon" v-bind:class="{ rotate: show }"></i> -->
     </div>
     <transition name="accordion"
       v-on:before-enter="beforeEnter" v-on:enter="enter"

@@ -1,61 +1,83 @@
 <template>
-    <div class="MakeCombi">
-      <h1>게시글 작성</h1>
+    <div id="MakeCombi">
+      <div class="Hyeri__makecombi_header">
+
+        <!-- 뒤로가기 부분입니당 i태그 둘 다 뒤로가게해주센 -->
+        <i class="fas fa-angle-left"></i>
+        <h2>메뉴 추가</h2>
+        <i style="color:rgb(118, 254, 84); font-size: 1.3rem"class="fas fa-check"></i>
+      </div>
+      
       <!-- 사진 업로드 -->
-      <div>
-        <img :src="previewImage" class="namki_uploadingimage">
-         <input type="file" accept="image/jpeg/jpg/png" @change="uploadImage">
+      <div class="Hyeri__uploadbox">
+        <img v-if="previewImage" :src="previewImage" class="namki_uploadingimage">
+        <div class="Hyeri__filebox">
+          <input id="Hyeri__imageupload" type="file" accept="image/jpeg/jpg/png" @change="uploadImage">
+          <label for="Hyeri__imageupload" v-if="!previewImage">사진을 추가해주세요</label>
+          <label for="Hyeri__imageupload" v-if="previewImage">사진 변경하기</label>
+        </div>
       </div>
 
       <!-- select들 -->
       <select class="namki_MakeCombi_select" v-model="Franchise">
-        <option value="" disabled selected hidden>프랜차이즈 선택</option>
-        <option  v-for="Franchise in Franchises" v-bind:value="Franchise.value">
+        <option value="" disabled selected hidden>프랜차이즈를 선택해주세요</option>
+        <option v-for="Franchise in Franchises" v-bind:value="Franchise.value">
           {{ Franchise.Name }}
+        </option>
+      </select>
+
+      <select class="namki_MakeCombi_select" v-model="selected_category">
+        <option value="" disabled selected hidden>카테고리를 선택해주세요</option>
+        <option v-for="category in Object.keys(BasicCoffees)" v-bind:value="category">
+          {{ category }}
         </option>
       </select>
 
       <select @change="ChooseCoffee($event)" class="namki_MakeCombi_select">
         <option disabled selected hidden>음료를 골라주세요</option>
-        <option  v-for="BasicCoffee in BasicCoffees" v-bind:value="BasicCoffee.starmenu_id">
+        <option  v-for="BasicCoffee in BasicCoffees[selected_category]" v-bind:value="BasicCoffee.starmenu_id">
           {{ BasicCoffee.name }}
         </option>
       </select>
 
-      <textarea class="namki_MakeCombi_textarea" @change="Result.name=$event.target.value" placeholder="제목"></textarea>
-      <input type="text" v-model="Result.tag1">
-      <input type="text" v-model="Result.tag2">
+      <!-- 타이틀 -->
+      <input class="namki_MakeCombi_textarea" @change="Result.name=$event.target.value" placeholder="메뉴 이름을 설정해주세요."></input>
+      <!-- <input type="text" v-model="Result.tag1"> -->
+      <!-- <input type="text" v-model="Result.tag2"> -->
 
       <!-- 엑스트라 -->
-      <div v-for= "(value, key) in Extras">
-        <Accordion theme="purple">
+      <h3>엑스트라 변경사항</h3>
+      <div v-for= "(v, key) in Extras">
+        <Accordion theme="hyeri">
           <div slot="header">{{ key }}</div>
-          <div v-for="item in value">
-            <div v-if="Result[item.value] < 10">
-              {{ item.name }}
-              <button @click="Result[item.value] = String(Number(Result[item.value]) - 1)">-</button>
-                {{ Result[item.value] }}
-              <button @click="Result[item.value] = String(Number(Result[item.value]) + 1)">+</button>
-              <hr>
-            </div>
-
-            <div v-else>
-              {{ item.name }}
-              <div style="display:inline;" v-for="(value, key) in item.type">
-                  <button class="namki_button" :class="{namki_button_active : Result[item.value] == value}" @click="Result[item.value]=value">{{value}}</button>
+          <div v-for="(item, index) in v">
+            <div class="Hyeri__extraitems"v-if="Result[item.value] < 10">
+              <div>{{ item.name }}</div>
+              <div class="Hyeri__extrabuttons">
+                <div @click="Result[item.value] = String(Number(Result[item.value]) - 1)">-</div>
+                  &nbsp;&nbsp;{{ Result[item.value] }}&nbsp;&nbsp;
+                <div @click="Result[item.value] = String(Number(Result[item.value]) + 1)">+</div>
               </div>
             </div>
+
+            <div class="Hyeri__extraitems" v-else>
+              <div>{{ item.name }}</div>
+              <div  class="Hyeri__extra2buttons">
+                  <div v-for="(value, key) in item.type" class="namki_button" :class="{namki_button_active : Result[item.value] == value}" @click="Result[item.value]=value">{{value}}</div>
+              </div>
+            </div>
+            <hr  v-if="index < v.length-1">
           </div>
         </Accordion>
       </div>
-      <button @click="CreateMenu" type="submit" name="button">제출</button>
-      <button @click="CreateHash()" type="button" name="button">asd</button>
+      <!-- <button @click="CreateMenu" type="submit" name="button">제출</button> -->
+      <!-- <button @click="CreateHash()" type="button" name="button">asd</button> -->
     </div>
 </template>
 
 <script>
 import Accordion from '@/components/star/Accordion'
-
+import '@/components/star/MakeCombi.css'
 
 export default {
     name:'MakeCombi',
@@ -66,12 +88,13 @@ export default {
     data() {
       return {
           previewImage:null,
-          BasicCoffees: [],
+          BasicCoffees: {},
           Result: {},
           Result2: {},
           hash: '',
 
           Franchise:'',
+          selected_category:'',
 
           Extras: {
             '커피': [
@@ -160,7 +183,7 @@ export default {
 
           Franchises : [
             { Name: '스타벅스', value: '스타벅스'},
-            { Name: '써브웨이', value: '써브웨이'}
+            { Name: '서브웨이', value: '서브웨이'}
           ],
 
 
@@ -200,7 +223,21 @@ export default {
       getBasicCoffees() {
         axios.get('/api/star/menu/basic/')
           .then(response=>{
-            this.BasicCoffees = response.data
+            // console.log(response.data)
+            for(let bever of response.data) {
+              console.log(bever.category)
+              if(bever.category in this.BasicCoffees){
+                console.log('있음')
+                console.log(bever.category)
+                console.log(this.BasicCoffees[bever.category])
+                this.BasicCoffees[bever.category].push(bever)
+              }else{
+                console.log('없음')
+                this.BasicCoffees[bever.category] = [bever]
+              }
+            }
+            // this.BasicCoffees = response.data
+            console.log(Object.keys(this.BasicCoffees))
           })
       },
 
@@ -253,118 +290,4 @@ export default {
 </script>
 
 <style>
-    .namki_uploadingimage{
-      display:flex;
-    }
-    .namki_button {
-      padding: 5px 5px;
-      border: 1px solid #ddd;
-      color: #333;
-      background-color:#fff;
-      border-radius: 4px;
-      font-size: 10px;
-      cursor: pointer;
-    }
-
-    .MakeCombi {
-        width: 97%;
-    }
-    .namki_MakeCombi_textarea {
-      width:100%;
-      border-radius: 6px;
-    }
-    .namki_MakeCombi_select {
-      margin-bottom:5px;
-      width: 102%; /* 원하는 너비설정 */
-      padding: .8em .5em; /* 여백으로 높이 설정 */
-      font-family: inherit;  /* 폰트 상속 */
-      border: 1px solid #999;
-      border-radius: 6px;
-      -webkit-appearance: none; /* 네이티브 외형 감추기 */
-      -moz-appearance: none;
-      appearance: none;
-      background-color: white;
-      background: url('https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg') no-repeat 95% 50%;
-    }
-    .accordion {
-      width:95vw;
-      font-family: Lato;
-      /* margin-bottom: 20px; */
-
-      background-color: #ec5366;
-      border-radius: 6px;
-    }
-
-    .accordion .header {
-      height: 40px;
-      line-height: 40px;
-      padding: 0 40px 0 8px;
-      position: relative;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .accordion .header-icon {
-      position: absolute;
-      top: 5px;
-      right: 8px;
-      transform: rotate(0deg);
-      transition-duration: 0.3s;
-    }
-
-    .accordion .body {
-    /*   display: none; */
-      overflow: hidden;
-      background-color: #fff;
-      border: 10px solid #ec5366;
-      border-top: 0;
-      border-bottom-left-radius: 6px;
-      border-bottom-right-radius: 6px;
-      transition: 150ms ease-out;
-    }
-
-    .accordion .body-inner {
-      padding: 8px;
-      overflow-wrap: break-word;
-      /* white-space: pre-wrap; */
-    }
-
-    .accordion .header-icon.rotate {
-      transform: rotate(180deg);
-      transition-duration: 0.3s;
-    }
-
-    .accordion.purple {
-      background-color: #8c618d;
-      border: 1px solid;
-
-    }
-    .accordion.purple .body {
-      border-color: #8c618d;
-    }
-    .accordion.red {
-      background-color: #c03333;
-    }
-
-    .accordion.red .body {
-      border-color: #c03333;
-    }
-    .accordion.yellow {
-      background-color: #e8f719;
-    }
-
-    .accordion.yellow .body {
-      border-color: #e8f719;
-    }
-    .accordion.gray {
-      background-color: #5c575c;
-    }
-
-    .accordion.gray .body {
-      border-color: #5c575c;
-    }
-
-    .namki_button_active{
-      background-color: lightgray;
-    }
 </style>
