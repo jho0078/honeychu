@@ -84,7 +84,7 @@
 
 					this.isUser = true
 					this.userEmail = res.kakao_account.email
-		          	axios.post("/api/user",{email: res.kakao_account.email})
+		          	// axios.post("/api/user",{email: res.kakao_account.email})
 		          	axios.post("/api/user/login",{email: res.kakao_account.email})
 		            alert('로그인 되었습니다.')
 		            Kakao.Auth.getStatus(statusObj => {
